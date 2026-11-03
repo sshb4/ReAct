@@ -1,0 +1,182 @@
+{
+  "query_id": "Q8",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "chat_thinking": true,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 32768,
+    "chat_output_tokens_per_action": 4096,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "38e051c30b39efe3d96efd0060fd143c2864e3164d3248f1eb9b23a388540017",
+    "local_adapter_sha256": "b5047842e7911eb726f20e94c70e84fcc52a7be039b93245a99e682fcdfbb7a8",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "insufficient_evidence",
+  "question": "What Utah regulation currently adopts the FDA Food Code 2026, and what penalties\ndoes it impose on a restaurant that violates employee-illness rules?",
+  "terminal_reason": "insufficient_evidence",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [],
+  "message": "Retrieved passages are FDA Food Code 2026 model rules and related documents, not Utah's current regulations. Utah's adoption of the FDA Food Code 2026 and associated penalties are not specified in the provided sources. The FDA Food Code 2026 is a model code, not proof of Utah adoption; historical inspection data (e.g., Utah study) does not establish current legal rules.",
+  "evidence": [
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 70,
+      "chunk_id": "36766a54b2368e8f84fb6541",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n42 \n(B) Unless wearing intact gloves in good repair, a *FOOD EMPLOYEE may not wear \nfingernail polish or artificial fingernails when working with exposed *FOOD. Pf  \n2-303 Jewelry \n2-303.11 Prohibition.  \n(A) Except as specified in \u00b6\u00b6 (B) and (C) of this section, *FOOD EMPLOYEES may \nnot wear jewelry on their arms and hands while preparing *FOOD. \n(B) A plain ring, such as a wedding band, may be worn. \n(C) An individual with a disability covered under the Americans with Disabilities \nAct may be allowed to wear a medically necessary device that can be kept \nclean and worn in a manner that prevents potential contamination. \n2-304 Outer Clothing \n2-304.11 Clean Condition.   \n*FOOD EMPLOYEES shall wear clean outer clothing to prevent contamination of \n*FOOD, *EQUIPMENT, *UTENSILS, *LINENS, and *SINGLE-SERVICE and *SINGLE-USE \nARTICLES. \n2-4 Hygienic Practices \nSubparts: \n2-401 Food Contamination Prevention \n2-402 Hair Restraints \n2-403 Animals \n2-401 Food Contamination Prevention \n2-401.11 Eating, Drinking, or Using *TOBACCO PRODUCTS. \n(A) Except as specified in \u00b6 (B) of this section, an *EMPLOYEE shall eat, drink, or \nuse any form of *TOBACCO PRODUCTS only in designated areas where the \ncontamination of exposed *FOOD; clean *EQUIPMENT, *UTENSILS, and *LINENS;"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 725,
+      "chunk_id": "2e62edae67d670090551a3ea",
+      "text": "FDA Food Code 2026  Summary of Changes \nSummary-645 \n2-301.16  \nAmended Public Health Reason for \u00a7 2-301.16 Hand Antiseptics to revise paragraphs 2 \nand 3 to clarify the intent of hand antiseptics.  \n2-303.11\u202f  \nAmended\u202fPublic\u202fHealth\u202fReasons\u202ffor\u202f\u00a7 2-303.11 Prohibition,\u202fto \naddress\u202fan\u202fadditional\u202fexception\u202ffor\u202findividuals with disabilities\u202fcovered by the Americans \nwith Disabilities Act,\u202fto wear a medically necessary device.  \n2-5\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew Part 2-5 to address written policy \nand procedures\u202frequirements\u202ffor employee\u202fillness\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-501\u202fto address\u202fwhat \nan\u202femployee\u202fillness\u202fpolicy is\u202fand the purpose of an illness policy for each food \nestablishment.\u202f\u202f\u202f  \n\u2022 Amended\u202fPublic Health Reasons\u202ffor the\u202fprevious\u202f\u00a7 2-501.11\u202fto \nnew\u202ftitle\u202f\u201cEmployee Illness Policy Documentation\u201d\u202fto address\u202fthe basic \ncomponents of an Employee Illness Policy.\u202f\u202f\u201cClean-up of Vomiting and Diarrheal \nEvents\u201d\u202fwas moved to a new\u202f\u00a7 2-502.11.  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-502;\u202f\u201cContamination \nEvent Response Procedures\u201d\u202fto cover all contamination event responses.\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons to add\u202fnew\u202f\u00a7 2-502.11\u202f\u201cClean-up of Vomiting \nand Diarrheal event\u201d\u202fto include the\u202fprevious\u202f\u00a7 2-501.11\u202ffor\u202f\u201cProcedures \nfor\u202fResponding to\u202fVomiting and\u202fDiarrheal\u202fEvents.\u201d"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 210,
+      "chunk_id": "9b59337c190c4913f44a73b0",
+      "text": "FDA Food Code 2026  Index \nIndex-16 \ndefinition, 6, See also Food employee \ndefinition \ndressing areas, 140, 466 \neating, drinking, and tobacco use, \ndesignated areas, 42 \nfood contaminated by, disposition, 83 \nhair restraint requirements, 43 \nhygiene, 24, 42, 243 \nillness reporting exclusions and \nrestrictions, 26, 31, 243, 284, 288, \n581, 584, 585 \npractices, supervision of, 26 \nprevention of food contamination, 52, \n54, 357 \nresponsibility to report illness, 26, \n243, 254, 284, 288, 581, 584, 585 \nserving high-risk populations, \nexclusions and restrictions, 303, \nSee Highly susceptible population, \nexclusion and restriction of ill \nemployees \nEmployee Illness Policy, 43 \nEmu. See Ratite definition \nEnclosures for refuse, recyclables and \nreturnables, operation and \nmaintenance, 129, 130, 131 \nEnforcement. See Compliance and \nEnforcement \nEnforcement proceedings \nauthorities, methods, fines, and \nsentences, 182 \ninstitution, 182 \njudicial, 181 \nEPA, U.S. Environmental Protection \nAgency, definition, 6 \nEquipment \nacceptability, 98 \nair drying requirement, 114 \nassessment for Code enforcement, \n151 \ncan opener parts, removable and \nreplaceable, 91, 102 \ncase lot handling, 60, 97 \ncertification and classification, 98 \ncleaned, storage prohibition, 115 \ncleaning criteria, 107 \ncleaning frequency, 107 \ncleaning frequency, nonfood-contact \nsurfaces, 109"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 203,
+      "chunk_id": "d7b5463105cf367f3b3b3a0d",
+      "text": "FDA Food Code 2026  Index \nIndex-9 \nCompliance and Enforcement, 151, 167 \nCompliance and Enforcement Annex \nexplanation, 167 \nprinciple, 168 \npurpose, 167 \nrecommendation, 168 \nCompliance with Code, responsibilities \nof permit holder to retain permit, 159 \nCondenser unit, separation from food \nand food storage space, 94 \nCondiments, protection from \ncontamination, 61 \nConditional employee \napplicant, food employee interview \nform, 581 \napplicant, food employee medical \nreferral form, 585 \napplicant, illness reporting \nresponsibilities, 28, 288 \ndefinition, 4 \nPIC responsibility to report employee \nillness or diagnosis to regulatory \nauthority, 30, 159, 288 \nConditioning device \nplumbing system design, 122 \nplumbing system location, 123 \nConfidentiality \nhearings, 177 \ntrade secrets, 156 \nConfirmed disease outbreak, definition, \n4 \nConsent agreement \napproval by hearing officer, 178 \nrequest, response to hearing notice, \n175 \nrespondent acceptable as waiver of \nright to appeal, 180 \nConstitutional protection \njudicial review, 169 \nprocedural safeguards, 168 \nConstruction \nequipment, single service and single \nuse articles characteristics, 89 \nequipment, utensils, and food contact \nsurfaces of equipment, materials \nfor, 87 \nfood establishment plans and \nspecifications requirement, 153, \n158, 476 \ninspection and approval, 156 \nmobile water tank and mobile food"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 367,
+      "chunk_id": "08be7f1447cc0ae9468afce7",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n287 \nestablishment to develop and maintain a written food employee illness policy specific to \nthe needs of their food establishment (See Chapter 2, Subpart 2-501). Regulatory \nofficials can benefit by using the information provided below as a basis for determining \ncompliance with Subpart 2-201 during a facility food safety inspection. The development \nand effective implementation of an employee illness policy based on the provisions in \nSubpart 2-201 will help to prevent foodborne illness associated with contamination of \nfood by ill or infected food employees. The person in charge and food employees \nshould be familiar with and able to provide the following information through direct \ndialogue or other means when interviewed by facility managers or regulatory officials. \nCompliance must be based, however, on firsthand observations or information and \ncannot be based solely on responses from the person in charge to questions regarding \nhypothetical situations or knowledge of the Food Code. Also, when designing and \nimplementing an employee illness policy, the following information should be considered \nand addressed: \n1. Does the establishment have an employee illness or health policy? If so, are the \nfood employees aware of the policy, and is it available in written format and readily"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 11,
+      "chunk_id": "324111cfbfeae6fe61631bcf",
+      "text": "updated public health reasons, model forms, guides, and lists; and \n(5) Expanded the Index with additional terms to assist a broader base of users in \nfinding topics of interest.  \nSome of the significant changes to the 2026 Food Code include: \n(1) Adding Food Safety Management System definition and requirements during \nplan review to promote a preventative strategy for controlling risk factors.  \n(2) Adding requirements for written Employee Illness Policies."
+    }
+  ],
+  "trace": [
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": "{\n  \"kind\": \"retrieve\",\n  \"arguments\": {\n    \"query\": \"Utah regulation currently adopts FDA Food Code 2026 and penalties for violating employee-illness rules\",\n    \"source\": \"fda-food-code-2026.pdf\"\n  }\n}"
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "Utah regulation currently adopts FDA Food Code 2026 and penalties for violating employee-illness rules",
+        "source": "fda-food-code-2026.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 70,
+          "chunk_id": "36766a54b2368e8f84fb6541",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n42 \n(B) Unless wearing intact gloves in good repair, a *FOOD EMPLOYEE may not wear \nfingernail polish or artificial fingernails when working with exposed *FOOD. Pf  \n2-303 Jewelry \n2-303.11 Prohibition.  \n(A) Except as specified in \u00b6\u00b6 (B) and (C) of this section, *FOOD EMPLOYEES may \nnot wear jewelry on their arms and hands while preparing *FOOD. \n(B) A plain ring, such as a wedding band, may be worn. \n(C) An individual with a disability covered under the Americans with Disabilities \nAct may be allowed to wear a medically necessary device that can be kept \nclean and worn in a manner that prevents potential contamination. \n2-304 Outer Clothing \n2-304.11 Clean Condition.   \n*FOOD EMPLOYEES shall wear clean outer clothing to prevent contamination of \n*FOOD, *EQUIPMENT, *UTENSILS, *LINENS, and *SINGLE-SERVICE and *SINGLE-USE \nARTICLES. \n2-4 Hygienic Practices \nSubparts: \n2-401 Food Contamination Prevention \n2-402 Hair Restraints \n2-403 Animals \n2-401 Food Contamination Prevention \n2-401.11 Eating, Drinking, or Using *TOBACCO PRODUCTS. \n(A) Except as specified in \u00b6 (B) of this section, an *EMPLOYEE shall eat, drink, or \nuse any form of *TOBACCO PRODUCTS only in designated areas where the \ncontamination of exposed *FOOD; clean *EQUIPMENT, *UTENSILS, and *LINENS;"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 725,
+          "chunk_id": "2e62edae67d670090551a3ea",
+          "text": "FDA Food Code 2026  Summary of Changes \nSummary-645 \n2-301.16  \nAmended Public Health Reason for \u00a7 2-301.16 Hand Antiseptics to revise paragraphs 2 \nand 3 to clarify the intent of hand antiseptics.  \n2-303.11\u202f  \nAmended\u202fPublic\u202fHealth\u202fReasons\u202ffor\u202f\u00a7 2-303.11 Prohibition,\u202fto \naddress\u202fan\u202fadditional\u202fexception\u202ffor\u202findividuals with disabilities\u202fcovered by the Americans \nwith Disabilities Act,\u202fto wear a medically necessary device.  \n2-5\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew Part 2-5 to address written policy \nand procedures\u202frequirements\u202ffor employee\u202fillness\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-501\u202fto address\u202fwhat \nan\u202femployee\u202fillness\u202fpolicy is\u202fand the purpose of an illness policy for each food \nestablishment.\u202f\u202f\u202f  \n\u2022 Amended\u202fPublic Health Reasons\u202ffor the\u202fprevious\u202f\u00a7 2-501.11\u202fto \nnew\u202ftitle\u202f\u201cEmployee Illness Policy Documentation\u201d\u202fto address\u202fthe basic \ncomponents of an Employee Illness Policy.\u202f\u202f\u201cClean-up of Vomiting and Diarrheal \nEvents\u201d\u202fwas moved to a new\u202f\u00a7 2-502.11.  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-502;\u202f\u201cContamination \nEvent Response Procedures\u201d\u202fto cover all contamination event responses.\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons to add\u202fnew\u202f\u00a7 2-502.11\u202f\u201cClean-up of Vomiting \nand Diarrheal event\u201d\u202fto include the\u202fprevious\u202f\u00a7 2-501.11\u202ffor\u202f\u201cProcedures \nfor\u202fResponding to\u202fVomiting and\u202fDiarrheal\u202fEvents.\u201d"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 210,
+          "chunk_id": "9b59337c190c4913f44a73b0",
+          "text": "FDA Food Code 2026  Index \nIndex-16 \ndefinition, 6, See also Food employee \ndefinition \ndressing areas, 140, 466 \neating, drinking, and tobacco use, \ndesignated areas, 42 \nfood contaminated by, disposition, 83 \nhair restraint requirements, 43 \nhygiene, 24, 42, 243 \nillness reporting exclusions and \nrestrictions, 26, 31, 243, 284, 288, \n581, 584, 585 \npractices, supervision of, 26 \nprevention of food contamination, 52, \n54, 357 \nresponsibility to report illness, 26, \n243, 254, 284, 288, 581, 584, 585 \nserving high-risk populations, \nexclusions and restrictions, 303, \nSee Highly susceptible population, \nexclusion and restriction of ill \nemployees \nEmployee Illness Policy, 43 \nEmu. See Ratite definition \nEnclosures for refuse, recyclables and \nreturnables, operation and \nmaintenance, 129, 130, 131 \nEnforcement. See Compliance and \nEnforcement \nEnforcement proceedings \nauthorities, methods, fines, and \nsentences, 182 \ninstitution, 182 \njudicial, 181 \nEPA, U.S. Environmental Protection \nAgency, definition, 6 \nEquipment \nacceptability, 98 \nair drying requirement, 114 \nassessment for Code enforcement, \n151 \ncan opener parts, removable and \nreplaceable, 91, 102 \ncase lot handling, 60, 97 \ncertification and classification, 98 \ncleaned, storage prohibition, 115 \ncleaning criteria, 107 \ncleaning frequency, 107 \ncleaning frequency, nonfood-contact \nsurfaces, 109"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 203,
+          "chunk_id": "d7b5463105cf367f3b3b3a0d",
+          "text": "FDA Food Code 2026  Index \nIndex-9 \nCompliance and Enforcement, 151, 167 \nCompliance and Enforcement Annex \nexplanation, 167 \nprinciple, 168 \npurpose, 167 \nrecommendation, 168 \nCompliance with Code, responsibilities \nof permit holder to retain permit, 159 \nCondenser unit, separation from food \nand food storage space, 94 \nCondiments, protection from \ncontamination, 61 \nConditional employee \napplicant, food employee interview \nform, 581 \napplicant, food employee medical \nreferral form, 585 \napplicant, illness reporting \nresponsibilities, 28, 288 \ndefinition, 4 \nPIC responsibility to report employee \nillness or diagnosis to regulatory \nauthority, 30, 159, 288 \nConditioning device \nplumbing system design, 122 \nplumbing system location, 123 \nConfidentiality \nhearings, 177 \ntrade secrets, 156 \nConfirmed disease outbreak, definition, \n4 \nConsent agreement \napproval by hearing officer, 178 \nrequest, response to hearing notice, \n175 \nrespondent acceptable as waiver of \nright to appeal, 180 \nConstitutional protection \njudicial review, 169 \nprocedural safeguards, 168 \nConstruction \nequipment, single service and single \nuse articles characteristics, 89 \nequipment, utensils, and food contact \nsurfaces of equipment, materials \nfor, 87 \nfood establishment plans and \nspecifications requirement, 153, \n158, 476 \ninspection and approval, 156 \nmobile water tank and mobile food"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 367,
+          "chunk_id": "08be7f1447cc0ae9468afce7",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n287 \nestablishment to develop and maintain a written food employee illness policy specific to \nthe needs of their food establishment (See Chapter 2, Subpart 2-501). Regulatory \nofficials can benefit by using the information provided below as a basis for determining \ncompliance with Subpart 2-201 during a facility food safety inspection. The development \nand effective implementation of an employee illness policy based on the provisions in \nSubpart 2-201 will help to prevent foodborne illness associated with contamination of \nfood by ill or infected food employees. The person in charge and food employees \nshould be familiar with and able to provide the following information through direct \ndialogue or other means when interviewed by facility managers or regulatory officials. \nCompliance must be based, however, on firsthand observations or information and \ncannot be based solely on responses from the person in charge to questions regarding \nhypothetical situations or knowledge of the Food Code. Also, when designing and \nimplementing an employee illness policy, the following information should be considered \nand addressed: \n1. Does the establishment have an employee illness or health policy? If so, are the \nfood employees aware of the policy, and is it available in written format and readily"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 11,
+          "chunk_id": "324111cfbfeae6fe61631bcf",
+          "text": "updated public health reasons, model forms, guides, and lists; and \n(5) Expanded the Index with additional terms to assist a broader base of users in \nfinding topics of interest.  \nSome of the significant changes to the 2026 Food Code include: \n(1) Adding Food Safety Management System definition and requirements during \nplan review to promote a preventative strategy for controlling risk factors.  \n(2) Adding requirements for written Employee Illness Policies."
+        }
+      ]
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": "{\"kind\": \"insufficient_evidence\", \"missing_evidence\": \"Retrieved passages are FDA Food Code 2026 model rules and related documents, not Utah's current regulations. Utah's adoption of the FDA Food Code 2026 and associated penalties are not specified in the provided sources. The FDA Food Code 2026 is a model code, not proof of Utah adoption; historical inspection data (e.g., Utah study) does not establish current legal rules.\"}"
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "insufficient_evidence",
+      "steps": 3
+    }
+  ]
+}

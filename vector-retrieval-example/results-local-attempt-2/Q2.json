@@ -1,0 +1,190 @@
+{
+  "query_id": "Q2",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval required before final action; citations constrained to observed chunk IDs",
+    "chat_thinking": false,
+    "chat_context_tokens": 32768,
+    "chat_output_tokens_per_action": 2048,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact section/table headings among semantic candidates",
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "answer",
+  "question": "A food employee begins vomiting during a shift. Using the *Employee Health and\nPersonal Hygiene Handbook*, what should the employee and manager do immediately,\nand what is the earliest return to work?",
+  "terminal_reason": "answer",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [
+    {
+      "text": "The employee should stop work immediately and report to management. The manager should permit a return to work no sooner than 24 hours after vomiting and diarrhea have ended.",
+      "citations": [
+        "d4282f13bd2bd9a74711a325"
+      ]
+    },
+    {
+      "text": "The earliest return to work is 24 hours after vomiting and diarrhea have ended.",
+      "citations": [
+        "d4282f13bd2bd9a74711a325"
+      ]
+    }
+  ],
+  "message": "",
+  "evidence": [
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 7,
+      "chunk_id": "d4282f13bd2bd9a74711a325",
+      "text": "residing with a diagnosed individual.\nWhat should a manager do when a food employee reports symptoms of vomiting \nor diarrhea? (See Decision Tree 1 and Table 1a (and Table 1b if diagnosed))\nAsk the food employee to stop work immediately and leave the food establishment. Permit a return to \nwork no sooner than 24 hours after vomiting and diarrhea have ended.\nEmployee Health Management Responsibilities"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 6,
+      "chunk_id": "84beda9088b485f3cce87bd7",
+      "text": "4\nEmployee Health and the Food Establishment\nWhat symptoms of foodborne illness should food establishments be most \nconcerned about?\nFood establishments should be most concerned about the following symptoms:\n\u2022 Vomiting\n\u2022 Diarrhea\n\u2022 Jaundice (yellow skin or eyes)\n\u2022 Sore throat with fever\n\u2022 Infected cuts and burns with pus on hands, wrists and exposed portion of the arms\nWhat should food employees do when they have symptoms of vomiting or diarrhea?\nIf at work:\n\u2022 Stop work immediately;\n\u2022 Report to management; and\n\u2022 Go home and return after at least 24 hours have passed since the vomiting and diarrhea \nsymptoms ended.\nIf the symptoms occur before the employee arrives to work, he or she should:\n\u2022 Notify the manager by telephone; and\n\u2022 Do not report to work until at least 24 hours have passed after the diarrhea and vomiting \nsymptoms have ended.\nWhat should food employees do if they are not feeling well and their skin or eyes \nturn yellow?\nReport the symptoms to their manager or person in charge (PIC) immediately and seek medical \nattention. The employee should not return to work until after receiving clearance from a health \npractitioner. If the employee is jaundiced for more than 7 days, clearance from the local health \ndepartment is required.\nWhat should food employees do if they have an infected wound or cut on their hand \nor arm?"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 31,
+      "chunk_id": "7ba6c6e61e6f2c18d172b7ad",
+      "text": "29\n2-201.12 Table 1a Summary of Requirements for Symptomatic \nFood Employees\nFood employees and conditional employees shall report symptoms immediately to the person \nin charge\nThe person in charge shall prohibit a conditional employee who reports a listed symptom from \nbecoming a food employee until meeting the criteria listed in section 2-201.13 of the Food Code, \nfor reinstatement of a symptomatic food employee.\nSymptom Exclusion or \nRestriction\n(Facilities \nServing an HSP)\nExclusion or \nRestriction\n(Facilities Not \nServing an HSP)\nRemoving Symptomatic Food Employees \nfrom Exclusion or Restriction\nRA Approval \nRequired to \nReturn to \nWork?\nVomiting Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A)(1).  \nExceptions: If diagnosed with Norovirus, \nShigella spp., STEC, HAV, or typhoid fever \n(S. Typhi) (see Tables 1b and 2).\nNo, if not \ndiagnosed\nDiarrhea Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A).  \nExceptions: If Diagnosed with Norovirus, \nSTEC, HAV, or S. Typhi (see Tables 1b and 2).\nNo, if not \ndiagnosed\nJaundice Exclude\n2-201.12(B)(1) \nif the onset \noccurred within \nthe last 7 days\nExclude\n2-201.12(B)(1) \nif the onset"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 9,
+      "chunk_id": "c52d346709a50f947c93b74e",
+      "text": "7\nEmployee Health Employee Responsibilities\nDo food employees have a responsibility to prevent foodborne illness?\nYes, food employees share the responsibility with management for preventing foodborne illness and \nare required to know:\n\u2022 The relationship between their job responsibilities and the potential risks of foodborne illness;\n\u2022 How employee health is related to foodborne illness;\n\u2022 The need to immediately report symptoms of vomiting, diarrhea, jaundice, sore throat with fever, \ndiagnosis of illness caused by a Big 6 pathogen, exposure to a Big 6 pathogen, or an exposed \ninfected wound or cut on the hands or arms to their manager (see Form 1-B);\n\u2022 How restriction and/or exclusion from working with food prevents foodborne illness; and\n\u2022 How proper hand hygiene and no bare hand contact with RTE food can prevent foodborne illness.\nCan food employees work if their symptoms are from a non-infectious condition?\nYes, food employees can work as long as they can provide medical documentation indicating that \nthe symptoms are from a non-infectious condition. Some non-infectious conditions include Crohn\u2019s \ndisease (an ongoing disorder that causes inflammation of the gastrointestinal system), irritable bowel \nsyndrome, some liver diseases, and symptoms commonly experienced during stages of pregnancy.\nIf an infected wound, cut, or burn is covered, can employees continue working?"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 15,
+      "chunk_id": "7e8860aebce14b260af37e80",
+      "text": "transmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has \na lesion with pus, or has an uncovered open wound on hands, wrists, or on other body parts;\n\u2022 Reports a diagnosed illness contracted from Norovirus, hepatitis A virus, Shigella spp., Shiga \ntoxin-producing Escherichia coli, Typhoid fever (caused by Salmonella Ty phi), Salmonella \n(nontyphoidal); or\n\u2022 Reports having a diagnosis of illness from Typhoid fever (caused by Salmonella Typhi) within the \nlast 3 months without completing treatment prescribed by a health practitioner;\n\u2022 Has been exposed to, or implicated as, a suspected source by eating or preparing food associated \nwith a con\ufb01rmed disease outbreak; or\n\u2022 Reports a history of exposure that includes being in a setting of a con\ufb01rmed disease outbreak \nand living in the same household with someone who was in the area of a con\ufb01rmed outbreak or \nwho was diagnosed with an illness that was caused by a speci\ufb01c illness as previously described \nin the section.\nUnder one or more of these circumstances, an individual should not be allowed to become a food \nemployee until the applicable criteria as speci\ufb01ed in section 2-201.13 of the 2017 Food Code are met."
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 15,
+      "chunk_id": "c51af2e2e96fccad56769d64",
+      "text": "13\n\u2022 Use single-use gloves for one task. If the gloves are damaged or soiled or when interruptions occur \nin the process, they must be discarded.\n\u2022 Do not touch RTE foods with bare hands, and minimize bare hand contact with exposed food that \nis not RTE.\n\u2022 Do not use a utensil more than once to taste food that is to be served or sold.\n\u2022 Wear clean clothes and hair restraints.\n\u2022 Do not work with exposed food if experiencing persistent sneezing, coughing, or a runny nose \nor discharge from eyes, nose, or mouth.\n\u2022 Eat and drink in designated areas to avoid the contamination of exposed food, food equipment, \nutensils, linen, and unwrapped single-service and single-use items or items that require \nprotection. Drink from a closed beverage container, and handle the container properly to \nprevent the contamination of their hands and the container, exposed food, or other articles in \nthe food establishment.\nAre there instances where a prospective employee should be denied employment in \na food establishment serving an HSP?\nYes. When a conditional job offer is made contingent on responses to questions or medical \nexaminations that are designed to \ufb01nd out whether the individual has an illness that can be \ntransmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has"
+    }
+  ],
+  "trace": [
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": "{\"kind\": \"retrieve\", \"arguments\": {\"query\": \"food employee vomiting during shift\", \"source\": \"fda-employee-health-personal-hygiene-handbook.pdf\"} }"
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "food employee vomiting during shift",
+        "source": "fda-employee-health-personal-hygiene-handbook.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 7,
+          "chunk_id": "d4282f13bd2bd9a74711a325",
+          "text": "residing with a diagnosed individual.\nWhat should a manager do when a food employee reports symptoms of vomiting \nor diarrhea? (See Decision Tree 1 and Table 1a (and Table 1b if diagnosed))\nAsk the food employee to stop work immediately and leave the food establishment. Permit a return to \nwork no sooner than 24 hours after vomiting and diarrhea have ended.\nEmployee Health Management Responsibilities"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 6,
+          "chunk_id": "84beda9088b485f3cce87bd7",
+          "text": "4\nEmployee Health and the Food Establishment\nWhat symptoms of foodborne illness should food establishments be most \nconcerned about?\nFood establishments should be most concerned about the following symptoms:\n\u2022 Vomiting\n\u2022 Diarrhea\n\u2022 Jaundice (yellow skin or eyes)\n\u2022 Sore throat with fever\n\u2022 Infected cuts and burns with pus on hands, wrists and exposed portion of the arms\nWhat should food employees do when they have symptoms of vomiting or diarrhea?\nIf at work:\n\u2022 Stop work immediately;\n\u2022 Report to management; and\n\u2022 Go home and return after at least 24 hours have passed since the vomiting and diarrhea \nsymptoms ended.\nIf the symptoms occur before the employee arrives to work, he or she should:\n\u2022 Notify the manager by telephone; and\n\u2022 Do not report to work until at least 24 hours have passed after the diarrhea and vomiting \nsymptoms have ended.\nWhat should food employees do if they are not feeling well and their skin or eyes \nturn yellow?\nReport the symptoms to their manager or person in charge (PIC) immediately and seek medical \nattention. The employee should not return to work until after receiving clearance from a health \npractitioner. If the employee is jaundiced for more than 7 days, clearance from the local health \ndepartment is required.\nWhat should food employees do if they have an infected wound or cut on their hand \nor arm?"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 31,
+          "chunk_id": "7ba6c6e61e6f2c18d172b7ad",
+          "text": "29\n2-201.12 Table 1a Summary of Requirements for Symptomatic \nFood Employees\nFood employees and conditional employees shall report symptoms immediately to the person \nin charge\nThe person in charge shall prohibit a conditional employee who reports a listed symptom from \nbecoming a food employee until meeting the criteria listed in section 2-201.13 of the Food Code, \nfor reinstatement of a symptomatic food employee.\nSymptom Exclusion or \nRestriction\n(Facilities \nServing an HSP)\nExclusion or \nRestriction\n(Facilities Not \nServing an HSP)\nRemoving Symptomatic Food Employees \nfrom Exclusion or Restriction\nRA Approval \nRequired to \nReturn to \nWork?\nVomiting Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A)(1).  \nExceptions: If diagnosed with Norovirus, \nShigella spp., STEC, HAV, or typhoid fever \n(S. Typhi) (see Tables 1b and 2).\nNo, if not \ndiagnosed\nDiarrhea Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A).  \nExceptions: If Diagnosed with Norovirus, \nSTEC, HAV, or S. Typhi (see Tables 1b and 2).\nNo, if not \ndiagnosed\nJaundice Exclude\n2-201.12(B)(1) \nif the onset \noccurred within \nthe last 7 days\nExclude\n2-201.12(B)(1) \nif the onset"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 9,
+          "chunk_id": "c52d346709a50f947c93b74e",
+          "text": "7\nEmployee Health Employee Responsibilities\nDo food employees have a responsibility to prevent foodborne illness?\nYes, food employees share the responsibility with management for preventing foodborne illness and \nare required to know:\n\u2022 The relationship between their job responsibilities and the potential risks of foodborne illness;\n\u2022 How employee health is related to foodborne illness;\n\u2022 The need to immediately report symptoms of vomiting, diarrhea, jaundice, sore throat with fever, \ndiagnosis of illness caused by a Big 6 pathogen, exposure to a Big 6 pathogen, or an exposed \ninfected wound or cut on the hands or arms to their manager (see Form 1-B);\n\u2022 How restriction and/or exclusion from working with food prevents foodborne illness; and\n\u2022 How proper hand hygiene and no bare hand contact with RTE food can prevent foodborne illness.\nCan food employees work if their symptoms are from a non-infectious condition?\nYes, food employees can work as long as they can provide medical documentation indicating that \nthe symptoms are from a non-infectious condition. Some non-infectious conditions include Crohn\u2019s \ndisease (an ongoing disorder that causes inflammation of the gastrointestinal system), irritable bowel \nsyndrome, some liver diseases, and symptoms commonly experienced during stages of pregnancy.\nIf an infected wound, cut, or burn is covered, can employees continue working?"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 15,
+          "chunk_id": "7e8860aebce14b260af37e80",
+          "text": "transmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has \na lesion with pus, or has an uncovered open wound on hands, wrists, or on other body parts;\n\u2022 Reports a diagnosed illness contracted from Norovirus, hepatitis A virus, Shigella spp., Shiga \ntoxin-producing Escherichia coli, Typhoid fever (caused by Salmonella Ty phi), Salmonella \n(nontyphoidal); or\n\u2022 Reports having a diagnosis of illness from Typhoid fever (caused by Salmonella Typhi) within the \nlast 3 months without completing treatment prescribed by a health practitioner;\n\u2022 Has been exposed to, or implicated as, a suspected source by eating or preparing food associated \nwith a con\ufb01rmed disease outbreak; or\n\u2022 Reports a history of exposure that includes being in a setting of a con\ufb01rmed disease outbreak \nand living in the same household with someone who was in the area of a con\ufb01rmed outbreak or \nwho was diagnosed with an illness that was caused by a speci\ufb01c illness as previously described \nin the section.\nUnder one or more of these circumstances, an individual should not be allowed to become a food \nemployee until the applicable criteria as speci\ufb01ed in section 2-201.13 of the 2017 Food Code are met."
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 15,
+          "chunk_id": "c51af2e2e96fccad56769d64",
+          "text": "13\n\u2022 Use single-use gloves for one task. If the gloves are damaged or soiled or when interruptions occur \nin the process, they must be discarded.\n\u2022 Do not touch RTE foods with bare hands, and minimize bare hand contact with exposed food that \nis not RTE.\n\u2022 Do not use a utensil more than once to taste food that is to be served or sold.\n\u2022 Wear clean clothes and hair restraints.\n\u2022 Do not work with exposed food if experiencing persistent sneezing, coughing, or a runny nose \nor discharge from eyes, nose, or mouth.\n\u2022 Eat and drink in designated areas to avoid the contamination of exposed food, food equipment, \nutensils, linen, and unwrapped single-service and single-use items or items that require \nprotection. Drink from a closed beverage container, and handle the container properly to \nprevent the contamination of their hands and the container, exposed food, or other articles in \nthe food establishment.\nAre there instances where a prospective employee should be denied employment in \na food establishment serving an HSP?\nYes. When a conditional job offer is made contingent on responses to questions or medical \nexaminations that are designed to \ufb01nd out whether the individual has an illness that can be \ntransmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has"
+        }
+      ]
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": "{\n  \"kind\": \"answer\",\n  \"claims\": [\n    {\n      \"text\": \"The employee should stop work immediately and report to management. The manager should permit a return to work no sooner than 24 hours after vomiting and diarrhea have ended.\",\n      \"citations\": [\n        \"d4282f13bd2bd9a74711a325\"\n      ]\n    },\n    {\n      \"text\": \"The earliest return to work is 24 hours after vomiting and diarrhea have ended.\",\n      \"citations\": [\n        \"d4282f13bd2bd9a74711a325\"\n      ]\n    }\n  ]\n}"
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "answer",
+      "steps": 3
+    }
+  ]
+}

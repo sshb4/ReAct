@@ -1,0 +1,129 @@
+{
+  "checked_at": "2026-11-02T18:14:26.693174+00:00",
+  "note": "Mechanical provenance, quotation and source-page checks only; manual relevance and coverage judgments are in evidence-review.json. Zero accepted quotes on an error/insufficient-evidence run does not establish answer success.",
+  "configuration_sha256": "79ccb2f72d52c3896ffa70490c3136f64f1c0d923caa0bf0f699b2e4b575f93b",
+  "frozen_code_checks": {
+    "controller_sha256_matches": true,
+    "local_adapter_sha256_matches": true,
+    "system_prompt_sha256_matches": true
+  },
+  "queries": {
+    "Q1": {
+      "result_sha256": "8097d5eb4e8ec0bcc63cf964321eec2ba234bea72c164051fefc69b7559151ad",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q2": {
+      "result_sha256": "7ea0961422c62245b35964e80db5695d62406627190f8a634f0d573c6f104c71",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q3": {
+      "result_sha256": "13f65ecd74abc349d0c9562b0a1eafca4a51579bbbb4c66d08581ef033f1a1d8",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q4": {
+      "result_sha256": "6a53b0cd2d50eb3c99f91cee8f52bc99497a07889f2c4cefcd32e8ab6d63e243",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q5": {
+      "result_sha256": "ddb7699081a5b7455a95354fc88d92889f46d75d288511721bc1345530e5de2c",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q6": {
+      "result_sha256": "cc3f1918b46fd85ad63608fe5a9180acaad9b4410447e9cf4397fdfb4a6191b1",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 12,
+      "accepted_quote_count": 0,
+      "terminal_reason": "error",
+      "within_step_budget": true
+    },
+    "Q7": {
+      "result_sha256": "5d339fc36564e8de745c0f2465b61f36f6ce13bbc104e8f4b38e436b4b143472",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 12,
+      "accepted_quote_count": 0,
+      "terminal_reason": "error",
+      "within_step_budget": true
+    },
+    "Q8": {
+      "result_sha256": "c76a7089cdf363aab58953e1dec54b99fdc987593afb5287254a7748daabbd61",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 12,
+      "accepted_quote_count": 4,
+      "terminal_reason": "answer",
+      "within_step_budget": true
+    },
+    "Q9": {
+      "result_sha256": "79ef8d63309b9cf68b122d9fcb2d306fb04bd7e8beee8f1650e334bc18c2345b",
+      "question_matches_supplied_text": true,
+      "same_recorded_configuration": true,
+      "review_matches_result_hash": true,
+      "all_evidence_ids_observed": true,
+      "all_selected_quotes_exact": true,
+      "all_evidence_matches_labeled_source_page": true,
+      "evidence_passages_checked": 6,
+      "accepted_quote_count": 0,
+      "terminal_reason": "insufficient_evidence",
+      "within_step_budget": true
+    }
+  }
+}

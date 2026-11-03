@@ -1,0 +1,326 @@
+{
+  "query_id": "Q1",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "answer_mode": "extractive",
+    "maximum_answer_excerpts_per_source": 8,
+    "local_decision_format": "short passage labels grouped by source with per-requirement coverage assessment; raw decision and label-to-stored-ID map logged; adapter copies quotes",
+    "maximum_context_passages": "8, or two per requested source if greater",
+    "retrieval_unit": "page_context; all stored chunks from each selected physical page; parent IDs retained",
+    "model_history": "original question, search arguments, deduplicated passages; first two passages per requested source retained",
+    "chat_thinking": true,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 16384,
+    "chat_output_tokens_per_action": 8192,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "3e23ffc84a353db8cd9929086a0d9c393b55fa2385aba7fffcd130002d3996a9",
+    "local_adapter_sha256": "0c7c9dd1ca999a062e0ff802f54f164c4dd088d4bb857b5f857bec1c86913b65",
+    "evidence_selection_sha256": "813c5f6acc36c1d14e3097bae7cfde872d0dc464c8e49a0ef6dede73e9f04500",
+    "retrieval_sha256": "d4ebc7b07ec88d6eb9c55f57e01ee40f142a49491a0794a96a15b0a425b65b7e",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "answer",
+  "question": "According to FDA Food Code 2026 sections 2-201.12(A)(1) and\n2-201.13(A)(1), what must the person in charge do when a food employee has\nvomiting or diarrhea from no known noninfectious condition, and when may that\nemployee be reinstated?",
+  "terminal_reason": "answer",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [
+    {
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or \nRetaining exclusion for food employee who was asymptomatic and is now \nasymptomatic and works in food establishment serving HSP \n(b) Retain the *EXCLUSION for the *FOOD EMPLOYEE, who is *ASYMPTOMATIC \nfor at least 24 hours and works in a *FOOD ESTABLISHMENT that serves a \n*HIGHLY SUSCEPTIBLE POPULATION, until the conditions for reinstatement \nas specified under Subparagraphs (D)(1) or (2) of this section are met. \nP \nShigella spp. diagnosis \n(3) If a *FOOD EMPLOYEE was diagnosed with an infection from Shigella spp. \nand *EXCLUDED as specified under Subparagraph 2-201.12(A)(2): \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and works in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as",
+      "citations": [
+        "page-60a0f50c115416e8c8539e3b"
+      ]
+    },
+    {
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with \nFever \nEXCLUDE \n2-201.12(G)(1) \nRESTRICT \n2-201.12(G)(2) \nWhen food employee provides written medical documentation \n2-201.13(G) (1)-(3). \nNo \nInfected wound \nor pustular boil \nRESTRICT \n2-201.12(I) \nRESTRICT \n2-201.12(I) \nWhen the infected wound or boil is properly covered 2-\n201.13(I)(1)-(3). \nNo \nKey: HAV = hepatitis A Virus, HSP = highly susceptible population, RA = regulatory authority, STEC = Shiga toxin-producing Escherichia coli.",
+      "citations": [
+        "page-3b6b659f8b3f898e2c22fe5e"
+      ]
+    }
+  ],
+  "message": "",
+  "evidence": [
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 61,
+      "chunk_id": "page-60a0f50c115416e8c8539e3b",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or \nRetaining exclusion for food employee who was asymptomatic and is now \nasymptomatic and works in food establishment serving HSP \n(b) Retain the *EXCLUSION for the *FOOD EMPLOYEE, who is *ASYMPTOMATIC \nfor at least 24 hours and works in a *FOOD ESTABLISHMENT that serves a \n*HIGHLY SUSCEPTIBLE POPULATION, until the conditions for reinstatement \nas specified under Subparagraphs (D)(1) or (2) of this section are met. \nP \nShigella spp. diagnosis \n(3) If a *FOOD EMPLOYEE was diagnosed with an infection from Shigella spp. \nand *EXCLUDED as specified under Subparagraph 2-201.12(A)(2): \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and works in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as",
+      "parent_chunk_ids": [
+        "34d7d609c8ed642bc104e5cc",
+        "e3cbd9fdfdc6fd4ab46c0fc7"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 59,
+      "chunk_id": "page-e89f58cd5a7145512c2464cd",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n31 \n(2) Comply with a *RESTRICTION as specified under Subparagraphs 2-\n201.12(D)(2), (E)(2), (F)(2), (G), (H)(2), or \u00b6\u00b6 2-201.12 (H), (I), or (J) and \ncomply with the provisions specified under \u00b6\u00b6 2-201.13(D)-(J). P \nConditions of exclusion and restriction \n2-201.12 Exclusions and Restrictions. \nThe *PERSON IN CHARGE shall *EXCLUDE or *RESTRICT a *FOOD EMPLOYEE from a \n*FOOD ESTABLISHMENT in accordance with the following:  \nSymptomatic with vomiting or diarrhea \n(A) Except when the symptom is from a noninfectious condition, *EXCLUDE a \n*FOOD EMPLOYEE if the *FOOD EMPLOYEE is:  \n(1) Symptomatic with vomiting or diarrhea; P or \n(2) Symptomatic with vomiting or diarrhea and diagnosed with an infection \nfrom norovirus, Shigella spp., Salmonella (non-typhoidal) , or *SHIGA TOXIN-\nPRODUCING *ESCHERICHIA COLI. P  \nJaundiced or diagnosed with hepatitis A infection \n(B) *EXCLUDE a *FOOD EMPLOYEE who is: \n(1) Jaundiced and the onset of jaundice occurred within the last seven \ncalendar days, unless the *FOOD EMPLOYEE provides to the *PERSON IN \nCHARGE written medical documentation from a *HEALTH PRACTITIONER \nspecifying that the jaundice is not caused by hepatitis A virus or other \nfecal-orally transmitted infection; P \n(2) Diagnosed with an infection from hepatitis A virus within 14 calendar days \nfrom the onset of any illness symptoms, or within 7 calendar days of the \nonset of jaundice; P or \n(3) Diagnosed with an infection from hepatitis A virus without developing \nsymptoms. P  \nDiagnosed or reported previous illness with typhoid fever \n(C) *EXCLUDE a *FOOD EMPLOYEE who is diagnosed with typhoid fever, or reports \nhaving had typhoid fever within the past three months as specified under \nSubparagraph 2-201.11(A)(3). P \nDiagnosed with an asymptomatic infection from norovirus \n(D) If a *FOOD EMPLOYEE is diagnosed with an infection from norovirus and is \n*ASYMPTOMATIC:  \n(1) *EXCLUDE the *FOOD EMPLOYEE who works in a *FOOD ESTABLISHMENT \nserving a *HIGHLY SUSCEPTIBLE POPULATION; P or \n(2) *RESTRICT the *FOOD EMPLOYEE who works in a *FOOD ESTABLISHMENT not \nserving a *HIGHLY SUSCEPTIBLE POPULATION. P",
+      "parent_chunk_ids": [
+        "f04162d9369fc9b7ec7ba21d",
+        "759a5b23f8db1add0636b391"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 404,
+      "chunk_id": "page-6c0e23583dc8b89a0125072d",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n324 \nfood establishment, but could work unrestricted in another retail store that is not a food \nestablishment. A restricted food employee may enter a food establishment as a \nconsumer.  \nAn excluded individual may not work as a food employee on the premises of any food \nestablishment.  \n2-201.13 Removal of Exclusions and Restrictions.5 \nFood employees diagnosed with norovirus, hepatitis A virus, Shigella spp., E. coli \nO157:H7 or other STEC, non-typhoidal Salmonella and symptomatic with diarrhea, \nvomiting, or jaundice, are excluded under Subparagraph 2-201.12 (A)(2) or 2-\n201.12(B)(2). However, these symptomatic, diagnosed food employees differ from \nsymptomatic, undiagnosed food employees in the requirements that must be met before \nreturning to work in a full capacity after symptoms resolve.  \nThe person in charge may allow undiagnosed food employees who are initially \nsymptomatic and whose symptoms have resolved to return to work in a full capacity \n24 hours after symptoms resolve.  \nHowever, diagnosis with a listed pathogen invokes additional requirements before the \nperson in charge may allow diagnosed food employees to return to work in full capacity.  \nCulture-Independent Diagnostic Tests (CIDT) For Medical Clearance \nDetection of Shiga toxin-producing Escherichia coli, Shiga toxin-producing species, and \nnon-typhoidal Salmonella Stool culture tests have largely been replaced by culture-\nindependent diagnostic tests (CIDT) (tests that determine microbial presence without \ngrowing the bacterium in the laboratory). These tests have a higher degree of specificity \nthan culture-based testing and are generally much faster than culture-based tests, and \nare more likely to have false positive test results than false-negative results, since they \ncapture all microbes, including non-viable microbes. The use of these tests is less likely \nto allow infected asymptomatic employees back to work while still shedding pathogenic \nmicrobes, and allow another more widely accessible, faster test option for all. \nThe allowance of these tests as an option for medical clearance does not replace stool \nculture tests, but instead provides other options for the employee that provide the same \ndegree of public health protection from infected employees.  \nReinstatement of Asymptomatic Food Employees \nRestricted food employees remain restricted until they are medically cleared or \notherwise meet the criteria for removal from restriction as specified under \nSubparagraphs 2-201.13(D) (1)-(2); 2-201.13(E)(1)-(2); or 2-201.13(F)(1)-(2). \n \n5 In order to comply with Title I of the Americans with Disabilities Act, an exclusion must also be removed if the \nemployee is entitled to a reasonable accommodation that would eliminate the risk of transmitting the disease. \nReasonable accommodation may include reassignment to another position in which the individual would not work \naround food. The steps an employer must take when an excluded employee requests reasonable accommodation \nare briefly described in Annex 3, \u00a7 2-201.11. However, it is not possible to explain all relevant aspects of the ADA \nwithin this Annex. When faced with an apparent conflict between the ADA and the Food Code\u2019s exclusion and \nrestriction requirements, employers should contact the U.S. Equal Employment Opportunity Commission.",
+      "parent_chunk_ids": [
+        "31866a690a1c033d3f538737",
+        "636a67fba27355bc47e0c981",
+        "264756c5072b8e7d26511244"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 400,
+      "chunk_id": "page-6279ca3919b894f73a9bc498",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n320 \n2-201.12 Table 4: History of Exposure, and Absent Symptoms or Diagnosis. \nFood employees and conditional employees shall report a listed exposure to the person \nin charge. \nThe person in charge shall prohibit a conditional employee who reports a listed \nexposure from becoming a food employee in a facility serving an HSP until meeting the \ncriteria listed in section 2-201.13 of the Food Code, for reinstatement of an exposed \nfood employee \nThe person in charge shall reinforce and ensure compliance with good hygienic \npractices, symptom reporting requirements, proper handwashing and no BHC with RTE \nfoods for all food employees that report a listed exposure.",
+      "parent_chunk_ids": [
+        "67f2df118b75db25c9c02dbd"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 397,
+      "chunk_id": "page-f6cc11f578e44759354d049a",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n317 \n2-201.12 Table 3: Summary of Requirements for Diagnosed Food \nEmployees Who Never Develop Gastrointestinal Symptoms. \nFood employees and conditional employees shall report a listed diagnosis \nimmediately to the person in charge \nThe person in charge shall notify the RA when a food employee reports a listed \ndiagnosis. \nThe person in charge shall prohibit a conditional employee who reports a listed \ndiagnosis from becoming a food employee until meeting the criteria listed in section 2-\n201.13 of the Food Code, for reinstatement of a diagnosed food employee.",
+      "parent_chunk_ids": [
+        "551e97d138f334e3b530aa0d"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 388,
+      "chunk_id": "page-3b6b659f8b3f898e2c22fe5e",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with \nFever \nEXCLUDE \n2-201.12(G)(1) \nRESTRICT \n2-201.12(G)(2) \nWhen food employee provides written medical documentation \n2-201.13(G) (1)-(3). \nNo \nInfected wound \nor pustular boil \nRESTRICT \n2-201.12(I) \nRESTRICT \n2-201.12(I) \nWhen the infected wound or boil is properly covered 2-\n201.13(I)(1)-(3). \nNo \nKey: HAV = hepatitis A Virus, HSP = highly susceptible population, RA = regulatory authority, STEC = Shiga toxin-producing Escherichia coli.",
+      "parent_chunk_ids": [
+        "94876a91e3d81e0c4aa1b9f0",
+        "812b4624f2746ede3e4881c4"
+      ],
+      "retrieval_unit": "page_context"
+    }
+  ],
+  "trace": [
+    {
+      "type": "local_selection_decision",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "FDA Food Code 2026 sections 2-201.12(A)(1) and 2-201.13(A)(1) regarding employee vomiting or diarrhea from no known noninfectious condition and reinstatement requirements",
+          "source": "fda-food-code-2026.pdf"
+        }
+      },
+      "passage_labels": {}
+    },
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "FDA Food Code 2026 sections 2-201.12(A)(1) and 2-201.13(A)(1) regarding employee vomiting or diarrhea from no known noninfectious condition and reinstatement requirements",
+          "source": "fda-food-code-2026.pdf"
+        }
+      }
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "FDA Food Code 2026 sections 2-201.12(A)(1) and 2-201.13(A)(1) regarding employee vomiting or diarrhea from no known noninfectious condition and reinstatement requirements",
+        "source": "fda-food-code-2026.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 61,
+          "chunk_id": "page-60a0f50c115416e8c8539e3b",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or \nRetaining exclusion for food employee who was asymptomatic and is now \nasymptomatic and works in food establishment serving HSP \n(b) Retain the *EXCLUSION for the *FOOD EMPLOYEE, who is *ASYMPTOMATIC \nfor at least 24 hours and works in a *FOOD ESTABLISHMENT that serves a \n*HIGHLY SUSCEPTIBLE POPULATION, until the conditions for reinstatement \nas specified under Subparagraphs (D)(1) or (2) of this section are met. \nP \nShigella spp. diagnosis \n(3) If a *FOOD EMPLOYEE was diagnosed with an infection from Shigella spp. \nand *EXCLUDED as specified under Subparagraph 2-201.12(A)(2): \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and works in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as",
+          "parent_chunk_ids": [
+            "34d7d609c8ed642bc104e5cc",
+            "e3cbd9fdfdc6fd4ab46c0fc7"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 59,
+          "chunk_id": "page-e89f58cd5a7145512c2464cd",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n31 \n(2) Comply with a *RESTRICTION as specified under Subparagraphs 2-\n201.12(D)(2), (E)(2), (F)(2), (G), (H)(2), or \u00b6\u00b6 2-201.12 (H), (I), or (J) and \ncomply with the provisions specified under \u00b6\u00b6 2-201.13(D)-(J). P \nConditions of exclusion and restriction \n2-201.12 Exclusions and Restrictions. \nThe *PERSON IN CHARGE shall *EXCLUDE or *RESTRICT a *FOOD EMPLOYEE from a \n*FOOD ESTABLISHMENT in accordance with the following:  \nSymptomatic with vomiting or diarrhea \n(A) Except when the symptom is from a noninfectious condition, *EXCLUDE a \n*FOOD EMPLOYEE if the *FOOD EMPLOYEE is:  \n(1) Symptomatic with vomiting or diarrhea; P or \n(2) Symptomatic with vomiting or diarrhea and diagnosed with an infection \nfrom norovirus, Shigella spp., Salmonella (non-typhoidal) , or *SHIGA TOXIN-\nPRODUCING *ESCHERICHIA COLI. P  \nJaundiced or diagnosed with hepatitis A infection \n(B) *EXCLUDE a *FOOD EMPLOYEE who is: \n(1) Jaundiced and the onset of jaundice occurred within the last seven \ncalendar days, unless the *FOOD EMPLOYEE provides to the *PERSON IN \nCHARGE written medical documentation from a *HEALTH PRACTITIONER \nspecifying that the jaundice is not caused by hepatitis A virus or other \nfecal-orally transmitted infection; P \n(2) Diagnosed with an infection from hepatitis A virus within 14 calendar days \nfrom the onset of any illness symptoms, or within 7 calendar days of the \nonset of jaundice; P or \n(3) Diagnosed with an infection from hepatitis A virus without developing \nsymptoms. P  \nDiagnosed or reported previous illness with typhoid fever \n(C) *EXCLUDE a *FOOD EMPLOYEE who is diagnosed with typhoid fever, or reports \nhaving had typhoid fever within the past three months as specified under \nSubparagraph 2-201.11(A)(3). P \nDiagnosed with an asymptomatic infection from norovirus \n(D) If a *FOOD EMPLOYEE is diagnosed with an infection from norovirus and is \n*ASYMPTOMATIC:  \n(1) *EXCLUDE the *FOOD EMPLOYEE who works in a *FOOD ESTABLISHMENT \nserving a *HIGHLY SUSCEPTIBLE POPULATION; P or \n(2) *RESTRICT the *FOOD EMPLOYEE who works in a *FOOD ESTABLISHMENT not \nserving a *HIGHLY SUSCEPTIBLE POPULATION. P",
+          "parent_chunk_ids": [
+            "f04162d9369fc9b7ec7ba21d",
+            "759a5b23f8db1add0636b391"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 404,
+          "chunk_id": "page-6c0e23583dc8b89a0125072d",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n324 \nfood establishment, but could work unrestricted in another retail store that is not a food \nestablishment. A restricted food employee may enter a food establishment as a \nconsumer.  \nAn excluded individual may not work as a food employee on the premises of any food \nestablishment.  \n2-201.13 Removal of Exclusions and Restrictions.5 \nFood employees diagnosed with norovirus, hepatitis A virus, Shigella spp., E. coli \nO157:H7 or other STEC, non-typhoidal Salmonella and symptomatic with diarrhea, \nvomiting, or jaundice, are excluded under Subparagraph 2-201.12 (A)(2) or 2-\n201.12(B)(2). However, these symptomatic, diagnosed food employees differ from \nsymptomatic, undiagnosed food employees in the requirements that must be met before \nreturning to work in a full capacity after symptoms resolve.  \nThe person in charge may allow undiagnosed food employees who are initially \nsymptomatic and whose symptoms have resolved to return to work in a full capacity \n24 hours after symptoms resolve.  \nHowever, diagnosis with a listed pathogen invokes additional requirements before the \nperson in charge may allow diagnosed food employees to return to work in full capacity.  \nCulture-Independent Diagnostic Tests (CIDT) For Medical Clearance \nDetection of Shiga toxin-producing Escherichia coli, Shiga toxin-producing species, and \nnon-typhoidal Salmonella Stool culture tests have largely been replaced by culture-\nindependent diagnostic tests (CIDT) (tests that determine microbial presence without \ngrowing the bacterium in the laboratory). These tests have a higher degree of specificity \nthan culture-based testing and are generally much faster than culture-based tests, and \nare more likely to have false positive test results than false-negative results, since they \ncapture all microbes, including non-viable microbes. The use of these tests is less likely \nto allow infected asymptomatic employees back to work while still shedding pathogenic \nmicrobes, and allow another more widely accessible, faster test option for all. \nThe allowance of these tests as an option for medical clearance does not replace stool \nculture tests, but instead provides other options for the employee that provide the same \ndegree of public health protection from infected employees.  \nReinstatement of Asymptomatic Food Employees \nRestricted food employees remain restricted until they are medically cleared or \notherwise meet the criteria for removal from restriction as specified under \nSubparagraphs 2-201.13(D) (1)-(2); 2-201.13(E)(1)-(2); or 2-201.13(F)(1)-(2). \n \n5 In order to comply with Title I of the Americans with Disabilities Act, an exclusion must also be removed if the \nemployee is entitled to a reasonable accommodation that would eliminate the risk of transmitting the disease. \nReasonable accommodation may include reassignment to another position in which the individual would not work \naround food. The steps an employer must take when an excluded employee requests reasonable accommodation \nare briefly described in Annex 3, \u00a7 2-201.11. However, it is not possible to explain all relevant aspects of the ADA \nwithin this Annex. When faced with an apparent conflict between the ADA and the Food Code\u2019s exclusion and \nrestriction requirements, employers should contact the U.S. Equal Employment Opportunity Commission.",
+          "parent_chunk_ids": [
+            "31866a690a1c033d3f538737",
+            "636a67fba27355bc47e0c981",
+            "264756c5072b8e7d26511244"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 400,
+          "chunk_id": "page-6279ca3919b894f73a9bc498",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n320 \n2-201.12 Table 4: History of Exposure, and Absent Symptoms or Diagnosis. \nFood employees and conditional employees shall report a listed exposure to the person \nin charge. \nThe person in charge shall prohibit a conditional employee who reports a listed \nexposure from becoming a food employee in a facility serving an HSP until meeting the \ncriteria listed in section 2-201.13 of the Food Code, for reinstatement of an exposed \nfood employee \nThe person in charge shall reinforce and ensure compliance with good hygienic \npractices, symptom reporting requirements, proper handwashing and no BHC with RTE \nfoods for all food employees that report a listed exposure.",
+          "parent_chunk_ids": [
+            "67f2df118b75db25c9c02dbd"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 397,
+          "chunk_id": "page-f6cc11f578e44759354d049a",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n317 \n2-201.12 Table 3: Summary of Requirements for Diagnosed Food \nEmployees Who Never Develop Gastrointestinal Symptoms. \nFood employees and conditional employees shall report a listed diagnosis \nimmediately to the person in charge \nThe person in charge shall notify the RA when a food employee reports a listed \ndiagnosis. \nThe person in charge shall prohibit a conditional employee who reports a listed \ndiagnosis from becoming a food employee until meeting the criteria listed in section 2-\n201.13 of the Food Code, for reinstatement of a diagnosed food employee.",
+          "parent_chunk_ids": [
+            "551e97d138f334e3b530aa0d"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 388,
+          "chunk_id": "page-3b6b659f8b3f898e2c22fe5e",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with \nFever \nEXCLUDE \n2-201.12(G)(1) \nRESTRICT \n2-201.12(G)(2) \nWhen food employee provides written medical documentation \n2-201.13(G) (1)-(3). \nNo \nInfected wound \nor pustular boil \nRESTRICT \n2-201.12(I) \nRESTRICT \n2-201.12(I) \nWhen the infected wound or boil is properly covered 2-\n201.13(I)(1)-(3). \nNo \nKey: HAV = hepatitis A Virus, HSP = highly susceptible population, RA = regulatory authority, STEC = Shiga toxin-producing Escherichia coli.",
+          "parent_chunk_ids": [
+            "94876a91e3d81e0c4aa1b9f0",
+            "812b4624f2746ede3e4881c4"
+          ],
+          "retrieval_unit": "page_context"
+        }
+      ]
+    },
+    {
+      "type": "local_selection_decision",
+      "step": 3,
+      "value": {
+        "kind": "answer",
+        "coverage": [
+          {
+            "requirement": "What the person in charge must do when a food employee has vomiting or diarrhea from no known noninfectious condition, and when may that employee be reinstated?",
+            "basis": "Per FDA Food Code 2026 section 2-201.13(A)(1), the person in charge must reinstate the employee if they are asymptomatic for at least 24 hours or provide medical documentation confirming noninfectious cause. Reinstatement is permitted after 24 hours of being asymptomatic (if not diagnosed with an infectious condition) or with medical documentation.",
+            "chunk_ids": [
+              "P1",
+              "P6"
+            ]
+          }
+        ],
+        "selections": {
+          "fda-food-code-2026.pdf": [
+            "P1",
+            "P6"
+          ]
+        }
+      },
+      "passage_labels": {
+        "P1": "page-60a0f50c115416e8c8539e3b",
+        "P2": "page-e89f58cd5a7145512c2464cd",
+        "P3": "page-6c0e23583dc8b89a0125072d",
+        "P4": "page-6279ca3919b894f73a9bc498",
+        "P5": "page-f6cc11f578e44759354d049a",
+        "P6": "page-3b6b659f8b3f898e2c22fe5e"
+      }
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": {
+        "kind": "answer",
+        "claims": [
+          {
+            "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or \nRetaining exclusion for food employee who was asymptomatic and is now \nasymptomatic and works in food establishment serving HSP \n(b) Retain the *EXCLUSION for the *FOOD EMPLOYEE, who is *ASYMPTOMATIC \nfor at least 24 hours and works in a *FOOD ESTABLISHMENT that serves a \n*HIGHLY SUSCEPTIBLE POPULATION, until the conditions for reinstatement \nas specified under Subparagraphs (D)(1) or (2) of this section are met. \nP \nShigella spp. diagnosis \n(3) If a *FOOD EMPLOYEE was diagnosed with an infection from Shigella spp. \nand *EXCLUDED as specified under Subparagraph 2-201.12(A)(2): \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and works in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as",
+            "citations": [
+              "page-60a0f50c115416e8c8539e3b"
+            ]
+          },
+          {
+            "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with \nFever \nEXCLUDE \n2-201.12(G)(1) \nRESTRICT \n2-201.12(G)(2) \nWhen food employee provides written medical documentation \n2-201.13(G) (1)-(3). \nNo \nInfected wound \nor pustular boil \nRESTRICT \n2-201.12(I) \nRESTRICT \n2-201.12(I) \nWhen the infected wound or boil is properly covered 2-\n201.13(I)(1)-(3). \nNo \nKey: HAV = hepatitis A Virus, HSP = highly susceptible population, RA = regulatory authority, STEC = Shiga toxin-producing Escherichia coli.",
+            "citations": [
+              "page-3b6b659f8b3f898e2c22fe5e"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "answer",
+      "steps": 3
+    }
+  ]
+}

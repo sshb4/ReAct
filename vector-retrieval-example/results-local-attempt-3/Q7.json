@@ -1,0 +1,287 @@
+{
+  "query_id": "Q7",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "chat_thinking": true,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 32768,
+    "chat_output_tokens_per_action": 4096,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "38e051c30b39efe3d96efd0060fd143c2864e3164d3248f1eb9b23a388540017",
+    "local_adapter_sha256": "b5047842e7911eb726f20e94c70e84fcc52a7be039b93245a99e682fcdfbb7a8",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "answer",
+  "question": "The *Employee Health and Personal Hygiene Handbook* refers to the 2017 Food\nCode, while the corpus also includes the 2026 Food Code. Which source should\ncontrol an answer about the current FDA model-code rule for a vomiting employee,\nand how may the handbook still be used?",
+  "terminal_reason": "answer",
+  "steps": 5,
+  "max_steps": 16,
+  "claims": [
+    {
+      "text": "The current FDA model-code rule for a vomiting employee is controlled by the FDA Food Code 2026 (fda-food-code-2026.pdf).",
+      "citations": [
+        "f04162d9369fc9b7ec7ba21d"
+      ]
+    },
+    {
+      "text": "The handbook may still be used as a training and guidance document for employees and managers, providing practical steps such as stopping work immediately and waiting at least 24 hours before returning to work for vomiting or diarrhea symptoms, which aligns with the current model code requirements.",
+      "citations": [
+        "7ba6c6e61e6f2c18d172b7ad",
+        "84beda9088b485f3cce87bd7"
+      ]
+    }
+  ],
+  "message": "",
+  "evidence": [
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 59,
+      "chunk_id": "f04162d9369fc9b7ec7ba21d",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n31 \n(2) Comply with a *RESTRICTION as specified under Subparagraphs 2-\n201.12(D)(2), (E)(2), (F)(2), (G), (H)(2), or \u00b6\u00b6 2-201.12 (H), (I), or (J) and \ncomply with the provisions specified under \u00b6\u00b6 2-201.13(D)-(J). P \nConditions of exclusion and restriction \n2-201.12 Exclusions and Restrictions. \nThe *PERSON IN CHARGE shall *EXCLUDE or *RESTRICT a *FOOD EMPLOYEE from a \n*FOOD ESTABLISHMENT in accordance with the following:  \nSymptomatic with vomiting or diarrhea \n(A) Except when the symptom is from a noninfectious condition, *EXCLUDE a \n*FOOD EMPLOYEE if the *FOOD EMPLOYEE is:  \n(1) Symptomatic with vomiting or diarrhea; P or \n(2) Symptomatic with vomiting or diarrhea and diagnosed with an infection \nfrom norovirus, Shigella spp., Salmonella (non-typhoidal) , or *SHIGA TOXIN-\nPRODUCING *ESCHERICHIA COLI. P  \nJaundiced or diagnosed with hepatitis A infection \n(B) *EXCLUDE a *FOOD EMPLOYEE who is: \n(1) Jaundiced and the onset of jaundice occurred within the last seven \ncalendar days, unless the *FOOD EMPLOYEE provides to the *PERSON IN \nCHARGE written medical documentation from a *HEALTH PRACTITIONER \nspecifying that the jaundice is not caused by hepatitis A virus or other \nfecal-orally transmitted infection; P \n(2) Diagnosed with an infection from hepatitis A virus within 14 calendar days"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 61,
+      "chunk_id": "34d7d609c8ed642bc104e5cc",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 400,
+      "chunk_id": "67f2df118b75db25c9c02dbd",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n320 \n2-201.12 Table 4: History of Exposure, and Absent Symptoms or Diagnosis. \nFood employees and conditional employees shall report a listed exposure to the person \nin charge. \nThe person in charge shall prohibit a conditional employee who reports a listed \nexposure from becoming a food employee in a facility serving an HSP until meeting the \ncriteria listed in section 2-201.13 of the Food Code, for reinstatement of an exposed \nfood employee \nThe person in charge shall reinforce and ensure compliance with good hygienic \npractices, symptom reporting requirements, proper handwashing and no BHC with RTE \nfoods for all food employees that report a listed exposure."
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 389,
+      "chunk_id": "5e274a959768594ec661437f",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n309 \n2-201.12 Table 1b: Summary of Requirements for Diagnosed, Symptomatic \nFood Employees. \nFood employees and conditional employees shall report a listed Diagnosis with \nsymptoms immediately to the person in charge. \nThe person in charge shall notify the RA when a food employee is jaundiced or reports \na listed diagnosis \nThe person in charge shall prohibit a conditional employee who reports a listed \ndiagnosis with symptoms from becoming a food employee until meeting the criteria \nlisted in Section 2-201.13 of the Food Code, for reinstatement of a diagnosed, \nsymptomatic food employee."
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 388,
+      "chunk_id": "94876a91e3d81e0c4aa1b9f0",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 391,
+      "chunk_id": "90404f1b3c229c7834eff80f",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n311 \nDiagnosis \nEXCLUSION \n(Facilities Serving an \nHSP or Not Serving an \nHSP) \nRemoving Diagnosed, Symptomatic Food Employees from \nExclusion \nRA Approval \nNeeded to \nReturn to Work? \nSTEC EXCLUDE \nBased on vomiting or \ndiarrhea symptoms, under  \n2-201.12(A)(2) \n 1. Serving a non-HSP facility: 2-201.13(A)(4)(a): Shall only work on a \nrestricted basis 24 hours after symptoms resolve and remains \nrestricted until meeting the requirements listed in No. 3.  \n2. Serving an HSP facility: 2-201.13(A)(4)(b): Remains excluded until \nmeeting the requirements listed in No. 3.  \n3. Restriction or Exclusion remains until: \n\u2022 Approval is obtained from RA 2-201.13(F), and \n\u2022 Medically cleared 2-201.13(F)(1), or \n\u2022 More than 7 calendar days have passed since the food employee \nbecame asymptomatic 2-201.13(F)(2) (also see Table 2).  \nYes, to return to \nan HSP or to \nreturn \nunrestricted; not \nrequired to work \non a restricted \nbasis in a non-\nHSP facility \nNorovirus EXCLUDE \nBased on vomiting or \ndiarrhea symptoms, under  \n2-201.12(A)(2) \n1. Serving a non-HSP facility: 2-201.13 (A)(2)(a): Shall only work on a \nrestricted basis 24 hours after symptoms resolve and remains \nrestricted until meeting the requirements listed in No. 3.  \n2. Serving an HSP facility: 2-201.13(A)(2)(b): Remains excluded until"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 31,
+      "chunk_id": "7ba6c6e61e6f2c18d172b7ad",
+      "text": "29\n2-201.12 Table 1a Summary of Requirements for Symptomatic \nFood Employees\nFood employees and conditional employees shall report symptoms immediately to the person \nin charge\nThe person in charge shall prohibit a conditional employee who reports a listed symptom from \nbecoming a food employee until meeting the criteria listed in section 2-201.13 of the Food Code, \nfor reinstatement of a symptomatic food employee.\nSymptom Exclusion or \nRestriction\n(Facilities \nServing an HSP)\nExclusion or \nRestriction\n(Facilities Not \nServing an HSP)\nRemoving Symptomatic Food Employees \nfrom Exclusion or Restriction\nRA Approval \nRequired to \nReturn to \nWork?\nVomiting Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A)(1).  \nExceptions: If diagnosed with Norovirus, \nShigella spp., STEC, HAV, or typhoid fever \n(S. Typhi) (see Tables 1b and 2).\nNo, if not \ndiagnosed\nDiarrhea Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A).  \nExceptions: If Diagnosed with Norovirus, \nSTEC, HAV, or S. Typhi (see Tables 1b and 2).\nNo, if not \ndiagnosed\nJaundice Exclude\n2-201.12(B)(1) \nif the onset \noccurred within \nthe last 7 days\nExclude\n2-201.12(B)(1) \nif the onset"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 7,
+      "chunk_id": "d4282f13bd2bd9a74711a325",
+      "text": "residing with a diagnosed individual.\nWhat should a manager do when a food employee reports symptoms of vomiting \nor diarrhea? (See Decision Tree 1 and Table 1a (and Table 1b if diagnosed))\nAsk the food employee to stop work immediately and leave the food establishment. Permit a return to \nwork no sooner than 24 hours after vomiting and diarrhea have ended.\nEmployee Health Management Responsibilities"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 15,
+      "chunk_id": "7e8860aebce14b260af37e80",
+      "text": "transmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has \na lesion with pus, or has an uncovered open wound on hands, wrists, or on other body parts;\n\u2022 Reports a diagnosed illness contracted from Norovirus, hepatitis A virus, Shigella spp., Shiga \ntoxin-producing Escherichia coli, Typhoid fever (caused by Salmonella Ty phi), Salmonella \n(nontyphoidal); or\n\u2022 Reports having a diagnosis of illness from Typhoid fever (caused by Salmonella Typhi) within the \nlast 3 months without completing treatment prescribed by a health practitioner;\n\u2022 Has been exposed to, or implicated as, a suspected source by eating or preparing food associated \nwith a con\ufb01rmed disease outbreak; or\n\u2022 Reports a history of exposure that includes being in a setting of a con\ufb01rmed disease outbreak \nand living in the same household with someone who was in the area of a con\ufb01rmed outbreak or \nwho was diagnosed with an illness that was caused by a speci\ufb01c illness as previously described \nin the section.\nUnder one or more of these circumstances, an individual should not be allowed to become a food \nemployee until the applicable criteria as speci\ufb01ed in section 2-201.13 of the 2017 Food Code are met."
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 6,
+      "chunk_id": "84beda9088b485f3cce87bd7",
+      "text": "4\nEmployee Health and the Food Establishment\nWhat symptoms of foodborne illness should food establishments be most \nconcerned about?\nFood establishments should be most concerned about the following symptoms:\n\u2022 Vomiting\n\u2022 Diarrhea\n\u2022 Jaundice (yellow skin or eyes)\n\u2022 Sore throat with fever\n\u2022 Infected cuts and burns with pus on hands, wrists and exposed portion of the arms\nWhat should food employees do when they have symptoms of vomiting or diarrhea?\nIf at work:\n\u2022 Stop work immediately;\n\u2022 Report to management; and\n\u2022 Go home and return after at least 24 hours have passed since the vomiting and diarrhea \nsymptoms ended.\nIf the symptoms occur before the employee arrives to work, he or she should:\n\u2022 Notify the manager by telephone; and\n\u2022 Do not report to work until at least 24 hours have passed after the diarrhea and vomiting \nsymptoms have ended.\nWhat should food employees do if they are not feeling well and their skin or eyes \nturn yellow?\nReport the symptoms to their manager or person in charge (PIC) immediately and seek medical \nattention. The employee should not return to work until after receiving clearance from a health \npractitioner. If the employee is jaundiced for more than 7 days, clearance from the local health \ndepartment is required.\nWhat should food employees do if they have an infected wound or cut on their hand \nor arm?"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 20,
+      "chunk_id": "a025f5a6879d988b413c8341",
+      "text": "18\nClean-up of Vomiting and Diarrheal Events\nWhen an employee, customer, or other individual vomits or has a diarrheal event in a food \nestablishment, there is a real potential for the spread of harmful pathogens in the establishment. \nPutting the proper response into action in a timely manner can help reduce the likelihood that food \nmay become contaminated and that others may become ill as a result of the accident.  The Food Code \nwas recently amended to require written procedures as speci\ufb01ed under Section 2-501.11. \nWhat should a written plan address?\nWhen developing written procedures that address the need for the cleaning and disinfection of \nvomitus and/or fecal matter contamination event, a food establishment should consider:\n\u2022 The procedure for containment and removal of any discharges, including airborne particulates;\n\u2022 The procedure for cleaning, sanitizing, and as necessary, the disinfection of any surfaces that may \nhave become contaminated;\n\u2022 The procedures for the evaluation and disposal of any food that may have been exposed to \ndischarges;\n\u2022 The availability of effective disinfectants, such as EPA registered disinfection products sufficient \nto inactivate norovirus, personal protective equipment, and other cleaning and disinfecting \nequipment and appurtenances intended for response and their proper use;"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 3,
+      "chunk_id": "1f873679622976c6223652c9",
+      "text": "1\nThe Food and Drug Administration (FDA) has developed this Employee Health and Personal \nHygiene Handbook to encourage practices and behaviors that can help prevent food employees from \nspreading viruses and bacteria to food. It provides information in a question-and-answer format that \nfood establishment management and food employees can use to prevent the spread of disease. This \nhandbook also provides easy reference to forms and tables that retail food establishments and the \npublic health community may \ufb01nd useful when training staff and addressing employee health and \nhygiene matters. The information in this handbook has been updated to reflect the most current full \nedition of the 2017 FDA Food Code and includes the following new additions: \n1. the six highly infective pathogens that can easily be transmitted by food workers (\u201cBig 6)\n2. new section addressing response to contamination events (clean -up of vomiting and\ndiarrheal events)\n3. new question addressing disposition of ready-to-eat food that may have been\ncontaminated by an employee who has been restricted or excluded.\nThe Centers for Disease Control and Prevention (CDC) and FDA cite six highly infective pathogens \nthat can easily be transmitted by food employees and cause severe illness. These six foodborne \npathogens, also known as the \u201cBig 6,\u201d include Norovirus, the Hepatitis A virus, Salmonella Typhi,"
+    }
+  ],
+  "trace": [
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": "{\n  \"kind\": \"retrieve\",\n  \"arguments\": {\n    \"query\": \"current FDA model-code rule for vomiting employee\",\n    \"source\": \"fda-food-code-2026.pdf\"\n  }\n}"
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "current FDA model-code rule for vomiting employee",
+        "source": "fda-food-code-2026.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 59,
+          "chunk_id": "f04162d9369fc9b7ec7ba21d",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n31 \n(2) Comply with a *RESTRICTION as specified under Subparagraphs 2-\n201.12(D)(2), (E)(2), (F)(2), (G), (H)(2), or \u00b6\u00b6 2-201.12 (H), (I), or (J) and \ncomply with the provisions specified under \u00b6\u00b6 2-201.13(D)-(J). P \nConditions of exclusion and restriction \n2-201.12 Exclusions and Restrictions. \nThe *PERSON IN CHARGE shall *EXCLUDE or *RESTRICT a *FOOD EMPLOYEE from a \n*FOOD ESTABLISHMENT in accordance with the following:  \nSymptomatic with vomiting or diarrhea \n(A) Except when the symptom is from a noninfectious condition, *EXCLUDE a \n*FOOD EMPLOYEE if the *FOOD EMPLOYEE is:  \n(1) Symptomatic with vomiting or diarrhea; P or \n(2) Symptomatic with vomiting or diarrhea and diagnosed with an infection \nfrom norovirus, Shigella spp., Salmonella (non-typhoidal) , or *SHIGA TOXIN-\nPRODUCING *ESCHERICHIA COLI. P  \nJaundiced or diagnosed with hepatitis A infection \n(B) *EXCLUDE a *FOOD EMPLOYEE who is: \n(1) Jaundiced and the onset of jaundice occurred within the last seven \ncalendar days, unless the *FOOD EMPLOYEE provides to the *PERSON IN \nCHARGE written medical documentation from a *HEALTH PRACTITIONER \nspecifying that the jaundice is not caused by hepatitis A virus or other \nfecal-orally transmitted infection; P \n(2) Diagnosed with an infection from hepatitis A virus within 14 calendar days"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 61,
+          "chunk_id": "34d7d609c8ed642bc104e5cc",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n33 \nManaging exclusions and restrictions \n2-201.13 Removal, Adjustment, or Retention of Exclusions and Restrictions  \nThe *PERSON IN CHARGE shall adhere to the following conditions when removing, \nadjusting, or retaining the *EXCLUSION or *RESTRICTION of a *FOOD EMPLOYEE:  \n(A) Except when a *FOOD EMPLOYEE is diagnosed with typhoid fever or an \ninfection from hepatitis A virus: \nRemoving exclusion for food employee who was symptomatic and not diagnosed \n(1) Reinstate a *FOOD EMPLOYEE who was *EXCLUDED as specified under \nSubparagraph 2-201.12(A)(1) if the *FOOD EMPLOYEE:  \n(a) Is *ASYMPTOMATIC for at least 24 hours; P or \n(b) Provides to the *PERSON IN CHARGE written medical documentation from \na *HEALTH PRACTITIONER that states the symptom is from a \nnoninfectious condition. P  \nNorovirus diagnosis \n(2) If a *FOOD EMPLOYEE was diagnosed with an infection from norovirus and \n*EXCLUDED as specified under Subparagraph 2-201.12(A)(2):  \nAdjusting exclusion for food employee who was symptomatic and is now \nasymptomatic \n(a) **RESTRICT the *FOOD EMPLOYEE, who is *ASYMPTOMATIC for at least 24 \nhours and *WORKS in a *FOOD ESTABLISHMENT not serving a *HIGHLY \nSUSCEPTIBLE POPULATION, until the conditions for reinstatement as \nspecified under Subparagraphs (D)(1) or (2) of this section are \nmet; P or"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 400,
+          "chunk_id": "67f2df118b75db25c9c02dbd",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n320 \n2-201.12 Table 4: History of Exposure, and Absent Symptoms or Diagnosis. \nFood employees and conditional employees shall report a listed exposure to the person \nin charge. \nThe person in charge shall prohibit a conditional employee who reports a listed \nexposure from becoming a food employee in a facility serving an HSP until meeting the \ncriteria listed in section 2-201.13 of the Food Code, for reinstatement of an exposed \nfood employee \nThe person in charge shall reinforce and ensure compliance with good hygienic \npractices, symptom reporting requirements, proper handwashing and no BHC with RTE \nfoods for all food employees that report a listed exposure."
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 389,
+          "chunk_id": "5e274a959768594ec661437f",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n309 \n2-201.12 Table 1b: Summary of Requirements for Diagnosed, Symptomatic \nFood Employees. \nFood employees and conditional employees shall report a listed Diagnosis with \nsymptoms immediately to the person in charge. \nThe person in charge shall notify the RA when a food employee is jaundiced or reports \na listed diagnosis \nThe person in charge shall prohibit a conditional employee who reports a listed \ndiagnosis with symptoms from becoming a food employee until meeting the criteria \nlisted in Section 2-201.13 of the Food Code, for reinstatement of a diagnosed, \nsymptomatic food employee."
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 388,
+          "chunk_id": "94876a91e3d81e0c4aa1b9f0",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n308 \nTable 1a. Summary of Requirements for Symptomatic Food Employees \nSymptom \nExclusion or \nRestriction \n(Facilities \nServing an HSP) \nExclusion or \nRestriction \n(Facilities Not \nServing an HSP) \nRemoving Symptomatic Food Employees from Exclusion \nor Restriction \nRA Approval \nNeeded to \nReturn to \nWork? \nVomiting EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A)(1).  \nExceptions: If diagnosed with norovirus, Shigella spp., STEC, \nHAV, or typhoid fever (S. Typhi) (see Tables 1b & 2). \nNo if not \ndiagnosed  \nDiarrhea EXCLUDE \n2-201.12(A)(1) \nEXCLUDE \n2-201.12(A)(1) \nWhen the excluded food employee has been asymptomatic for \nat least 24 hours or provides medical documentation 2-\n201.13(A).  \nExceptions: If Diagnosed with norovirus, STEC, HAV, or S. \nTyphi (see Tables 1b & 2). \nNo if not \ndiagnosed \nJaundice EXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nEXCLUDE \n2-201.12(B)(1) if \nthe onset occurred \nwithin the last 7 \ndays \nWhen approval is obtained from the RA 2-201.13 (B), and:  \nFood employee has been jaundiced for more than 7 calendar \ndays 2-201.13(B)(1), or  \nFood employee provides medical documentation \n2-201.13(B)(3).  \nYes \nSore Throat with"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 391,
+          "chunk_id": "90404f1b3c229c7834eff80f",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative Guidelines \n311 \nDiagnosis \nEXCLUSION \n(Facilities Serving an \nHSP or Not Serving an \nHSP) \nRemoving Diagnosed, Symptomatic Food Employees from \nExclusion \nRA Approval \nNeeded to \nReturn to Work? \nSTEC EXCLUDE \nBased on vomiting or \ndiarrhea symptoms, under  \n2-201.12(A)(2) \n 1. Serving a non-HSP facility: 2-201.13(A)(4)(a): Shall only work on a \nrestricted basis 24 hours after symptoms resolve and remains \nrestricted until meeting the requirements listed in No. 3.  \n2. Serving an HSP facility: 2-201.13(A)(4)(b): Remains excluded until \nmeeting the requirements listed in No. 3.  \n3. Restriction or Exclusion remains until: \n\u2022 Approval is obtained from RA 2-201.13(F), and \n\u2022 Medically cleared 2-201.13(F)(1), or \n\u2022 More than 7 calendar days have passed since the food employee \nbecame asymptomatic 2-201.13(F)(2) (also see Table 2).  \nYes, to return to \nan HSP or to \nreturn \nunrestricted; not \nrequired to work \non a restricted \nbasis in a non-\nHSP facility \nNorovirus EXCLUDE \nBased on vomiting or \ndiarrhea symptoms, under  \n2-201.12(A)(2) \n1. Serving a non-HSP facility: 2-201.13 (A)(2)(a): Shall only work on a \nrestricted basis 24 hours after symptoms resolve and remains \nrestricted until meeting the requirements listed in No. 3.  \n2. Serving an HSP facility: 2-201.13(A)(2)(b): Remains excluded until"
+        }
+      ]
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": "{\n  \"kind\": \"retrieve\",\n  \"arguments\": {\n    \"query\": \"current FDA model-code rule for vomiting employee\",\n    \"source\": \"fda-employee-health-personal-hygiene-handbook.pdf\"\n  }\n}"
+    },
+    {
+      "type": "tool_action",
+      "step": 4,
+      "arguments": {
+        "query": "current FDA model-code rule for vomiting employee",
+        "source": "fda-employee-health-personal-hygiene-handbook.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 4,
+      "value": [
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 31,
+          "chunk_id": "7ba6c6e61e6f2c18d172b7ad",
+          "text": "29\n2-201.12 Table 1a Summary of Requirements for Symptomatic \nFood Employees\nFood employees and conditional employees shall report symptoms immediately to the person \nin charge\nThe person in charge shall prohibit a conditional employee who reports a listed symptom from \nbecoming a food employee until meeting the criteria listed in section 2-201.13 of the Food Code, \nfor reinstatement of a symptomatic food employee.\nSymptom Exclusion or \nRestriction\n(Facilities \nServing an HSP)\nExclusion or \nRestriction\n(Facilities Not \nServing an HSP)\nRemoving Symptomatic Food Employees \nfrom Exclusion or Restriction\nRA Approval \nRequired to \nReturn to \nWork?\nVomiting Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A)(1).  \nExceptions: If diagnosed with Norovirus, \nShigella spp., STEC, HAV, or typhoid fever \n(S. Typhi) (see Tables 1b and 2).\nNo, if not \ndiagnosed\nDiarrhea Exclude\n2-201.12(A)(1)\nExclude\n2-201.12(A)(1)\nWhen the excluded food employee has been \nasymptomatic for at least 24 hours or provides \nmedical documentation 2-201.13(A).  \nExceptions: If Diagnosed with Norovirus, \nSTEC, HAV, or S. Typhi (see Tables 1b and 2).\nNo, if not \ndiagnosed\nJaundice Exclude\n2-201.12(B)(1) \nif the onset \noccurred within \nthe last 7 days\nExclude\n2-201.12(B)(1) \nif the onset"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 7,
+          "chunk_id": "d4282f13bd2bd9a74711a325",
+          "text": "residing with a diagnosed individual.\nWhat should a manager do when a food employee reports symptoms of vomiting \nor diarrhea? (See Decision Tree 1 and Table 1a (and Table 1b if diagnosed))\nAsk the food employee to stop work immediately and leave the food establishment. Permit a return to \nwork no sooner than 24 hours after vomiting and diarrhea have ended.\nEmployee Health Management Responsibilities"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 15,
+          "chunk_id": "7e8860aebce14b260af37e80",
+          "text": "transmitted through food, and the prospective employee:\n\u2022 Has or reports symptoms such as vomiting, diarrhea, jaundice, or sore throat with fever, or has \na lesion with pus, or has an uncovered open wound on hands, wrists, or on other body parts;\n\u2022 Reports a diagnosed illness contracted from Norovirus, hepatitis A virus, Shigella spp., Shiga \ntoxin-producing Escherichia coli, Typhoid fever (caused by Salmonella Ty phi), Salmonella \n(nontyphoidal); or\n\u2022 Reports having a diagnosis of illness from Typhoid fever (caused by Salmonella Typhi) within the \nlast 3 months without completing treatment prescribed by a health practitioner;\n\u2022 Has been exposed to, or implicated as, a suspected source by eating or preparing food associated \nwith a con\ufb01rmed disease outbreak; or\n\u2022 Reports a history of exposure that includes being in a setting of a con\ufb01rmed disease outbreak \nand living in the same household with someone who was in the area of a con\ufb01rmed outbreak or \nwho was diagnosed with an illness that was caused by a speci\ufb01c illness as previously described \nin the section.\nUnder one or more of these circumstances, an individual should not be allowed to become a food \nemployee until the applicable criteria as speci\ufb01ed in section 2-201.13 of the 2017 Food Code are met."
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 6,
+          "chunk_id": "84beda9088b485f3cce87bd7",
+          "text": "4\nEmployee Health and the Food Establishment\nWhat symptoms of foodborne illness should food establishments be most \nconcerned about?\nFood establishments should be most concerned about the following symptoms:\n\u2022 Vomiting\n\u2022 Diarrhea\n\u2022 Jaundice (yellow skin or eyes)\n\u2022 Sore throat with fever\n\u2022 Infected cuts and burns with pus on hands, wrists and exposed portion of the arms\nWhat should food employees do when they have symptoms of vomiting or diarrhea?\nIf at work:\n\u2022 Stop work immediately;\n\u2022 Report to management; and\n\u2022 Go home and return after at least 24 hours have passed since the vomiting and diarrhea \nsymptoms ended.\nIf the symptoms occur before the employee arrives to work, he or she should:\n\u2022 Notify the manager by telephone; and\n\u2022 Do not report to work until at least 24 hours have passed after the diarrhea and vomiting \nsymptoms have ended.\nWhat should food employees do if they are not feeling well and their skin or eyes \nturn yellow?\nReport the symptoms to their manager or person in charge (PIC) immediately and seek medical \nattention. The employee should not return to work until after receiving clearance from a health \npractitioner. If the employee is jaundiced for more than 7 days, clearance from the local health \ndepartment is required.\nWhat should food employees do if they have an infected wound or cut on their hand \nor arm?"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 20,
+          "chunk_id": "a025f5a6879d988b413c8341",
+          "text": "18\nClean-up of Vomiting and Diarrheal Events\nWhen an employee, customer, or other individual vomits or has a diarrheal event in a food \nestablishment, there is a real potential for the spread of harmful pathogens in the establishment. \nPutting the proper response into action in a timely manner can help reduce the likelihood that food \nmay become contaminated and that others may become ill as a result of the accident.  The Food Code \nwas recently amended to require written procedures as speci\ufb01ed under Section 2-501.11. \nWhat should a written plan address?\nWhen developing written procedures that address the need for the cleaning and disinfection of \nvomitus and/or fecal matter contamination event, a food establishment should consider:\n\u2022 The procedure for containment and removal of any discharges, including airborne particulates;\n\u2022 The procedure for cleaning, sanitizing, and as necessary, the disinfection of any surfaces that may \nhave become contaminated;\n\u2022 The procedures for the evaluation and disposal of any food that may have been exposed to \ndischarges;\n\u2022 The availability of effective disinfectants, such as EPA registered disinfection products sufficient \nto inactivate norovirus, personal protective equipment, and other cleaning and disinfecting \nequipment and appurtenances intended for response and their proper use;"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 3,
+          "chunk_id": "1f873679622976c6223652c9",
+          "text": "1\nThe Food and Drug Administration (FDA) has developed this Employee Health and Personal \nHygiene Handbook to encourage practices and behaviors that can help prevent food employees from \nspreading viruses and bacteria to food. It provides information in a question-and-answer format that \nfood establishment management and food employees can use to prevent the spread of disease. This \nhandbook also provides easy reference to forms and tables that retail food establishments and the \npublic health community may \ufb01nd useful when training staff and addressing employee health and \nhygiene matters. The information in this handbook has been updated to reflect the most current full \nedition of the 2017 FDA Food Code and includes the following new additions: \n1. the six highly infective pathogens that can easily be transmitted by food workers (\u201cBig 6)\n2. new section addressing response to contamination events (clean -up of vomiting and\ndiarrheal events)\n3. new question addressing disposition of ready-to-eat food that may have been\ncontaminated by an employee who has been restricted or excluded.\nThe Centers for Disease Control and Prevention (CDC) and FDA cite six highly infective pathogens \nthat can easily be transmitted by food employees and cause severe illness. These six foodborne \npathogens, also known as the \u201cBig 6,\u201d include Norovirus, the Hepatitis A virus, Salmonella Typhi,"
+        }
+      ]
+    },
+    {
+      "type": "model_action",
+      "step": 5,
+      "value": "{\"kind\":\"answer\",\"claims\":[{\"text\":\"The current FDA model-code rule for a vomiting employee is controlled by the FDA Food Code 2026 (fda-food-code-2026.pdf).\",\"citations\":[\"f04162d9369fc9b7ec7ba21d\"]},{\"text\":\"The handbook may still be used as a training and guidance document for employees and managers, providing practical steps such as stopping work immediately and waiting at least 24 hours before returning to work for vomiting or diarrhea symptoms, which aligns with the current model code requirements.\",\"citations\":[\"7ba6c6e61e6f2c18d172b7ad\",\"84beda9088b485f3cce87bd7\"]}]}"
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "answer",
+      "steps": 5
+    }
+  ]
+}

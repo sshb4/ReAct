@@ -1,0 +1,15 @@
+{
+  "pages": 3,
+  "pdf_sha256": "95a96b6a50f532d074d248cf40a71a8b0dde4192331511242ededb325bd76829",
+  "selectable_text": true,
+  "semantic_headings": true,
+  "logical_reading_order": true,
+  "language": "en-US",
+  "data_tables": false,
+  "visual_review": "passed: all three rendered pages inspected; no clipping, overlap or illegible text",
+  "pdf_ua_certified": false,
+  "parent_tree_and_mcid_links_verified": true,
+  "heading_count": 10,
+  "structure_elements": 37,
+  "scoped_table_headers": "not applicable: report uses no data tables"
+}

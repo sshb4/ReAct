@@ -1,0 +1,256 @@
+{
+  "review_method": "OpenAI Codex manual assessment of every selected passage and requested subpart against supplied source PDFs. Mechanical integrity checks are separate. Raw results are unchanged; this is not independent human certification.",
+  "reviewer": "OpenAI Codex",
+  "status": "complete",
+  "queries": {
+    "Q1": {
+      "support": "supported",
+      "coverage": "complete with attribution weakness",
+      "satisfactory": true,
+      "notes": [
+        "Food Code physical page 61 contains the undiagnosed employee return rule: at least 24 hours asymptomatic OR written health-practitioner documentation that the symptom is noninfectious.",
+        "Physical page 388, Table 1a, explicitly requires exclusion for vomiting and diarrhea in HSP and non-HSP facilities and points to 2-201.12(A)(1). The answer therefore covers disposition but does not select the normative exclusion section on page 59 directly.",
+        "Full-page quotations include diagnosis-specific and unrelated provisions, clearly labeled as conditional source text; this makes the answer verbose and less focused. No diagnosis is inferred."
+      ],
+      "subparts": {
+        "disposition": "covered by Food Code summary table; direct normative-section citation would be better",
+        "return": "both alternatives covered by normative section 2-201.13(A)(1)"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Page 61 contains both symptom-only return alternatives; neighboring diagnosed-pathogen provisions are extraneous."
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Page 388 table gives exclusion and return for both symptoms; remaining rows are extraneous."
+        }
+      ],
+      "result_sha256": "f0edb7d2ab10245d0e3534f71ba19e26f0d15239b58c96f6c43ce9aa1384ff53",
+      "report_summary": "Exclusion and both return alternatives are present on Food Code pages 61 and 388. The exclusion citation is the summary table rather than the requested normative section; excerpts include unrelated conditional rules."
+    },
+    "Q2": {
+      "support": "supported",
+      "coverage": "complete",
+      "satisfactory": true,
+      "notes": [
+        "Handbook physical page 6 says stop work immediately, report to management, go home, and return at least 24 hours after symptoms end.",
+        "Physical page 7 instructs the manager to stop work and have the employee leave immediately, with return no sooner than 24 hours after vomiting and diarrhea end.",
+        "Physical page 31 adds the medical-documentation alternative and diagnosis exceptions. Other symptoms and resource links in the full-page excerpts are unnecessary."
+      ],
+      "subparts": {
+        "employee": "stop, report and go home immediately",
+        "manager": "stop work and have employee leave immediately",
+        "return": "at least 24 hours after symptoms end; table also quotes medical-documentation alternative"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Page 7 directly supports manager action and return timing."
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Page 6 directly supports employee action and return timing."
+        },
+        {
+          "claim_index": 2,
+          "supported_for_question": true,
+          "reason": "Page 31 corroborates exclusion and return alternatives; includes unrelated table rows."
+        }
+      ],
+      "result_sha256": "21a8b5f4f21320639e5e2bd7633694b46b43507a078cfb7014bd5eeb994c7919",
+      "report_summary": "Handbook pages 6, 7 and 31 cover employee and manager immediate actions and return no sooner than 24 hours after symptoms end, with the table documentation alternative."
+    },
+    "Q3": {
+      "result_sha256": "a8bb4d96cc2690c3a0177e6b31a163d9c2bda79f9c990f28fc636c64fad2e8df",
+      "support": "supported",
+      "coverage": "complete",
+      "satisfactory": true,
+      "report_summary": "Bad Bug Book pages 168-170 cover the low infective dose, usual onset, symptoms and fecal-oral/vomit contamination of ready-to-eat food. No unrelated organism passage was selected.",
+      "notes": [
+        "Page 169 directly covers estimated dose as low as 1-10 viral particles, usual onset 24-48 hours with earlier onset reported, and characteristic symptoms.",
+        "Page 168 corroborates symptoms and infected-handler contamination, explains handwashing and continued shedding; page 170 directly identifies fecal-oral/vomit route, sanitation, and ready-to-eat food handled by ill workers.",
+        "Every selected passage is in the norovirus chapter. Whole pages include unrequested historical statistics, treatment and diagnosis context; these are source quotations rather than updated medical guidance."
+      ],
+      "subparts": {
+        "dose": "covered: as low as 1-10 viral particles",
+        "onset": "covered: usually 24-48 hours, earlier onset reported",
+        "symptoms": "covered: explosive vomiting, watery nonbloody diarrhea, cramps, nausea and additional symptoms",
+        "worker_contamination": "covered: infected-handler RTE contamination via fecal-oral/vomit route and sanitation context"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Page 169 provides direct norovirus disease facts."
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Page 168 provides norovirus symptoms, shedding, handling and handwashing context."
+        },
+        {
+          "claim_index": 2,
+          "supported_for_question": true,
+          "reason": "Page 170 directly provides transmission route and worker-handled RTE food evidence."
+        }
+      ]
+    },
+    "Q4": {
+      "result_sha256": "f3451b492cbcedbade42e6132d19e360a577fa9f0144089354e75a3b51ba04f2",
+      "support": "supported",
+      "coverage": "complete with presentation limitation",
+      "satisfactory": true,
+      "report_summary": "The selected Table 3-A page contains both organisms and every requested value. Rows were checked visually; the answer quotes the table rather than writing a concise comparison.",
+      "notes": [
+        "Appendix 3 physical page 3 contains Salmonella: minimum a_w 0.94; pH 3.7-9.5; 5.2-46.2 C (41.4-115.2 F); maximum water-phase salt 8%; facultative anaerobe.",
+        "The same page contains Listeria monocytogenes: minimum a_w 0.92; pH 4.4-9.4; -0.4-45 C (31.3-113 F); maximum water-phase salt 10%; facultative anaerobe.",
+        "Both rows, headers, units and draft/nonbinding heading were checked against the rendered source table. Other organisms are included unnecessarily. Footnote 4 on page 4 (growth with or without oxygen) is not selected, but the requested oxygen-requirement classification itself is present.",
+        "The output is the whole table, not a synthesized side-by-side comparison. The model coverage basis contains a general extreme-limits caveat not independently supported by the selected page, but this is not an accepted final claim."
+      ],
+      "subparts": {
+        "minimum_water_activity": "both present",
+        "pH_range": "both present",
+        "temperature_range": "both present with C and F units",
+        "maximum_water_phase_salt": "8% and 10% present",
+        "oxygen": "both labeled facultative anaerobe; footnote definition not included"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Exact Table 3-A page directly contains both requested rows and all measures; visual inspection confirms column alignment."
+        }
+      ]
+    },
+    "Q5": {
+      "result_sha256": "dd6ace616e4f216e19aa8bed737637e85545a2fe391596b26aa510b74a192805",
+      "support": "supported",
+      "coverage": "complete",
+      "satisfactory": true,
+      "report_summary": "Utah pages 4-5 include all four inspection items and ratios (1.37, 1.15, 1.50, 1.23), plus participation, classification, form-mapping, one-year and missing-reason limitations.",
+      "notes": [
+        "Physical page 4 contains all four named items: 22 proper cold holding 1.37; 28 toxic substances identified/stored/used 1.15; 33 cooling methods/equipment 1.50; 36 thermometers provided/accurate 1.23. Values and headers match visual table inspection.",
+        "The same page conditions the summer comparison on a violation occurring and defines summer as June-August. It covers seven-of-thirteen voluntary participation and paper/manual-data constraints.",
+        "Physical page 5 completes risk recategorization limits, differences between 2009-based local forms and 2013 FDA forms, single-year representativeness, inability to determine precise reasons for marked violations, and UDOH risk/intervention mapping.",
+        "Population coverage and exclusion of inspections with no violations on earlier methods pages are not explicitly included; the selected page states the conditional interpretation and substantive limitations. The answer consists of lengthy source excerpts with extraneous surrounding findings."
+      ],
+      "subparts": {
+        "four_items": "all four names and line numbers included",
+        "rate_ratios": "all four correct, including previously missing 1.37",
+        "limitations": "substantive limitations from source pages 4-5 included; earlier methods context not separately selected"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Page 4 directly contains full summer table, item labels, conditional comparison and first limitations paragraphs."
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Page 5 completes substantive methods and interpretation limitations."
+        }
+      ]
+    },
+    "Q6": {
+      "result_sha256": "f9bcd3d54f442fea07f0e71f22293815d2832aed8ac7f5df113396d6ea41eba4",
+      "support": "supported",
+      "coverage": "complete with presentation limitation",
+      "satisfactory": true,
+      "report_summary": "Food Code pages 59/61 supply symptom-only exclusion and both return alternatives; Bad Bug Book pages 169/170 explain low dose, shedding, RTE contamination and nursing-home spread. No diagnosis is asserted.",
+      "notes": [
+        "Both requested sources contribute selected final evidence, unlike the fourth attempt error. Food Code page 59 contains 2-201.12(A)(1) exclusion for vomiting not from a noninfectious condition. Page 61 contains the explicitly undiagnosed return branch: at least 24 hours asymptomatic OR written practitioner documentation of noninfectious cause.",
+        "Bad Bug Book page 170 directly links food-worker RTE contamination to fecal-oral/vomit transmission and identifies rapid secondary spread in nursing homes and other enclosed settings. Page 169 gives low infective dose, high shedding and vulnerability of elderly/hospitalized patients.",
+        "The final consists of full-page excerpts rather than a concise scenario-specific explanation. Diagnosed-pathogen provisions adjacent to the symptom-only rule are clearly conditional source text; the model coverage selects the undiagnosed rule and does not assert a norovirus diagnosis. No diagnosis-only clearance requirement is applied."
+      ],
+      "subparts": {
+        "disposition": "exclude under symptom-only rule",
+        "earliest_return": "both 24-hour asymptomatic and noninfectious medical-documentation alternatives present",
+        "possible_norovirus": "low dose, high shedding, fecal-oral/vomit RTE contamination, nursing-home secondary spread",
+        "diagnosis_boundary": "no diagnosis asserted; adjacent diagnosed-case rules remain conditional quotations"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Normative undiagnosed return conditions on page 61; neighboring diagnosis conditions are extraneous."
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Normative symptom-based exclusion on page 59; other conditions extraneous."
+        },
+        {
+          "claim_index": 2,
+          "supported_for_question": true,
+          "reason": "Page 170 directly supports RTE contamination route and nursing-home spread."
+        },
+        {
+          "claim_index": 3,
+          "supported_for_question": true,
+          "reason": "Page 169 supports low infective dose, shedding, symptoms and susceptible elderly groups; other historical context is unnecessary."
+        }
+      ]
+    },
+    "Q7": {
+      "result_sha256": "9b705e1a61a7095285c0fc9200308d6fa3ef50dfcd8d51865a44f13b44422442",
+      "support": "no accepted answer",
+      "coverage": "failed: output token limit",
+      "satisfactory": false,
+      "report_summary": "The model retrieved both documents but reached its 8,192-token action-output limit at step 5. No final answer was accepted. This is the expected-answer mismatch in this attempt.",
+      "notes": [
+        "Terminal is error, not the expected answer: ValueError: Local model output token limit reached. The failed final model call consumed step 5 of the 16-step invocation budget. The output-token cap is separate from the invocation budget.",
+        "Food Code and handbook passages were retrieved. Handbook physical page 3, which states its 2017 basis and guidance purpose, is among the observations, but there are no accepted final claims. Retrieved availability alone cannot establish a completed source-authority explanation.",
+        "This failure is retained unchanged. No successful earlier Q7 pilot is substituted, and the report must identify Q7 as incomplete. The adapter currently records the error and preceding observations, but not the truncated reasoning/content returned by Ollama."
+      ],
+      "subparts": {
+        "controlling_source": "not answered",
+        "handbook_role": "not answered",
+        "source_versions": "evidence retrieved, no accepted final explanation"
+      },
+      "claims": []
+    },
+    "Q8": {
+      "result_sha256": "51d7aae574c31e8423a0f7f8bfcfd999c62502053851147948d2bec378f71f2f",
+      "support": "appropriate evidence boundary",
+      "coverage": "complete: insufficient evidence",
+      "satisfactory": true,
+      "report_summary": "Correctly reports insufficient_evidence for current Utah adoption and penalties. It does not treat the FDA model code as adopted Utah law or invent a penalty.",
+      "notes": [
+        "The run retrieved only Food Code passages, which do not identify a current Utah adopting regulation or its penalties. The final contains no factual answer claims or citations.",
+        "The insufficiency message identifies the missing jurisdictional authority and distinguishes the FDA model code from a Utah rule. It does not assert that Utah has not adopted a code or that no penalties exist.",
+        "Only one source-filtered search was performed, so this is an evidence-boundary outcome rather than proof of an exhaustive legal search. Corpus roles and the supplied historical Utah study do not provide the missing current jurisdictional authority."
+      ],
+      "subparts": {
+        "adoption_regulation": "correctly identifies missing evidence",
+        "penalties": "correctly identifies missing evidence",
+        "boundary": "does not infer adoption, nonadoption or penalties from generic model code"
+      },
+      "claims": []
+    },
+    "Q9": {
+      "result_sha256": "e4e3c7360a6655a8c6fd9c1bc9a6ad15bb546a83b219629fd302e860bd3fb447",
+      "support": "appropriate evidence boundary",
+      "coverage": "complete: insufficient evidence",
+      "satisfactory": true,
+      "report_summary": "Correctly reports insufficient_evidence because the food-safety passages establish no Avenger ranking. No ranking or supporting factual claims are invented.",
+      "notes": [
+        "The run retrieved food-safety passages from several corpus sources and returned no answer claims.",
+        "The final explicitly identifies that these passages do not establish a superhero ranking. Irrelevant but real citation IDs are not used to manufacture an answer."
+      ],
+      "subparts": {
+        "ranking": "not asserted",
+        "evidence": "appropriately reports missing support"
+      },
+      "claims": []
+    }
+  },
+  "reviewed_on": "2026-11-03",
+  "satisfactory_count": 8,
+  "total_queries": 9
+}

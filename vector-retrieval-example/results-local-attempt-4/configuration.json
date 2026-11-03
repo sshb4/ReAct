@@ -1,0 +1,71 @@
+{
+  "runtime_profile": "local",
+  "embedding_provider": "ollama",
+  "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+  "answer_mode": "extractive",
+  "maximum_answer_excerpts": 4,
+  "maximum_context_passages": 18,
+  "model_history": "original question, search arguments, deduplicated passages; first two passages per requested source retained",
+  "chat_thinking": false,
+  "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+  "chat_context_tokens": 16384,
+  "chat_output_tokens_per_action": 4096,
+  "document_embedding_batch_size": 8,
+  "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+  "embedding_service_model": "qwen3-embedding:8b",
+  "embedding_base_url": "http://127.0.0.1:11434",
+  "llm_base_url": "http://127.0.0.1:11434",
+  "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+  "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+  "controller_sha256": "a4826bfe86ecc2b1f5a75f12f890736331531628b65eee65a3a350ff42347313",
+  "local_adapter_sha256": "821ff21261596f69b9454ba92999e0a971481d85a5049d53ab87a3e3b2821d4d",
+  "local_models": [
+    {
+      "name": "qwen3-embedding:8b",
+      "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+      "size": 4676805193,
+      "details": {
+        "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096,
+        "runner": "ggml"
+      }
+    },
+    {
+      "name": "qwen3:4b",
+      "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+      "size": 2497293931,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560,
+        "runner": "ggml"
+      }
+    }
+  ],
+  "embedding_model": "Qwen3-Embedding-8B",
+  "chunk_size": 1400,
+  "chunk_overlap": 200,
+  "retrieval_k": 6,
+  "retrieval_candidate_k": 18,
+  "identifier_reranking": "prefer exact or linked same-source section/table headings",
+  "section_link_expansion_limit": 2,
+  "max_steps": 16,
+  "step_definition": "one model or retrieval invocation",
+  "llm_model": "qwen3:4b",
+  "index_version": "0f3e6565bb6d0713"
+}

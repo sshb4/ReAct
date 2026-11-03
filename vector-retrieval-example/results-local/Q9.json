@@ -1,0 +1,283 @@
+{
+  "query_id": "Q9",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "answer_mode": "extractive",
+    "maximum_answer_excerpts_per_source": 8,
+    "local_decision_format": "short passage labels grouped by source with per-requirement coverage assessment; raw decision and label-to-stored-ID map logged; adapter copies quotes",
+    "maximum_context_passages": "8, or two per requested source if greater",
+    "retrieval_unit": "page_context; all stored chunks from each selected physical page; parent IDs retained",
+    "model_history": "original question, search arguments, deduplicated passages; first two passages per requested source retained",
+    "chat_thinking": true,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 16384,
+    "chat_output_tokens_per_action": 8192,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "3e23ffc84a353db8cd9929086a0d9c393b55fa2385aba7fffcd130002d3996a9",
+    "local_adapter_sha256": "0c7c9dd1ca999a062e0ff802f54f164c4dd088d4bb857b5f857bec1c86913b65",
+    "evidence_selection_sha256": "813c5f6acc36c1d14e3097bae7cfde872d0dc464c8e49a0ef6dede73e9f04500",
+    "retrieval_sha256": "d4ebc7b07ec88d6eb9c55f57e01ee40f142a49491a0794a96a15b0a425b65b7e",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "insufficient_evidence",
+  "question": "Who is the strongest Avenger, and what evidence establishes that ranking?",
+  "terminal_reason": "insufficient_evidence",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [],
+  "message": "The retrieved food safety documents do not contain any information about superheroes, the Avengers, or any ranking of fictional characters. All passages are related to food safety regulations, pathogen control, and inspection practices.",
+  "evidence": [
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 44,
+      "chunk_id": "page-b7c3ca6039cef08e09fbf4e7",
+      "text": "42",
+      "parent_chunk_ids": [
+        "62a956c035660f451c22bfa0"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 53,
+      "chunk_id": "page-86a4b193ea596e837c54d3d7",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n25 \n(a) Sufficient in number and capacity, Pf and \n(b) Properly designed, constructed, located, installed, operated, \nmaintained, and cleaned; Pf  \n(11) Explaining correct procedures for cleaning and *SANITIZING *UTENSILS and \n*FOOD-CONTACT SURFACES of *EQUIPMENT; Pf \n(12) Identifying the source of water used and measures taken to ensure that it \nremains protected from contamination such as providing protection from \nbackflow and precluding the creation of cross connections; Pf \n(13) Identifying *POISONOUS OR TOXIC MATERIALS in the *ESTABLISHMENT and the \nprocedures necessary to ensure that they are safely stored, dispensed, \nused, and disposed of according to *LAW; Pf \n(14) Identifying *CRITICAL CONTROL POINTS in the operation from purchasing \nthrough sale or service that when not controlled may contribute to the \ntransmission of foodborne illness and explaining steps taken to ensure \nthat the points are controlled in accordance with the requirements of this \nCode; Pf \n(15) Explaining the details of how the *PERSON IN CHARGE and *FOOD \nEMPLOYEES comply with the *HACCP PLAN if a plan is required by the *LAW, \nthis Code, or an agreement between the *REGULATORY AUTHORITY and the \n*FOOD ESTABLISHMENT; Pf \n(16) Explaining the responsibilities, rights, and authorities assigned by this \nCode to the:  \n(a) *FOOD EMPLOYEE, Pf \n(b) *CONDITIONAL EMPLOYEE, Pf  \n(c) *PERSON IN CHARGE, Pf \n(d) *REGULATORY AUTHORITY; Pf and \n(17) Explaining how the *PERSON IN CHARGE, *FOOD EMPLOYEES, and \n*CONDITIONAL EMPLOYEES comply with reporting responsibilities and \n*EXCLUSION or *RESTRICTION of *FOOD EMPLOYEES. Pf  \n(18) Explaining steps that are taken to prevent intentional *ADULTERATION by \n*CONSUMERS, *EMPLOYEES, or other *PERSONS including monitoring \noperations, ingredients, supplies, and finished products for unusual or \nsuspicious activities, or other *FOOD DEFENSE activities. Pf  \n2-102.12 Certified Food Protection Manager \n(A) The *PERSON IN CHARGE shall be a certified *FOOD protection manager who \nhas shown proficiency of required information through passing a test that is \npart of an *ACCREDITED PROGRAM. \n(B) This section does not apply to certain types of *FOOD ESTABLISHMENTS deemed \nby the *REGULATORY AUTHORITY to pose minimal *RISK of causing, or",
+      "parent_chunk_ids": [
+        "fa5962eabb2620e4fd147ba6",
+        "17df9a41d4ba77b2d650a0b3"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-bad-bug-book-second-edition.pdf",
+      "page": 98,
+      "chunk_id": "page-eaaf214c705a640291ef5606",
+      "text": "4. Sources \nFood handlers are thought to be a major source of food contamination with Streptococcus \nGroup A. Foods that have been associated with Streptococcus A contamination include milk \n(both pasteurized and unpasteurized), ice cream, cream, eggs, cooked seafood, ground ham, \npotato salad, egg salad, custard, rice pudding, and shrimp salad. In almost all cases, the foods \nwere allowed to stand at room temperature for several hours between the time of preparation and \nthe time of consumption. \n5. Diagnosis \nCulturing of nasal and throat swabs, sputum, blood, suspect food, and environmental samples. \n6. \tTarget Populations \nAll people are susceptible. However, children, immunocompromised people, and people 65 years \nor older, in nursing homes, are more vulnerable. Scarlet fever and rheumatic fever are more \ncommon among children 5 to 15 years old than among adults. \n7. \tFood Analysis \nThe suspect food is examined microbiologically by nonselective and selective medium \ntechniques, which can take up to 7 days. Group specificities are determined by Lancefield group-\nspecific antisera. Both biochemical and DNA techniques are used for identification.  \n8. Examples of Outbreaks \nFor more information about recent outbreaks, see CDC\u2019s Morbidity & Mortality Weekly Report. \n9. Other Resources \n\uf0b7\t Loci index for genome Streptococcus \n\uf0b7\t Taxonomy database \n\uf0b7\t FAQ's about Group A Streptococcus from the CDC.  (Note: not all of the information at \nthis site relates to Streptococcus transmitted via food.)",
+      "parent_chunk_ids": [
+        "9a39d3d342de48a69217ee7b",
+        "8020040168e3429a2e75f5d5"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "page": 45,
+      "chunk_id": "page-1fe04009756198b53af07161",
+      "text": "43",
+      "parent_chunk_ids": [
+        "d79d13fe4146b8913eb57bd7"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 458,
+      "chunk_id": "page-ea910fcc80b14cf79986c40d",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n378 \nsafety concern during long heating CUT. The establishment should support the total \ntime product temperature is between 50\u00baF and 130\u00baF is six hours or less. \nWhen cooking products to lethality, deviations may occur due to; the establishment \nfailing to meet a time-temperature parameter in its lethality critical control point (CCP) \n(Type 1), the establishment failing to maintain sufficient humidity during the cooking \nstep (Type 2), or a slow heating CUT allowed product to remain at temperatures that \nallow pathogen growth (Type 3). See additional information in Cooking Guideline for \nMeat and Poultry Products (Revised Appendix A) found at FSIS Cooking Guideline for \nMeat and Poultry Products (Revised Appendix A) | Food Safety and Inspection Service. \nEstablishments should carefully evaluate each deviation as each situation is unique and \nneeds to be evaluated individually. To support safe release of the product, every hazard \nassociated with the type of heating deviation identified must be controlled. If any single \nhazard is not controlled, then product should be destroyed. \nSeared Steak \nThe provision for allowing seared steaks was reviewed by the National Advisory \nCommittee on Microbiological Criteria for Foods (NACMCF) and USDA.  \nUSDA comments included at the time, \u201cFor the purposes of this discussion, steak is a \nwhole beef muscle. It does not include whole beef muscle that has been pinned, \ninjected, or chopped and formed. It may be cut cross grain, such as sirloin, chuck, or \nporterhouse; or it may be cut with the grain, such as flank, skirt, or Chateaubriand. \nOther species, such as poultry, pork, and lamb are not included.\u201d  \nNACMCF comments included, \u201cDue to the low probability of pathogenic organisms \nbeing present in or migrating from the external surface to the interior of beef muscle, \ncuts of intact muscle (steaks) should be safe if the external surfaces are exposed to \ntemperatures sufficient to effect a cooked color change. In addition, the cut (exposed) \nsurfaces must receive additional heat to affect a complete sear across the cut surfaces. \nGrill or char marks may be applied to the complete surface searing. The meat should be \nseared on both top and bottom surfaces utilizing a heating environment (e.g., grill or \nbroiling oven) that imparts a temperature at the surface of the intact steak of at least \n145oF to achieve a cooked color change on all external surfaces. The searing of all \nsurfaces should be continuous until the desired degree of doneness and appearance \nare attained. This is considered a ready-to-eat food.\u201d  \nAs reflected in the updated definition of \u201cintact meat\u201d, steaks that may be cooked \nwithout a consumer advisory are those from a cut of whole muscle(s) MEAT that has \nnot undergone COMMINUTION, MECHANICAL TENDERIZATION (including \nINJECTION), vacuum tumbling with solutions, reconstruction, cubing, or pounding. The \ndefinition of \u201cintact meat\u201d was revised to clarify all of the ways that beef steaks are not \nconsidered intact meats including if they are vacuum tumbled with solutions. The \ndefinition of \"Mechanically tenderized\" has also been updated to be consistent with the \nUSDA FSIS description of \u201cmechanically tenderized\u201d in the 2015 final rule titled \nDescriptive Designation of Needle- or Blade-Tenderized (Mechanically Tenderized) \nBeef Product (80 FR 28153). The rule established labeling requirements for raw or \npartially cooked mechanically tenderized beef products and clarified that products",
+      "parent_chunk_ids": [
+        "83dd1ceb403635b4a175fcfc",
+        "2474fdef25a38e20ed558b63",
+        "5a5a2eb0d042bf950177b060"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "utah-risk-factor-study-2016-2017.pdf",
+      "page": 14,
+      "chunk_id": "page-388604af2b6008bb23730d3b",
+      "text": "Appendix A: Charts \nTop violations from Category 3 establishments.  Category 3 establishments represent highest risk establishments, as determined by either square footage, \nmenus involving process 3 cook steps, or those places doing complex preparation of TCS foods.  Will include full service, food trucks, commissaries. \n1179 \n779 774 \n664 623 534 516 510 \n361 345 \n0\n200\n400\n600\n800\n1000\n1200\n1400\n1600\n16: Food-\nContact\nSurfaces:\nClean/Sanitized\n22: Proper Cold\nHolding\n10: Adequate\nHandsinks;\nAccessible\n6: Proper\nEating, Tasting,\nDrinking,\nTobacco\n44: Utensils,\nEquip., Linens:\nStored, Dried,\nHandled\n43: In-Use\nUtensils:\nProperly Stored\n15: Food\nSeparated and\nProtected\n28: Toxic\nSubstances\n8: Hands\nClean/Washed\n14: Required\nRecords;\nShellstock Tags;\nParasite\nDestruction\nCategory 3: Risk Factors Top 10 \n1457 \n1287 \n1179 \n979 \n779 774 701 664 623 621 \n0\n200\n400\n600\n800\n1000\n1200\n1400\n1600\n55: Physical\nFacilities\nInstalled,\nMaintained,\nClean\n47: Food/Non-\nFood Surfaces\nCleanable,\nDesign,\nConstructed,\nUsed\n16: Food-\nContact\nSurfaces:\nClean/Sanitized\n49: Non-Food\nSurfaces Clean\n22: Proper Cold\nHolding\n10: Adequate\nHandsinks;\nAccessible\n39:\nContamination\nPrevented,\nPrep., Storage,\nDisplay\n6: Proper\nEating, Tasting,\nDrinking,\nTobacco\n44: Utensils,\nEquip., Linens:\nStored, Dried,\nHandled\n37: Food\nProperly\nLabeled;\nOriginal\nContainer\nCategory 3: Overall Top 10",
+      "parent_chunk_ids": [
+        "577270e88f5b4c03727b43c1"
+      ],
+      "retrieval_unit": "page_context"
+    }
+  ],
+  "trace": [
+    {
+      "type": "local_selection_decision",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "Who is the strongest Avenger, and what evidence establishes that ranking?",
+          "source": null
+        }
+      },
+      "passage_labels": {}
+    },
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "Who is the strongest Avenger, and what evidence establishes that ranking?",
+          "source": null
+        }
+      }
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "Who is the strongest Avenger, and what evidence establishes that ranking?",
+        "source": null
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 44,
+          "chunk_id": "page-b7c3ca6039cef08e09fbf4e7",
+          "text": "42",
+          "parent_chunk_ids": [
+            "62a956c035660f451c22bfa0"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 53,
+          "chunk_id": "page-86a4b193ea596e837c54d3d7",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n25 \n(a) Sufficient in number and capacity, Pf and \n(b) Properly designed, constructed, located, installed, operated, \nmaintained, and cleaned; Pf  \n(11) Explaining correct procedures for cleaning and *SANITIZING *UTENSILS and \n*FOOD-CONTACT SURFACES of *EQUIPMENT; Pf \n(12) Identifying the source of water used and measures taken to ensure that it \nremains protected from contamination such as providing protection from \nbackflow and precluding the creation of cross connections; Pf \n(13) Identifying *POISONOUS OR TOXIC MATERIALS in the *ESTABLISHMENT and the \nprocedures necessary to ensure that they are safely stored, dispensed, \nused, and disposed of according to *LAW; Pf \n(14) Identifying *CRITICAL CONTROL POINTS in the operation from purchasing \nthrough sale or service that when not controlled may contribute to the \ntransmission of foodborne illness and explaining steps taken to ensure \nthat the points are controlled in accordance with the requirements of this \nCode; Pf \n(15) Explaining the details of how the *PERSON IN CHARGE and *FOOD \nEMPLOYEES comply with the *HACCP PLAN if a plan is required by the *LAW, \nthis Code, or an agreement between the *REGULATORY AUTHORITY and the \n*FOOD ESTABLISHMENT; Pf \n(16) Explaining the responsibilities, rights, and authorities assigned by this \nCode to the:  \n(a) *FOOD EMPLOYEE, Pf \n(b) *CONDITIONAL EMPLOYEE, Pf  \n(c) *PERSON IN CHARGE, Pf \n(d) *REGULATORY AUTHORITY; Pf and \n(17) Explaining how the *PERSON IN CHARGE, *FOOD EMPLOYEES, and \n*CONDITIONAL EMPLOYEES comply with reporting responsibilities and \n*EXCLUSION or *RESTRICTION of *FOOD EMPLOYEES. Pf  \n(18) Explaining steps that are taken to prevent intentional *ADULTERATION by \n*CONSUMERS, *EMPLOYEES, or other *PERSONS including monitoring \noperations, ingredients, supplies, and finished products for unusual or \nsuspicious activities, or other *FOOD DEFENSE activities. Pf  \n2-102.12 Certified Food Protection Manager \n(A) The *PERSON IN CHARGE shall be a certified *FOOD protection manager who \nhas shown proficiency of required information through passing a test that is \npart of an *ACCREDITED PROGRAM. \n(B) This section does not apply to certain types of *FOOD ESTABLISHMENTS deemed \nby the *REGULATORY AUTHORITY to pose minimal *RISK of causing, or",
+          "parent_chunk_ids": [
+            "fa5962eabb2620e4fd147ba6",
+            "17df9a41d4ba77b2d650a0b3"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-bad-bug-book-second-edition.pdf",
+          "page": 98,
+          "chunk_id": "page-eaaf214c705a640291ef5606",
+          "text": "4. Sources \nFood handlers are thought to be a major source of food contamination with Streptococcus \nGroup A. Foods that have been associated with Streptococcus A contamination include milk \n(both pasteurized and unpasteurized), ice cream, cream, eggs, cooked seafood, ground ham, \npotato salad, egg salad, custard, rice pudding, and shrimp salad. In almost all cases, the foods \nwere allowed to stand at room temperature for several hours between the time of preparation and \nthe time of consumption. \n5. Diagnosis \nCulturing of nasal and throat swabs, sputum, blood, suspect food, and environmental samples. \n6. \tTarget Populations \nAll people are susceptible. However, children, immunocompromised people, and people 65 years \nor older, in nursing homes, are more vulnerable. Scarlet fever and rheumatic fever are more \ncommon among children 5 to 15 years old than among adults. \n7. \tFood Analysis \nThe suspect food is examined microbiologically by nonselective and selective medium \ntechniques, which can take up to 7 days. Group specificities are determined by Lancefield group-\nspecific antisera. Both biochemical and DNA techniques are used for identification.  \n8. Examples of Outbreaks \nFor more information about recent outbreaks, see CDC\u2019s Morbidity & Mortality Weekly Report. \n9. Other Resources \n\uf0b7\t Loci index for genome Streptococcus \n\uf0b7\t Taxonomy database \n\uf0b7\t FAQ's about Group A Streptococcus from the CDC.  (Note: not all of the information at \nthis site relates to Streptococcus transmitted via food.)",
+          "parent_chunk_ids": [
+            "9a39d3d342de48a69217ee7b",
+            "8020040168e3429a2e75f5d5"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-employee-health-personal-hygiene-handbook.pdf",
+          "page": 45,
+          "chunk_id": "page-1fe04009756198b53af07161",
+          "text": "43",
+          "parent_chunk_ids": [
+            "d79d13fe4146b8913eb57bd7"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 458,
+          "chunk_id": "page-ea910fcc80b14cf79986c40d",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n378 \nsafety concern during long heating CUT. The establishment should support the total \ntime product temperature is between 50\u00baF and 130\u00baF is six hours or less. \nWhen cooking products to lethality, deviations may occur due to; the establishment \nfailing to meet a time-temperature parameter in its lethality critical control point (CCP) \n(Type 1), the establishment failing to maintain sufficient humidity during the cooking \nstep (Type 2), or a slow heating CUT allowed product to remain at temperatures that \nallow pathogen growth (Type 3). See additional information in Cooking Guideline for \nMeat and Poultry Products (Revised Appendix A) found at FSIS Cooking Guideline for \nMeat and Poultry Products (Revised Appendix A) | Food Safety and Inspection Service. \nEstablishments should carefully evaluate each deviation as each situation is unique and \nneeds to be evaluated individually. To support safe release of the product, every hazard \nassociated with the type of heating deviation identified must be controlled. If any single \nhazard is not controlled, then product should be destroyed. \nSeared Steak \nThe provision for allowing seared steaks was reviewed by the National Advisory \nCommittee on Microbiological Criteria for Foods (NACMCF) and USDA.  \nUSDA comments included at the time, \u201cFor the purposes of this discussion, steak is a \nwhole beef muscle. It does not include whole beef muscle that has been pinned, \ninjected, or chopped and formed. It may be cut cross grain, such as sirloin, chuck, or \nporterhouse; or it may be cut with the grain, such as flank, skirt, or Chateaubriand. \nOther species, such as poultry, pork, and lamb are not included.\u201d  \nNACMCF comments included, \u201cDue to the low probability of pathogenic organisms \nbeing present in or migrating from the external surface to the interior of beef muscle, \ncuts of intact muscle (steaks) should be safe if the external surfaces are exposed to \ntemperatures sufficient to effect a cooked color change. In addition, the cut (exposed) \nsurfaces must receive additional heat to affect a complete sear across the cut surfaces. \nGrill or char marks may be applied to the complete surface searing. The meat should be \nseared on both top and bottom surfaces utilizing a heating environment (e.g., grill or \nbroiling oven) that imparts a temperature at the surface of the intact steak of at least \n145oF to achieve a cooked color change on all external surfaces. The searing of all \nsurfaces should be continuous until the desired degree of doneness and appearance \nare attained. This is considered a ready-to-eat food.\u201d  \nAs reflected in the updated definition of \u201cintact meat\u201d, steaks that may be cooked \nwithout a consumer advisory are those from a cut of whole muscle(s) MEAT that has \nnot undergone COMMINUTION, MECHANICAL TENDERIZATION (including \nINJECTION), vacuum tumbling with solutions, reconstruction, cubing, or pounding. The \ndefinition of \u201cintact meat\u201d was revised to clarify all of the ways that beef steaks are not \nconsidered intact meats including if they are vacuum tumbled with solutions. The \ndefinition of \"Mechanically tenderized\" has also been updated to be consistent with the \nUSDA FSIS description of \u201cmechanically tenderized\u201d in the 2015 final rule titled \nDescriptive Designation of Needle- or Blade-Tenderized (Mechanically Tenderized) \nBeef Product (80 FR 28153). The rule established labeling requirements for raw or \npartially cooked mechanically tenderized beef products and clarified that products",
+          "parent_chunk_ids": [
+            "83dd1ceb403635b4a175fcfc",
+            "2474fdef25a38e20ed558b63",
+            "5a5a2eb0d042bf950177b060"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "utah-risk-factor-study-2016-2017.pdf",
+          "page": 14,
+          "chunk_id": "page-388604af2b6008bb23730d3b",
+          "text": "Appendix A: Charts \nTop violations from Category 3 establishments.  Category 3 establishments represent highest risk establishments, as determined by either square footage, \nmenus involving process 3 cook steps, or those places doing complex preparation of TCS foods.  Will include full service, food trucks, commissaries. \n1179 \n779 774 \n664 623 534 516 510 \n361 345 \n0\n200\n400\n600\n800\n1000\n1200\n1400\n1600\n16: Food-\nContact\nSurfaces:\nClean/Sanitized\n22: Proper Cold\nHolding\n10: Adequate\nHandsinks;\nAccessible\n6: Proper\nEating, Tasting,\nDrinking,\nTobacco\n44: Utensils,\nEquip., Linens:\nStored, Dried,\nHandled\n43: In-Use\nUtensils:\nProperly Stored\n15: Food\nSeparated and\nProtected\n28: Toxic\nSubstances\n8: Hands\nClean/Washed\n14: Required\nRecords;\nShellstock Tags;\nParasite\nDestruction\nCategory 3: Risk Factors Top 10 \n1457 \n1287 \n1179 \n979 \n779 774 701 664 623 621 \n0\n200\n400\n600\n800\n1000\n1200\n1400\n1600\n55: Physical\nFacilities\nInstalled,\nMaintained,\nClean\n47: Food/Non-\nFood Surfaces\nCleanable,\nDesign,\nConstructed,\nUsed\n16: Food-\nContact\nSurfaces:\nClean/Sanitized\n49: Non-Food\nSurfaces Clean\n22: Proper Cold\nHolding\n10: Adequate\nHandsinks;\nAccessible\n39:\nContamination\nPrevented,\nPrep., Storage,\nDisplay\n6: Proper\nEating, Tasting,\nDrinking,\nTobacco\n44: Utensils,\nEquip., Linens:\nStored, Dried,\nHandled\n37: Food\nProperly\nLabeled;\nOriginal\nContainer\nCategory 3: Overall Top 10",
+          "parent_chunk_ids": [
+            "577270e88f5b4c03727b43c1"
+          ],
+          "retrieval_unit": "page_context"
+        }
+      ]
+    },
+    {
+      "type": "local_selection_decision",
+      "step": 3,
+      "value": {
+        "kind": "insufficient_evidence",
+        "missing_evidence": "The retrieved food safety documents do not contain any information about superheroes, the Avengers, or any ranking of fictional characters. All passages are related to food safety regulations, pathogen control, and inspection practices."
+      },
+      "passage_labels": {
+        "P1": "page-b7c3ca6039cef08e09fbf4e7",
+        "P2": "page-86a4b193ea596e837c54d3d7",
+        "P3": "page-eaaf214c705a640291ef5606",
+        "P4": "page-1fe04009756198b53af07161",
+        "P5": "page-ea910fcc80b14cf79986c40d",
+        "P6": "page-388604af2b6008bb23730d3b"
+      }
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": {
+        "kind": "insufficient_evidence",
+        "missing_evidence": "The retrieved food safety documents do not contain any information about superheroes, the Avengers, or any ranking of fictional characters. All passages are related to food safety regulations, pathogen control, and inspection practices."
+      }
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "insufficient_evidence",
+      "steps": 3
+    }
+  ]
+}

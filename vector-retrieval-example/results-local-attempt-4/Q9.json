@@ -1,0 +1,186 @@
+{
+  "query_id": "Q9",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "answer_mode": "extractive",
+    "maximum_answer_excerpts": 4,
+    "maximum_context_passages": 18,
+    "model_history": "original question, search arguments, deduplicated passages; first two passages per requested source retained",
+    "chat_thinking": false,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 16384,
+    "chat_output_tokens_per_action": 4096,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "a4826bfe86ecc2b1f5a75f12f890736331531628b65eee65a3a350ff42347313",
+    "local_adapter_sha256": "821ff21261596f69b9454ba92999e0a971481d85a5049d53ab87a3e3b2821d4d",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "insufficient_evidence",
+  "question": "Who is the strongest Avenger, and what evidence establishes that ranking?",
+  "terminal_reason": "insufficient_evidence",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [],
+  "message": "The retrieved passages from the FDA Food Code 2026 and related documents are food safety regulations and guidelines, not information about Avengers or superhero rankings. The question asks about the strongest Avenger, which is a fictional character from Marvel Comics and does not relate to the food safety documents provided. None of the retrieved passages contain any information about Avengers, superheroes, or rankings of fictional characters. The passages are exclusively about food safety, food handling, equipment, and regulatory requirements. There is no evidence in the provided documents that can answer the question about the strongest Avenger.",
+  "evidence": [
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 85,
+      "chunk_id": "0fe2c28e3916018acab2c457",
+      "text": "FDA Food Code 2026  Chapter 3. Food \n57 \nvegetables shall be used in accordance with the manufacturer\u2019s instructions. \nPf  \n3-303 Preventing Contamination from Ice Used as a Coolant \n3-303.11 Ice Used as Exterior Coolant, Prohibited as Ingredient.  \nAfter use as a medium for cooling the exterior surfaces of *FOOD such as melons \nor *FISH, *PACKAGED *FOODS such as canned *BEVERAGES, or cooling coils and \ntubes of *EQUIPMENT, ice may not be used as *FOOD. P  \n3-303.12 Storage or Display of Food in Contact with Water or Ice.  \n(A) *PACKAGED *FOOD may not be stored in direct contact with ice or water if the \n*FOOD is subject to the entry of water because of the nature of its packaging, \nwrapping, or container or its positioning in the ice or water. \n(B) Except as specified in \u00b6\u00b6 (C) and (D) of this section, un*PACKAGED *FOOD may \nnot be stored in direct contact with undrained ice.  \n(C) Whole, raw fruits or vegetables; cut, raw vegetables such as celery or carrot \nsticks or cut potatoes; and tofu may be immersed in ice or water.  \n(D) Raw *POULTRY and raw *FISH that are received immersed in ice in shipping \ncontainers may remain in that condition while in storage awaiting preparation, \ndisplay, service, or sale. \n3-304 Preventing Contamination from Equipment, Utensils, and Linens \n3-304.11 Food Contact with Equipment and Utensils.  \n*FOOD shall only contact surfaces of:"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 452,
+      "chunk_id": "fd2f1ef7eeafe9ab18b69892",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n372 \nPolyurethane (PU) = High-performance polymer:  \nWhen compared to the other listed glove types, these gloves have the best overall \ndurability and duration and can withstand use in high stress environments. These \ngloves will last longer than one hour in duration.   \nPU Advantages: Highest durability; excellent puncture and tear resistance, low \nallergenicity (made without chemical accelerators); highly resistant to oils, alcohol, \nsanitizers, solvents and chemicals, and also highly resistant to deterioration by oxides, \nUV, and light. \nPU Disadvantages: Higher cost than other glove types. \n3-304.16 Using Clean Tableware for Second Portions and Refills.  \nRefer to the public health reason for \u00a7 3-304.11. \n3-304.17 Refilling Returnables.  \nThe CFP convened the 2020 Biennial Meeting and three issues related to refillable \ncontainers submitted to CFP Council I were transferred to Council III at the 2021 \nmeeting. Issue 2020 I-024 Creation of a Committee to Address Reusable Scenarios in \nFood Retail was combined with Issue 2020 I-022, Amend Food Code to Harmonize the \nDefinition of Reusable Container and Issue 2020 I-023, Amend Food Code to Address \nNew Reusable Scenarios in Food Retail. Council III voted, and subsequently approved, \nto create the Safe Use of Reusable Containers Committee."
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 53,
+      "chunk_id": "17df9a41d4ba77b2d650a0b3",
+      "text": "*FOOD ESTABLISHMENT; Pf \n(16) Explaining the responsibilities, rights, and authorities assigned by this \nCode to the:  \n(a) *FOOD EMPLOYEE, Pf \n(b) *CONDITIONAL EMPLOYEE, Pf  \n(c) *PERSON IN CHARGE, Pf \n(d) *REGULATORY AUTHORITY; Pf and \n(17) Explaining how the *PERSON IN CHARGE, *FOOD EMPLOYEES, and \n*CONDITIONAL EMPLOYEES comply with reporting responsibilities and \n*EXCLUSION or *RESTRICTION of *FOOD EMPLOYEES. Pf  \n(18) Explaining steps that are taken to prevent intentional *ADULTERATION by \n*CONSUMERS, *EMPLOYEES, or other *PERSONS including monitoring \noperations, ingredients, supplies, and finished products for unusual or \nsuspicious activities, or other *FOOD DEFENSE activities. Pf  \n2-102.12 Certified Food Protection Manager \n(A) The *PERSON IN CHARGE shall be a certified *FOOD protection manager who \nhas shown proficiency of required information through passing a test that is \npart of an *ACCREDITED PROGRAM. \n(B) This section does not apply to certain types of *FOOD ESTABLISHMENTS deemed \nby the *REGULATORY AUTHORITY to pose minimal *RISK of causing, or"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 21,
+      "chunk_id": "f61931da45242ed20067f613",
+      "text": "FDA Food Code 2026  Contents \nxix \n3-8 Special Requirements for Highly Susceptible Populations ............................... 83 \n3-801 Additional Safeguards .............................................................................. 83 \nChapter 4. Equipment, Utensils, and Linens ............................................................ 87 \n4-1 Materials for Construction and Repair .............................................................. 87 \n4-101 Multiuse .................................................................................................... 87 \n4-2 Design and Construction .................................................................................. 89 \n4-201 Durability and Strength ............................................................................. 90 \n4-202 Cleanability ............................................................................................... 90 \n4-203 Accuracy ................................................................................................... 91 \n4-204 Functionality ............................................................................................. 92 \n4-205 Acceptability ............................................................................................. 98 \n4-3 Numbers and Capacities .................................................................................. 98"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 340,
+      "chunk_id": "1ded50f4af6907d0145ff478",
+      "text": "documents to help food establishments and food facilities prevent, prepare for, respond \nto, and recover from acts of intentional adulteration of the food supply. \nThese resources can be found by visiting Food Defense | FDA website or by searching \nU.S. Food and Drug Administration (fda.gov) on the FDA website includes:"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 592,
+      "chunk_id": "fb63e40e1603e8adb12d2014",
+      "text": "6. Advantages of Using the Principles of HACCP \n(A) What advantages does using HACCP principles offer operators of retail and food \nservice establishments?  \nRather than relying solely on periodic feedback from inspections by regulatory agencies, \nan establishment operator who implements a food safety management system based \non HACCP principles emphasizes continuous problem solving and prevention. \nAdditionally, HACCP enhances and encourages communication between industry and \nregulators.  \nA food safety management system based on HACCP principles offers many other \nadvantages to industry. One advantage is that such a system may provide a method for \nachieving active managerial control of multiple risk factors associated with an entire \noperation. Other advantages include:  \n\u2022 Better inventory control \n\u2022 Consistency in product preparation \n\u2022 Increase in product quality \n\u2022 Increase in profit \n\u2022 Increased employee awareness and participation in food safety \n\u2022 Reduction in product loss \n(B) What advantages does using HACCP principles offer regulators of retail and food \nservice establishments?  \nTraditional inspections are relatively resource-intensive, inefficient, and reactive rather \nthan preventive in nature. Using traditional inspection techniques allows for a \nsatisfactory \u201csnapshot\u201d assessment of the requirements of the code at the time of the"
+    }
+  ],
+  "trace": [
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": "{\n  \"kind\": \"retrieve\",\n  \"arguments\": {\n    \"query\": \"strongest avenger\",\n    \"source\": \"fda-food-code-2026.pdf\"\n  }\n}"
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "strongest avenger",
+        "source": "fda-food-code-2026.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 85,
+          "chunk_id": "0fe2c28e3916018acab2c457",
+          "text": "FDA Food Code 2026  Chapter 3. Food \n57 \nvegetables shall be used in accordance with the manufacturer\u2019s instructions. \nPf  \n3-303 Preventing Contamination from Ice Used as a Coolant \n3-303.11 Ice Used as Exterior Coolant, Prohibited as Ingredient.  \nAfter use as a medium for cooling the exterior surfaces of *FOOD such as melons \nor *FISH, *PACKAGED *FOODS such as canned *BEVERAGES, or cooling coils and \ntubes of *EQUIPMENT, ice may not be used as *FOOD. P  \n3-303.12 Storage or Display of Food in Contact with Water or Ice.  \n(A) *PACKAGED *FOOD may not be stored in direct contact with ice or water if the \n*FOOD is subject to the entry of water because of the nature of its packaging, \nwrapping, or container or its positioning in the ice or water. \n(B) Except as specified in \u00b6\u00b6 (C) and (D) of this section, un*PACKAGED *FOOD may \nnot be stored in direct contact with undrained ice.  \n(C) Whole, raw fruits or vegetables; cut, raw vegetables such as celery or carrot \nsticks or cut potatoes; and tofu may be immersed in ice or water.  \n(D) Raw *POULTRY and raw *FISH that are received immersed in ice in shipping \ncontainers may remain in that condition while in storage awaiting preparation, \ndisplay, service, or sale. \n3-304 Preventing Contamination from Equipment, Utensils, and Linens \n3-304.11 Food Contact with Equipment and Utensils.  \n*FOOD shall only contact surfaces of:"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 452,
+          "chunk_id": "fd2f1ef7eeafe9ab18b69892",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n372 \nPolyurethane (PU) = High-performance polymer:  \nWhen compared to the other listed glove types, these gloves have the best overall \ndurability and duration and can withstand use in high stress environments. These \ngloves will last longer than one hour in duration.   \nPU Advantages: Highest durability; excellent puncture and tear resistance, low \nallergenicity (made without chemical accelerators); highly resistant to oils, alcohol, \nsanitizers, solvents and chemicals, and also highly resistant to deterioration by oxides, \nUV, and light. \nPU Disadvantages: Higher cost than other glove types. \n3-304.16 Using Clean Tableware for Second Portions and Refills.  \nRefer to the public health reason for \u00a7 3-304.11. \n3-304.17 Refilling Returnables.  \nThe CFP convened the 2020 Biennial Meeting and three issues related to refillable \ncontainers submitted to CFP Council I were transferred to Council III at the 2021 \nmeeting. Issue 2020 I-024 Creation of a Committee to Address Reusable Scenarios in \nFood Retail was combined with Issue 2020 I-022, Amend Food Code to Harmonize the \nDefinition of Reusable Container and Issue 2020 I-023, Amend Food Code to Address \nNew Reusable Scenarios in Food Retail. Council III voted, and subsequently approved, \nto create the Safe Use of Reusable Containers Committee."
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 53,
+          "chunk_id": "17df9a41d4ba77b2d650a0b3",
+          "text": "*FOOD ESTABLISHMENT; Pf \n(16) Explaining the responsibilities, rights, and authorities assigned by this \nCode to the:  \n(a) *FOOD EMPLOYEE, Pf \n(b) *CONDITIONAL EMPLOYEE, Pf  \n(c) *PERSON IN CHARGE, Pf \n(d) *REGULATORY AUTHORITY; Pf and \n(17) Explaining how the *PERSON IN CHARGE, *FOOD EMPLOYEES, and \n*CONDITIONAL EMPLOYEES comply with reporting responsibilities and \n*EXCLUSION or *RESTRICTION of *FOOD EMPLOYEES. Pf  \n(18) Explaining steps that are taken to prevent intentional *ADULTERATION by \n*CONSUMERS, *EMPLOYEES, or other *PERSONS including monitoring \noperations, ingredients, supplies, and finished products for unusual or \nsuspicious activities, or other *FOOD DEFENSE activities. Pf  \n2-102.12 Certified Food Protection Manager \n(A) The *PERSON IN CHARGE shall be a certified *FOOD protection manager who \nhas shown proficiency of required information through passing a test that is \npart of an *ACCREDITED PROGRAM. \n(B) This section does not apply to certain types of *FOOD ESTABLISHMENTS deemed \nby the *REGULATORY AUTHORITY to pose minimal *RISK of causing, or"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 21,
+          "chunk_id": "f61931da45242ed20067f613",
+          "text": "FDA Food Code 2026  Contents \nxix \n3-8 Special Requirements for Highly Susceptible Populations ............................... 83 \n3-801 Additional Safeguards .............................................................................. 83 \nChapter 4. Equipment, Utensils, and Linens ............................................................ 87 \n4-1 Materials for Construction and Repair .............................................................. 87 \n4-101 Multiuse .................................................................................................... 87 \n4-2 Design and Construction .................................................................................. 89 \n4-201 Durability and Strength ............................................................................. 90 \n4-202 Cleanability ............................................................................................... 90 \n4-203 Accuracy ................................................................................................... 91 \n4-204 Functionality ............................................................................................. 92 \n4-205 Acceptability ............................................................................................. 98 \n4-3 Numbers and Capacities .................................................................................. 98"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 340,
+          "chunk_id": "1ded50f4af6907d0145ff478",
+          "text": "documents to help food establishments and food facilities prevent, prepare for, respond \nto, and recover from acts of intentional adulteration of the food supply. \nThese resources can be found by visiting Food Defense | FDA website or by searching \nU.S. Food and Drug Administration (fda.gov) on the FDA website includes:"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 592,
+          "chunk_id": "fb63e40e1603e8adb12d2014",
+          "text": "6. Advantages of Using the Principles of HACCP \n(A) What advantages does using HACCP principles offer operators of retail and food \nservice establishments?  \nRather than relying solely on periodic feedback from inspections by regulatory agencies, \nan establishment operator who implements a food safety management system based \non HACCP principles emphasizes continuous problem solving and prevention. \nAdditionally, HACCP enhances and encourages communication between industry and \nregulators.  \nA food safety management system based on HACCP principles offers many other \nadvantages to industry. One advantage is that such a system may provide a method for \nachieving active managerial control of multiple risk factors associated with an entire \noperation. Other advantages include:  \n\u2022 Better inventory control \n\u2022 Consistency in product preparation \n\u2022 Increase in product quality \n\u2022 Increase in profit \n\u2022 Increased employee awareness and participation in food safety \n\u2022 Reduction in product loss \n(B) What advantages does using HACCP principles offer regulators of retail and food \nservice establishments?  \nTraditional inspections are relatively resource-intensive, inefficient, and reactive rather \nthan preventive in nature. Using traditional inspection techniques allows for a \nsatisfactory \u201csnapshot\u201d assessment of the requirements of the code at the time of the"
+        }
+      ]
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": "{\n  \"kind\": \"insufficient_evidence\",\n  \"missing_evidence\": \"The retrieved passages from the FDA Food Code 2026 and related documents are food safety regulations and guidelines, not information about Avengers or superhero rankings. The question asks about the strongest Avenger, which is a fictional character from Marvel Comics and does not relate to the food safety documents provided. None of the retrieved passages contain any information about Avengers, superheroes, or rankings of fictional characters. The passages are exclusively about food safety, food handling, equipment, and regulatory requirements. There is no evidence in the provided documents that can answer the question about the strongest Avenger.\"\n}"
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "insufficient_evidence",
+      "steps": 3
+    }
+  ]
+}

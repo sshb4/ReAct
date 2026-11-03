@@ -1,0 +1,289 @@
+{
+  "query_id": "Q8",
+  "configuration": {
+    "runtime_profile": "local",
+    "embedding_provider": "ollama",
+    "action_generation": "retrieval and named-source coverage required before final action; citations constrained to observed chunk IDs",
+    "answer_mode": "extractive",
+    "maximum_answer_excerpts_per_source": 8,
+    "local_decision_format": "short passage labels grouped by source with per-requirement coverage assessment; raw decision and label-to-stored-ID map logged; adapter copies quotes",
+    "maximum_context_passages": "8, or two per requested source if greater",
+    "retrieval_unit": "page_context; all stored chunks from each selected physical page; parent IDs retained",
+    "model_history": "original question, search arguments, deduplicated passages; first two passages per requested source retained",
+    "chat_thinking": true,
+    "thinking_policy": "enabled after the initial and requested-source retrievals; disabled while required sources are missing",
+    "chat_context_tokens": 16384,
+    "chat_output_tokens_per_action": 8192,
+    "document_embedding_batch_size": 8,
+    "query_embedding_instruction": "Instruct: Given a food safety question, retrieve relevant passages that answer the question\nQuery:",
+    "embedding_service_model": "qwen3-embedding:8b",
+    "embedding_base_url": "http://127.0.0.1:11434",
+    "llm_base_url": "http://127.0.0.1:11434",
+    "configuration_deviation": "Local Ollama Q4 embedding weights and local chat model replace the required course services; not a fully compliant course-service run.",
+    "system_prompt_sha256": "0275e30a6eecf313ae1f6b4f86e460bf3c4a2ad31451f6a56b90e2500dc0942a",
+    "controller_sha256": "3e23ffc84a353db8cd9929086a0d9c393b55fa2385aba7fffcd130002d3996a9",
+    "local_adapter_sha256": "0c7c9dd1ca999a062e0ff802f54f164c4dd088d4bb857b5f857bec1c86913b65",
+    "evidence_selection_sha256": "813c5f6acc36c1d14e3097bae7cfde872d0dc464c8e49a0ef6dede73e9f04500",
+    "retrieval_sha256": "d4ebc7b07ec88d6eb9c55f57e01ee40f142a49491a0794a96a15b0a425b65b7e",
+    "local_models": [
+      {
+        "name": "qwen3-embedding:8b",
+        "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+        "size": 4676805193,
+        "details": {
+          "parent_model": "/Users/ollama/.ollama/models/blobs/sha256-3fcd3febec8b3fd64435204db75bf0dd73b91e8d0661e0331acfe7e7c3120b85",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 4096,
+          "runner": "ggml"
+        }
+      },
+      {
+        "name": "qwen3:4b",
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "size": 2497293931,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560,
+          "runner": "ggml"
+        }
+      }
+    ],
+    "embedding_model": "Qwen3-Embedding-8B",
+    "chunk_size": 1400,
+    "chunk_overlap": 200,
+    "retrieval_k": 6,
+    "retrieval_candidate_k": 18,
+    "identifier_reranking": "prefer exact or linked same-source section/table headings",
+    "section_link_expansion_limit": 2,
+    "max_steps": 16,
+    "step_definition": "one model or retrieval invocation",
+    "llm_model": "qwen3:4b",
+    "index_version": "0f3e6565bb6d0713"
+  },
+  "expected_terminal": "insufficient_evidence",
+  "question": "What Utah regulation currently adopts the FDA Food Code 2026, and what penalties\ndoes it impose on a restaurant that violates employee-illness rules?",
+  "terminal_reason": "insufficient_evidence",
+  "steps": 3,
+  "max_steps": 16,
+  "claims": [],
+  "message": "The retrieved passages are from the FDA Food Code 2026 (a model code) and do not contain Utah regulations or penalties. Utah adoption of the FDA Food Code 2026 and associated penalties are not specified in the provided documents.",
+  "evidence": [
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 72,
+      "chunk_id": "page-a0b3a26c7daa59da120f5b90",
+      "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n44 \n*CONDITIONAL EMPLOYEES, the *PERSON-IN-CHARGE, and required reporting to \nthe *REGULATORY AUTHORITY:  \n(1) Illness symptoms of diarrhea, vomiting, sore throat with fever, jaundice or \ninfected wounds or cuts; Pf \n(2) Illness disease diagnosis due to norovirus, hepatitis A virus, Shigella spp., \nTyphoid fever, non-typhoidal Salmonella, or *SHIGA TOXIN-PRODUCING \nESCHERICHIA COLI; Pf and \n(3) Illness *EXCLUSION and/or *RESTRICTION and reinstatement after illness \nsymptom or disease resolution. Pf \n2-502 Contamination Event Response Procedures \n2-502.11 Clean-up of Vomiting and Diarrheal Events \nA *FOOD ESTABLISHMENT shall have written procedures for *EMPLOYEES to follow \nwhen responding to vomiting or diarrheal events that involve the discharge of \nvomitus or fecal matter onto surfaces in the *FOOD ESTABLISHMENT. The \nprocedures shall address the specific actions *EMPLOYEES must take to minimize \nthe spread of contamination and the exposure of *EMPLOYEES, *CONSUMERS, \n*FOOD and surfaces to vomitus or fecal matter. Pf",
+      "parent_chunk_ids": [
+        "8e26db53e5d1932fd0af7396"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 725,
+      "chunk_id": "page-d8e70b685a60b39364361f9a",
+      "text": "FDA Food Code 2026  Summary of Changes \nSummary-645 \n2-301.16  \nAmended Public Health Reason for \u00a7 2-301.16 Hand Antiseptics to revise paragraphs 2 \nand 3 to clarify the intent of hand antiseptics.  \n2-303.11\u202f  \nAmended\u202fPublic\u202fHealth\u202fReasons\u202ffor\u202f\u00a7 2-303.11 Prohibition,\u202fto \naddress\u202fan\u202fadditional\u202fexception\u202ffor\u202findividuals with disabilities\u202fcovered by the Americans \nwith Disabilities Act,\u202fto wear a medically necessary device.  \n2-5\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew Part 2-5 to address written policy \nand procedures\u202frequirements\u202ffor employee\u202fillness\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-501\u202fto address\u202fwhat \nan\u202femployee\u202fillness\u202fpolicy is\u202fand the purpose of an illness policy for each food \nestablishment.\u202f\u202f\u202f  \n\u2022 Amended\u202fPublic Health Reasons\u202ffor the\u202fprevious\u202f\u00a7 2-501.11\u202fto \nnew\u202ftitle\u202f\u201cEmployee Illness Policy Documentation\u201d\u202fto address\u202fthe basic \ncomponents of an Employee Illness Policy.\u202f\u202f\u201cClean-up of Vomiting and Diarrheal \nEvents\u201d\u202fwas moved to a new\u202f\u00a7 2-502.11.  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-502;\u202f\u201cContamination \nEvent Response Procedures\u201d\u202fto cover all contamination event responses.\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons to add\u202fnew\u202f\u00a7 2-502.11\u202f\u201cClean-up of Vomiting \nand Diarrheal event\u201d\u202fto include the\u202fprevious\u202f\u00a7 2-501.11\u202ffor\u202f\u201cProcedures \nfor\u202fResponding to\u202fVomiting and\u202fDiarrheal\u202fEvents.\u201d\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons for previous \u00a7 2-501.11, new \u00a7 2-502.11, \nClean-up of Vomiting and Diarrheal Events to revise paragraph 6 to include \nreference to EPA-registered disinfectants and to revise paragraph 9 by \nrearranging bulleted list of items to consider when developing a written plan to \nensure the steps listed reflect the order of actions covered by the plan.  \n3-201.11  \nAmended Annex 3 Public Health Reasons for \u00a7 3-201.11 to delete the word \u201cnot\u201d \nbetween \u201chave\u201d and \u201cundergone\u201d in sentence 3 under the section Labeling for Whole-\nmuscle, Intact Beef Steaks. This was a typographical error.  \n3-204.10  \nAmended\u202fPublic\u202fHealth\u202fReasons for \u00a7 3-204.10\u202fto include\u202fparagraphs\u202f4-6\u202fto address \neconomically adulterated foods.\u202f  \n3-301.11  \n\u2022 Amended Public Health Reasons for \u00a7 3-301.11 to add new paragraphs 3, 4 and \n5 to introduce additional control measures, provide more background describing \nwhat a double handwash is and to include information on fingernail brushes from \nthe Public Health Reasons found in \u00a7 2-301.12.",
+      "parent_chunk_ids": [
+        "2e62edae67d670090551a3ea",
+        "b7049dd03becdf188ff95fc0"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 684,
+      "chunk_id": "page-100d3f6d9a6528c0be09d044",
+      "text": "FDA Food Code 2026 Annex 7. Model Forms, Guides, and Other Aids \n604 \n4. Proper use of restriction and exclusion. \nIN/OUT This item must be marked IN or OUT of compliance. Compliance must be based on \nfirsthand observations or information and cannot be based solely on responses from the \nPIC to questions regarding hypothetical situations or knowledge of the Food Code. This \nitem is marked IN when the following criteria are observed at the time of the inspection:  \n\u2022 There are no ill employees.  \n\u2022 There are no employees experiencing symptoms with or without a diagnosis that \nrequire reporting, or reason for the PIC to exclude or restrict an employee.  \n\u2022 A food employee who works in a food establishment serving a HSP or non-HSP,  is \nrestricted due to diagnoses with an infection from non-typhoidal Salmonella and is \nasymptomatic. \nThis item should be marked OUT of compliance when: \n\u2022 The inspector observes a working employee with specific reportable symptoms under \nSub-\u00b6 2-201.11(A)(1).  \n\u2022 The inspector becomes aware than an employee has reported information about his \nor her health and activities as it relates to diseases that are transmissible through \nfood and the PIC has not acted to restrict/exclude an employee under \u00a7\u00a7 2-201.12 \nand 2-201.13. \n\u2022 The inspector becomes aware that the PIC has not notified the Regulatory Authority \nthat an employee is jaundiced or diagnosed with an illness due to a pathogen as \nspecified under Sub-\u00b6\u00b6 2-201.11 (A)(2)(a)-(f) of the Food Code. \n\u2022 There are food employees working in the food establishment that have been \ndiagnosed with an illness as specified in Sub-\u00b6\u00b6 2-201.11(A)(2)-(5); Additionally, in \nfood establishments exclusively serving a highly susceptible population, there are to \nbe no food employees with an active sore throat with a fever working in the food \nestablishment. \nN.A. Do Not Mark this item N.A. \nN.O. Do Not Mark this item N.O. \nApplicable Code Sections:  \n\u2022 2- 201.11(D) and (F) Responsibility of Permit Holder, Person in Charge, and Conditional \nEmployees Responsibility of the PIC to Exclude or Restrict (P) \n\u2022 2- 201.12 Exclusions & Restrictions (P) \n\u2022 2- 201.13 Removal, Adjustment, or Retention of Exclusions & Restrictions (P)  \n \n5. Illness Documentation. \nIN/OUT This item should be marked IN or OUT of compliance. This item is marked IN compliance \nwhen it is demonstrated that the food establishment has available for employees a written \nemployee health policy addressing symptoms and illness reporting, exclusion/restriction, \nreinstatement, and regulatory reporting requirements in accordance with \u00a7\u00a7 2- 201.11, 2-\n201.12, and 2-201.13; and written procedures for responding to vomiting or diarrheal \nevents that involve the discharge of vomitus or fecal matter onto surfaces in the food \nestablishment in accordance with \u00a7 2-502.11.  \n \nThis item is marked OUT of compliance if the required written employee health policy \nand/or vomiting or diarrheal events procedures are not available or do not address Food \nCode requirements.. \nN.A. Do Not Mark this item N.A. \nN.O. Do Not Mark this item N.O. \nApplicable Code Sections:  \n\u2022 2- 501.11: Employee Illness Policy Documentation (Pf) \n\u2022 2- 502.11: Clean-up of Vomiting and Diarrheal Events (Pf)",
+      "parent_chunk_ids": [
+        "b414dd67e73d179392e1c79d",
+        "17690b337439cd8168108515",
+        "537771e4f20672cce15e37e1"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 210,
+      "chunk_id": "page-5dda23bcf9f06c4d6b6b5ad7",
+      "text": "FDA Food Code 2026  Index \nIndex-16 \ndefinition, 6, See also Food employee \ndefinition \ndressing areas, 140, 466 \neating, drinking, and tobacco use, \ndesignated areas, 42 \nfood contaminated by, disposition, 83 \nhair restraint requirements, 43 \nhygiene, 24, 42, 243 \nillness reporting exclusions and \nrestrictions, 26, 31, 243, 284, 288, \n581, 584, 585 \npractices, supervision of, 26 \nprevention of food contamination, 52, \n54, 357 \nresponsibility to report illness, 26, \n243, 254, 284, 288, 581, 584, 585 \nserving high-risk populations, \nexclusions and restrictions, 303, \nSee Highly susceptible population, \nexclusion and restriction of ill \nemployees \nEmployee Illness Policy, 43 \nEmu. See Ratite definition \nEnclosures for refuse, recyclables and \nreturnables, operation and \nmaintenance, 129, 130, 131 \nEnforcement. See Compliance and \nEnforcement \nEnforcement proceedings \nauthorities, methods, fines, and \nsentences, 182 \ninstitution, 182 \njudicial, 181 \nEPA, U.S. Environmental Protection \nAgency, definition, 6 \nEquipment \nacceptability, 98 \nair drying requirement, 114 \nassessment for Code enforcement, \n151 \ncan opener parts, removable and \nreplaceable, 91, 102 \ncase lot handling, 60, 97 \ncertification and classification, 98 \ncleaned, storage prohibition, 115 \ncleaning criteria, 107 \ncleaning frequency, 107 \ncleaning frequency, nonfood-contact \nsurfaces, 109 \ncleaning frequency, warewashing, \n103 \ncompartments, drainage, 97 \ncooling, heating, and holding \ncapacities, 98 \ndefinition, 6 \ndesign and construction, durability \nand strength, 90 \nexisting, 151, 159 \nfixed, elevation or sealing, installation, \n102 \nhot oil filter accessibility and \nreplacement, 91 \nlocation for contamination prevention, \n101 \nmaintenance, repair and adjustment, \n102 \nnecessary replacement, 159 \nopenings, closures and deflectors, \ndesign and construction, 92 \nreassembly after cleaning, 114 \nstorage of clean equipment, utensils, \nand prohibitions, 114 \nstoring maintenance tools, 142",
+      "parent_chunk_ids": [
+        "9b59337c190c4913f44a73b0",
+        "7b73ded293ce53c2849744dc"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 203,
+      "chunk_id": "page-18e204c6ef7806ec89959d17",
+      "text": "FDA Food Code 2026  Index \nIndex-9 \nCompliance and Enforcement, 151, 167 \nCompliance and Enforcement Annex \nexplanation, 167 \nprinciple, 168 \npurpose, 167 \nrecommendation, 168 \nCompliance with Code, responsibilities \nof permit holder to retain permit, 159 \nCondenser unit, separation from food \nand food storage space, 94 \nCondiments, protection from \ncontamination, 61 \nConditional employee \napplicant, food employee interview \nform, 581 \napplicant, food employee medical \nreferral form, 585 \napplicant, illness reporting \nresponsibilities, 28, 288 \ndefinition, 4 \nPIC responsibility to report employee \nillness or diagnosis to regulatory \nauthority, 30, 159, 288 \nConditioning device \nplumbing system design, 122 \nplumbing system location, 123 \nConfidentiality \nhearings, 177 \ntrade secrets, 156 \nConfirmed disease outbreak, definition, \n4 \nConsent agreement \napproval by hearing officer, 178 \nrequest, response to hearing notice, \n175 \nrespondent acceptable as waiver of \nright to appeal, 180 \nConstitutional protection \njudicial review, 169 \nprocedural safeguards, 168 \nConstruction \nequipment, single service and single \nuse articles characteristics, 89 \nequipment, utensils, and food contact \nsurfaces of equipment, materials \nfor, 87 \nfood establishment plans and \nspecifications requirement, 153, \n158, 476 \ninspection and approval, 156 \nmobile water tank and mobile food \nestablishment water tank, 125 \nphysical facilities, design and \ninstallation, 134 \nphysical facilities, materials for, 133 \nplumbing system, 121 \nConsumer \nadvisory for animal foods served raw \nor undercooked, 27, 82, 417 \nconsumer-owned container, refilling, \n59 \ndefinition, 4 \nexpectations for food supply, vii \nfood on display, protection from \ncontamination, 61 \ninformation requirements, 27, 80, 81, \n82, 417 \nself-service operations, protection \nfrom contamination, 62 \nself-service, clean tableware for refills, \n59",
+      "parent_chunk_ids": [
+        "d7b5463105cf367f3b3b3a0d",
+        "a560ed34cfdca84f7b45b63b"
+      ],
+      "retrieval_unit": "page_context"
+    },
+    {
+      "source": "fda-food-code-2026.pdf",
+      "page": 367,
+      "chunk_id": "page-85855c1fab807801f5253d3f",
+      "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n287 \nestablishment to develop and maintain a written food employee illness policy specific to \nthe needs of their food establishment (See Chapter 2, Subpart 2-501). Regulatory \nofficials can benefit by using the information provided below as a basis for determining \ncompliance with Subpart 2-201 during a facility food safety inspection. The development \nand effective implementation of an employee illness policy based on the provisions in \nSubpart 2-201 will help to prevent foodborne illness associated with contamination of \nfood by ill or infected food employees. The person in charge and food employees \nshould be familiar with and able to provide the following information through direct \ndialogue or other means when interviewed by facility managers or regulatory officials. \nCompliance must be based, however, on firsthand observations or information and \ncannot be based solely on responses from the person in charge to questions regarding \nhypothetical situations or knowledge of the Food Code. Also, when designing and \nimplementing an employee illness policy, the following information should be considered \nand addressed: \n1. Does the establishment have an employee illness or health policy? If so, are the \nfood employees aware of the policy, and is it available in written format and readily \navailable for food employees? (Note: A written Employee Illness policy is a new \nrequirement in the 2026 Food Code for all food establishments under \u00b6 2-501.11).  \n2. Does the establishment require conditional employees and food employees to report \nsymptoms of diarrhea, vomiting, sore throat with fever, and infected wounds or cuts?  \n3. Does the establishment require conditional employees and food employees to report \ncertain illnesses, including diagnosis with norovirus, hepatitis A virus, non-typhoidal \nsalmonellosis, typhoid fever, shigellosis, or STEC E. coli? \n4. Does the establishment require conditional employees and food employees to report \nexposure to listed illnesses, either through exposure to immediate family members \ndiagnosed with a listed illness, or through exposure to a foodborne illness outbreak?  \n5. Are the reporting requirements explained to all employees?  \n6. What are the reporting requirements for conditional employees, food employees, \nand the food establishment manager?  \n7. Are conditional employees asked if they are experiencing certain symptoms or \nillnesses upon offer of employment? If so, which symptoms or illnesses?  \n8. If a food employee reports a diagnosis with one of the 6 listed pathogens in the Food \nCode, what questions are asked of the food employee? (The first question every \nfood manager should ask a food employee who reports diagnosis with a listed \npathogen is if the employee is currently having any symptoms.)  \n9. Who does the establishment notify when a food employee reports a diagnosis with \none of the listed pathogens?  \n10. Does the establishment require the person in charge or permit holder to notify the \nregulatory authority when a food employee or manager reports a diagnosis with a \nlisted pathogen?  \n11. What gastrointestinal symptoms would require exclusion of a food employee from \nthe food establishment?",
+      "parent_chunk_ids": [
+        "08be7f1447cc0ae9468afce7",
+        "b86caad4134bdea2d22edbf1",
+        "2b3b171314e0589595bcbe79"
+      ],
+      "retrieval_unit": "page_context"
+    }
+  ],
+  "trace": [
+    {
+      "type": "local_selection_decision",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "Utah regulation that currently adopts FDA Food Code 2026 and penalties for violating employee-illness rules",
+          "source": "fda-food-code-2026.pdf"
+        }
+      },
+      "passage_labels": {}
+    },
+    {
+      "type": "model_action",
+      "step": 1,
+      "value": {
+        "kind": "retrieve",
+        "arguments": {
+          "query": "Utah regulation that currently adopts FDA Food Code 2026 and penalties for violating employee-illness rules",
+          "source": "fda-food-code-2026.pdf"
+        }
+      }
+    },
+    {
+      "type": "tool_action",
+      "step": 2,
+      "arguments": {
+        "query": "Utah regulation that currently adopts FDA Food Code 2026 and penalties for violating employee-illness rules",
+        "source": "fda-food-code-2026.pdf"
+      }
+    },
+    {
+      "type": "retrieval_observation",
+      "step": 2,
+      "value": [
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 72,
+          "chunk_id": "page-a0b3a26c7daa59da120f5b90",
+          "text": "FDA Food Code 2026  Chapter 2. Management and Personnel \n44 \n*CONDITIONAL EMPLOYEES, the *PERSON-IN-CHARGE, and required reporting to \nthe *REGULATORY AUTHORITY:  \n(1) Illness symptoms of diarrhea, vomiting, sore throat with fever, jaundice or \ninfected wounds or cuts; Pf \n(2) Illness disease diagnosis due to norovirus, hepatitis A virus, Shigella spp., \nTyphoid fever, non-typhoidal Salmonella, or *SHIGA TOXIN-PRODUCING \nESCHERICHIA COLI; Pf and \n(3) Illness *EXCLUSION and/or *RESTRICTION and reinstatement after illness \nsymptom or disease resolution. Pf \n2-502 Contamination Event Response Procedures \n2-502.11 Clean-up of Vomiting and Diarrheal Events \nA *FOOD ESTABLISHMENT shall have written procedures for *EMPLOYEES to follow \nwhen responding to vomiting or diarrheal events that involve the discharge of \nvomitus or fecal matter onto surfaces in the *FOOD ESTABLISHMENT. The \nprocedures shall address the specific actions *EMPLOYEES must take to minimize \nthe spread of contamination and the exposure of *EMPLOYEES, *CONSUMERS, \n*FOOD and surfaces to vomitus or fecal matter. Pf",
+          "parent_chunk_ids": [
+            "8e26db53e5d1932fd0af7396"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 725,
+          "chunk_id": "page-d8e70b685a60b39364361f9a",
+          "text": "FDA Food Code 2026  Summary of Changes \nSummary-645 \n2-301.16  \nAmended Public Health Reason for \u00a7 2-301.16 Hand Antiseptics to revise paragraphs 2 \nand 3 to clarify the intent of hand antiseptics.  \n2-303.11\u202f  \nAmended\u202fPublic\u202fHealth\u202fReasons\u202ffor\u202f\u00a7 2-303.11 Prohibition,\u202fto \naddress\u202fan\u202fadditional\u202fexception\u202ffor\u202findividuals with disabilities\u202fcovered by the Americans \nwith Disabilities Act,\u202fto wear a medically necessary device.  \n2-5\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew Part 2-5 to address written policy \nand procedures\u202frequirements\u202ffor employee\u202fillness\u202f  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-501\u202fto address\u202fwhat \nan\u202femployee\u202fillness\u202fpolicy is\u202fand the purpose of an illness policy for each food \nestablishment.\u202f\u202f\u202f  \n\u2022 Amended\u202fPublic Health Reasons\u202ffor the\u202fprevious\u202f\u00a7 2-501.11\u202fto \nnew\u202ftitle\u202f\u201cEmployee Illness Policy Documentation\u201d\u202fto address\u202fthe basic \ncomponents of an Employee Illness Policy.\u202f\u202f\u201cClean-up of Vomiting and Diarrheal \nEvents\u201d\u202fwas moved to a new\u202f\u00a7 2-502.11.  \n\u2022 Amended Public Health Reasons\u202fto add\u202fnew\u202fsubPart\u202f2-502;\u202f\u201cContamination \nEvent Response Procedures\u201d\u202fto cover all contamination event responses.\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons to add\u202fnew\u202f\u00a7 2-502.11\u202f\u201cClean-up of Vomiting \nand Diarrheal event\u201d\u202fto include the\u202fprevious\u202f\u00a7 2-501.11\u202ffor\u202f\u201cProcedures \nfor\u202fResponding to\u202fVomiting and\u202fDiarrheal\u202fEvents.\u201d\u202f\u202f\u202f  \n\u2022 Amended Public Health Reasons for previous \u00a7 2-501.11, new \u00a7 2-502.11, \nClean-up of Vomiting and Diarrheal Events to revise paragraph 6 to include \nreference to EPA-registered disinfectants and to revise paragraph 9 by \nrearranging bulleted list of items to consider when developing a written plan to \nensure the steps listed reflect the order of actions covered by the plan.  \n3-201.11  \nAmended Annex 3 Public Health Reasons for \u00a7 3-201.11 to delete the word \u201cnot\u201d \nbetween \u201chave\u201d and \u201cundergone\u201d in sentence 3 under the section Labeling for Whole-\nmuscle, Intact Beef Steaks. This was a typographical error.  \n3-204.10  \nAmended\u202fPublic\u202fHealth\u202fReasons for \u00a7 3-204.10\u202fto include\u202fparagraphs\u202f4-6\u202fto address \neconomically adulterated foods.\u202f  \n3-301.11  \n\u2022 Amended Public Health Reasons for \u00a7 3-301.11 to add new paragraphs 3, 4 and \n5 to introduce additional control measures, provide more background describing \nwhat a double handwash is and to include information on fingernail brushes from \nthe Public Health Reasons found in \u00a7 2-301.12.",
+          "parent_chunk_ids": [
+            "2e62edae67d670090551a3ea",
+            "b7049dd03becdf188ff95fc0"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 684,
+          "chunk_id": "page-100d3f6d9a6528c0be09d044",
+          "text": "FDA Food Code 2026 Annex 7. Model Forms, Guides, and Other Aids \n604 \n4. Proper use of restriction and exclusion. \nIN/OUT This item must be marked IN or OUT of compliance. Compliance must be based on \nfirsthand observations or information and cannot be based solely on responses from the \nPIC to questions regarding hypothetical situations or knowledge of the Food Code. This \nitem is marked IN when the following criteria are observed at the time of the inspection:  \n\u2022 There are no ill employees.  \n\u2022 There are no employees experiencing symptoms with or without a diagnosis that \nrequire reporting, or reason for the PIC to exclude or restrict an employee.  \n\u2022 A food employee who works in a food establishment serving a HSP or non-HSP,  is \nrestricted due to diagnoses with an infection from non-typhoidal Salmonella and is \nasymptomatic. \nThis item should be marked OUT of compliance when: \n\u2022 The inspector observes a working employee with specific reportable symptoms under \nSub-\u00b6 2-201.11(A)(1).  \n\u2022 The inspector becomes aware than an employee has reported information about his \nor her health and activities as it relates to diseases that are transmissible through \nfood and the PIC has not acted to restrict/exclude an employee under \u00a7\u00a7 2-201.12 \nand 2-201.13. \n\u2022 The inspector becomes aware that the PIC has not notified the Regulatory Authority \nthat an employee is jaundiced or diagnosed with an illness due to a pathogen as \nspecified under Sub-\u00b6\u00b6 2-201.11 (A)(2)(a)-(f) of the Food Code. \n\u2022 There are food employees working in the food establishment that have been \ndiagnosed with an illness as specified in Sub-\u00b6\u00b6 2-201.11(A)(2)-(5); Additionally, in \nfood establishments exclusively serving a highly susceptible population, there are to \nbe no food employees with an active sore throat with a fever working in the food \nestablishment. \nN.A. Do Not Mark this item N.A. \nN.O. Do Not Mark this item N.O. \nApplicable Code Sections:  \n\u2022 2- 201.11(D) and (F) Responsibility of Permit Holder, Person in Charge, and Conditional \nEmployees Responsibility of the PIC to Exclude or Restrict (P) \n\u2022 2- 201.12 Exclusions & Restrictions (P) \n\u2022 2- 201.13 Removal, Adjustment, or Retention of Exclusions & Restrictions (P)  \n \n5. Illness Documentation. \nIN/OUT This item should be marked IN or OUT of compliance. This item is marked IN compliance \nwhen it is demonstrated that the food establishment has available for employees a written \nemployee health policy addressing symptoms and illness reporting, exclusion/restriction, \nreinstatement, and regulatory reporting requirements in accordance with \u00a7\u00a7 2- 201.11, 2-\n201.12, and 2-201.13; and written procedures for responding to vomiting or diarrheal \nevents that involve the discharge of vomitus or fecal matter onto surfaces in the food \nestablishment in accordance with \u00a7 2-502.11.  \n \nThis item is marked OUT of compliance if the required written employee health policy \nand/or vomiting or diarrheal events procedures are not available or do not address Food \nCode requirements.. \nN.A. Do Not Mark this item N.A. \nN.O. Do Not Mark this item N.O. \nApplicable Code Sections:  \n\u2022 2- 501.11: Employee Illness Policy Documentation (Pf) \n\u2022 2- 502.11: Clean-up of Vomiting and Diarrheal Events (Pf)",
+          "parent_chunk_ids": [
+            "b414dd67e73d179392e1c79d",
+            "17690b337439cd8168108515",
+            "537771e4f20672cce15e37e1"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 210,
+          "chunk_id": "page-5dda23bcf9f06c4d6b6b5ad7",
+          "text": "FDA Food Code 2026  Index \nIndex-16 \ndefinition, 6, See also Food employee \ndefinition \ndressing areas, 140, 466 \neating, drinking, and tobacco use, \ndesignated areas, 42 \nfood contaminated by, disposition, 83 \nhair restraint requirements, 43 \nhygiene, 24, 42, 243 \nillness reporting exclusions and \nrestrictions, 26, 31, 243, 284, 288, \n581, 584, 585 \npractices, supervision of, 26 \nprevention of food contamination, 52, \n54, 357 \nresponsibility to report illness, 26, \n243, 254, 284, 288, 581, 584, 585 \nserving high-risk populations, \nexclusions and restrictions, 303, \nSee Highly susceptible population, \nexclusion and restriction of ill \nemployees \nEmployee Illness Policy, 43 \nEmu. See Ratite definition \nEnclosures for refuse, recyclables and \nreturnables, operation and \nmaintenance, 129, 130, 131 \nEnforcement. See Compliance and \nEnforcement \nEnforcement proceedings \nauthorities, methods, fines, and \nsentences, 182 \ninstitution, 182 \njudicial, 181 \nEPA, U.S. Environmental Protection \nAgency, definition, 6 \nEquipment \nacceptability, 98 \nair drying requirement, 114 \nassessment for Code enforcement, \n151 \ncan opener parts, removable and \nreplaceable, 91, 102 \ncase lot handling, 60, 97 \ncertification and classification, 98 \ncleaned, storage prohibition, 115 \ncleaning criteria, 107 \ncleaning frequency, 107 \ncleaning frequency, nonfood-contact \nsurfaces, 109 \ncleaning frequency, warewashing, \n103 \ncompartments, drainage, 97 \ncooling, heating, and holding \ncapacities, 98 \ndefinition, 6 \ndesign and construction, durability \nand strength, 90 \nexisting, 151, 159 \nfixed, elevation or sealing, installation, \n102 \nhot oil filter accessibility and \nreplacement, 91 \nlocation for contamination prevention, \n101 \nmaintenance, repair and adjustment, \n102 \nnecessary replacement, 159 \nopenings, closures and deflectors, \ndesign and construction, 92 \nreassembly after cleaning, 114 \nstorage of clean equipment, utensils, \nand prohibitions, 114 \nstoring maintenance tools, 142",
+          "parent_chunk_ids": [
+            "9b59337c190c4913f44a73b0",
+            "7b73ded293ce53c2849744dc"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 203,
+          "chunk_id": "page-18e204c6ef7806ec89959d17",
+          "text": "FDA Food Code 2026  Index \nIndex-9 \nCompliance and Enforcement, 151, 167 \nCompliance and Enforcement Annex \nexplanation, 167 \nprinciple, 168 \npurpose, 167 \nrecommendation, 168 \nCompliance with Code, responsibilities \nof permit holder to retain permit, 159 \nCondenser unit, separation from food \nand food storage space, 94 \nCondiments, protection from \ncontamination, 61 \nConditional employee \napplicant, food employee interview \nform, 581 \napplicant, food employee medical \nreferral form, 585 \napplicant, illness reporting \nresponsibilities, 28, 288 \ndefinition, 4 \nPIC responsibility to report employee \nillness or diagnosis to regulatory \nauthority, 30, 159, 288 \nConditioning device \nplumbing system design, 122 \nplumbing system location, 123 \nConfidentiality \nhearings, 177 \ntrade secrets, 156 \nConfirmed disease outbreak, definition, \n4 \nConsent agreement \napproval by hearing officer, 178 \nrequest, response to hearing notice, \n175 \nrespondent acceptable as waiver of \nright to appeal, 180 \nConstitutional protection \njudicial review, 169 \nprocedural safeguards, 168 \nConstruction \nequipment, single service and single \nuse articles characteristics, 89 \nequipment, utensils, and food contact \nsurfaces of equipment, materials \nfor, 87 \nfood establishment plans and \nspecifications requirement, 153, \n158, 476 \ninspection and approval, 156 \nmobile water tank and mobile food \nestablishment water tank, 125 \nphysical facilities, design and \ninstallation, 134 \nphysical facilities, materials for, 133 \nplumbing system, 121 \nConsumer \nadvisory for animal foods served raw \nor undercooked, 27, 82, 417 \nconsumer-owned container, refilling, \n59 \ndefinition, 4 \nexpectations for food supply, vii \nfood on display, protection from \ncontamination, 61 \ninformation requirements, 27, 80, 81, \n82, 417 \nself-service operations, protection \nfrom contamination, 62 \nself-service, clean tableware for refills, \n59",
+          "parent_chunk_ids": [
+            "d7b5463105cf367f3b3b3a0d",
+            "a560ed34cfdca84f7b45b63b"
+          ],
+          "retrieval_unit": "page_context"
+        },
+        {
+          "source": "fda-food-code-2026.pdf",
+          "page": 367,
+          "chunk_id": "page-85855c1fab807801f5253d3f",
+          "text": "FDA Food Code 2026 Annex 3. Public Health Reasons/Administrative \nGuidelines \n287 \nestablishment to develop and maintain a written food employee illness policy specific to \nthe needs of their food establishment (See Chapter 2, Subpart 2-501). Regulatory \nofficials can benefit by using the information provided below as a basis for determining \ncompliance with Subpart 2-201 during a facility food safety inspection. The development \nand effective implementation of an employee illness policy based on the provisions in \nSubpart 2-201 will help to prevent foodborne illness associated with contamination of \nfood by ill or infected food employees. The person in charge and food employees \nshould be familiar with and able to provide the following information through direct \ndialogue or other means when interviewed by facility managers or regulatory officials. \nCompliance must be based, however, on firsthand observations or information and \ncannot be based solely on responses from the person in charge to questions regarding \nhypothetical situations or knowledge of the Food Code. Also, when designing and \nimplementing an employee illness policy, the following information should be considered \nand addressed: \n1. Does the establishment have an employee illness or health policy? If so, are the \nfood employees aware of the policy, and is it available in written format and readily \navailable for food employees? (Note: A written Employee Illness policy is a new \nrequirement in the 2026 Food Code for all food establishments under \u00b6 2-501.11).  \n2. Does the establishment require conditional employees and food employees to report \nsymptoms of diarrhea, vomiting, sore throat with fever, and infected wounds or cuts?  \n3. Does the establishment require conditional employees and food employees to report \ncertain illnesses, including diagnosis with norovirus, hepatitis A virus, non-typhoidal \nsalmonellosis, typhoid fever, shigellosis, or STEC E. coli? \n4. Does the establishment require conditional employees and food employees to report \nexposure to listed illnesses, either through exposure to immediate family members \ndiagnosed with a listed illness, or through exposure to a foodborne illness outbreak?  \n5. Are the reporting requirements explained to all employees?  \n6. What are the reporting requirements for conditional employees, food employees, \nand the food establishment manager?  \n7. Are conditional employees asked if they are experiencing certain symptoms or \nillnesses upon offer of employment? If so, which symptoms or illnesses?  \n8. If a food employee reports a diagnosis with one of the 6 listed pathogens in the Food \nCode, what questions are asked of the food employee? (The first question every \nfood manager should ask a food employee who reports diagnosis with a listed \npathogen is if the employee is currently having any symptoms.)  \n9. Who does the establishment notify when a food employee reports a diagnosis with \none of the listed pathogens?  \n10. Does the establishment require the person in charge or permit holder to notify the \nregulatory authority when a food employee or manager reports a diagnosis with a \nlisted pathogen?  \n11. What gastrointestinal symptoms would require exclusion of a food employee from \nthe food establishment?",
+          "parent_chunk_ids": [
+            "08be7f1447cc0ae9468afce7",
+            "b86caad4134bdea2d22edbf1",
+            "2b3b171314e0589595bcbe79"
+          ],
+          "retrieval_unit": "page_context"
+        }
+      ]
+    },
+    {
+      "type": "local_selection_decision",
+      "step": 3,
+      "value": {
+        "kind": "insufficient_evidence",
+        "missing_evidence": "The retrieved passages are from the FDA Food Code 2026 (a model code) and do not contain Utah regulations or penalties. Utah adoption of the FDA Food Code 2026 and associated penalties are not specified in the provided documents."
+      },
+      "passage_labels": {
+        "P1": "page-a0b3a26c7daa59da120f5b90",
+        "P2": "page-d8e70b685a60b39364361f9a",
+        "P3": "page-100d3f6d9a6528c0be09d044",
+        "P4": "page-5dda23bcf9f06c4d6b6b5ad7",
+        "P5": "page-18e204c6ef7806ec89959d17",
+        "P6": "page-85855c1fab807801f5253d3f"
+      }
+    },
+    {
+      "type": "model_action",
+      "step": 3,
+      "value": {
+        "kind": "insufficient_evidence",
+        "missing_evidence": "The retrieved passages are from the FDA Food Code 2026 (a model code) and do not contain Utah regulations or penalties. Utah adoption of the FDA Food Code 2026 and associated penalties are not specified in the provided documents."
+      }
+    },
+    {
+      "type": "terminal",
+      "terminal_reason": "insufficient_evidence",
+      "steps": 3
+    }
+  ]
+}

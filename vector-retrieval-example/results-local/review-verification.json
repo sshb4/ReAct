@@ -1,0 +1,71 @@
+{
+  "mechanical_checks_passed": true,
+  "source_pdf_checked": true,
+  "semantic_review_is_separate": true,
+  "configuration_sha256": "7ebc85603e861ce048add3a8ac034dc73d9645dedd34341834efa1c84a616a81",
+  "queries": {
+    "Q1": {
+      "result_sha256": "f0edb7d2ab10245d0e3534f71ba19e26f0d15239b58c96f6c43ce9aa1384ff53",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "answer",
+      "semantic_assessment": "complete with attribution weakness"
+    },
+    "Q2": {
+      "result_sha256": "21a8b5f4f21320639e5e2bd7633694b46b43507a078cfb7014bd5eeb994c7919",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "answer",
+      "semantic_assessment": "complete"
+    },
+    "Q3": {
+      "result_sha256": "a8bb4d96cc2690c3a0177e6b31a163d9c2bda79f9c990f28fc636c64fad2e8df",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "answer",
+      "semantic_assessment": "complete"
+    },
+    "Q4": {
+      "result_sha256": "f3451b492cbcedbade42e6132d19e360a577fa9f0144089354e75a3b51ba04f2",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "answer",
+      "semantic_assessment": "complete with presentation limitation"
+    },
+    "Q5": {
+      "result_sha256": "dd6ace616e4f216e19aa8bed737637e85545a2fe391596b26aa510b74a192805",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "answer",
+      "semantic_assessment": "complete"
+    },
+    "Q6": {
+      "result_sha256": "f9bcd3d54f442fea07f0e71f22293815d2832aed8ac7f5df113396d6ea41eba4",
+      "passed": true,
+      "observations_checked": 12,
+      "terminal": "answer",
+      "semantic_assessment": "complete with presentation limitation"
+    },
+    "Q7": {
+      "result_sha256": "9b705e1a61a7095285c0fc9200308d6fa3ef50dfcd8d51865a44f13b44422442",
+      "passed": true,
+      "observations_checked": 12,
+      "terminal": "error",
+      "semantic_assessment": "failed: output token limit"
+    },
+    "Q8": {
+      "result_sha256": "51d7aae574c31e8423a0f7f8bfcfd999c62502053851147948d2bec378f71f2f",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "insufficient_evidence",
+      "semantic_assessment": "complete: insufficient evidence"
+    },
+    "Q9": {
+      "result_sha256": "e4e3c7360a6655a8c6fd9c1bc9a6ad15bb546a83b219629fd302e860bd3fb447",
+      "passed": true,
+      "observations_checked": 6,
+      "terminal": "insufficient_evidence",
+      "semantic_assessment": "complete: insufficient evidence"
+    }
+  }
+}

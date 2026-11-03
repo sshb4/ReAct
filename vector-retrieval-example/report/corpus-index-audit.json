@@ -1,0 +1,55 @@
+{
+  "created_at": "2026-10-30T23:09:51.496964+00:00",
+  "physical_page_count": 1110,
+  "embedding_model": "Qwen3-Embedding-8B",
+  "embedding_dimension": 4096,
+  "index_version": "0f3e6565bb6d0713",
+  "record_count": 2652,
+  "ingested_chunk_count": 2652,
+  "chunking": {
+    "chunk_size": 1400,
+    "chunk_overlap": 200
+  },
+  "parsers": {
+    "pypdf": "6.21.1",
+    "fonttools": "4.68.0",
+    "text": "utf-8"
+  },
+  "sources": [
+    {
+      "name": "fda-appendix-3-bacterial-pathogen-growth-inactivation.pdf",
+      "physical_pages": 23,
+      "sha256": "ba818268cc7d6894f41c0200f14b064ad254da8f649cf7f75d62ca03733207c1",
+      "indexed_chunks": 56
+    },
+    {
+      "name": "fda-bad-bug-book-second-edition.pdf",
+      "physical_pages": 292,
+      "sha256": "b76d65edc9cce029a8e864f51eee8f7ae124157d55532019c6ea9de529ff21d7",
+      "indexed_chunks": 750
+    },
+    {
+      "name": "fda-employee-health-personal-hygiene-handbook.pdf",
+      "physical_pages": 45,
+      "sha256": "d83321e689eab26958f27ee5dd8886d231b9140fdc9cbcca3e30613da80c74e8",
+      "indexed_chunks": 91
+    },
+    {
+      "name": "fda-food-code-2026.pdf",
+      "physical_pages": 732,
+      "sha256": "a608605db1a44d07fc9255db281175a933b4290597b4dc4cf58e035158fc8e06",
+      "indexed_chunks": 1724
+    },
+    {
+      "name": "utah-risk-factor-study-2016-2017.pdf",
+      "physical_pages": 18,
+      "sha256": "ea1f93b84c18e73d9ffa2f7909705ea0012eef08a440384254e4f5bc7c516737",
+      "indexed_chunks": 31
+    }
+  ],
+  "note": "Recorded index build evidence; generated vector database and runtime manifest intentionally excluded from Git. Chat settings are recorded separately in results-local/configuration.json.",
+  "verified_on": "2026-11-03",
+  "live_database_record_count": 2652,
+  "required_queries_match_supplied_package": true,
+  "required_queries_sha256": "ada81b73f45b0332635a5509aef3e8ae3930fc148e3694787c4309d81c5beb72"
+}

@@ -1,0 +1,200 @@
+{
+  "review_method": "Manual assessment of each selected passage for relevance, source role, conditions and requested subparts; exact quotation, retrieved citation provenance, source-page text and run configuration checked separately. Review does not alter raw model outputs.",
+  "reviewer": "OpenAI Codex",
+  "queries": {
+    "Q1": {
+      "result_sha256": "8097d5eb4e8ec0bcc63cf964321eec2ba234bea72c164051fefc69b7559151ad",
+      "support": "supported",
+      "coverage": "complete",
+      "notes": [
+        "Selected Food Code physical pages 59 and 61 contain the operative exclusion and both reinstatement alternatives: asymptomatic at least 24 hours OR written health-practitioner documentation of a noninfectious condition.",
+        "Annex passages on physical pages 388 and 404 corroborate the undiagnosed case.",
+        "Whole chunks include adjacent diagnosed-pathogen provisions and unrelated symptoms. These remain conditional quotations, not a diagnosis in the scenario, but reduce answer focus."
+      ],
+      "subparts": {
+        "disposition": "covered: exclude",
+        "symptom_free_return": "covered: at least 24 hours asymptomatic",
+        "alternative_return": "covered: written medical documentation from a health practitioner stating the symptom is noninfectious"
+      }
+    },
+    "Q2": {
+      "result_sha256": "7ea0961422c62245b35964e80db5695d62406627190f8a634f0d573c6f104c71",
+      "support": "supported",
+      "coverage": "complete",
+      "notes": [
+        "Handbook physical page 6 says stop immediately, report to management, go home, and return after at least 24 hours since symptoms ended.",
+        "Physical page 7 instructs the manager to stop work immediately, have the employee leave, and permit return no sooner than 24 hours after symptoms end.",
+        "Physical page 31 adds the table medical-documentation alternative and diagnosis exceptions. Physical page 11 is general return-to-work context.",
+        "The prior attempt timing inversion is absent; raw output has not been edited. Whole chunks include extraneous symptoms and return considerations."
+      ],
+      "subparts": {
+        "employee_immediate_action": "covered: stop, report and go home immediately",
+        "manager_immediate_action": "covered: stop work and have employee leave",
+        "earliest_return": "covered: no sooner than 24 hours after symptoms end, with the handbook table documentation alternative also quoted"
+      }
+    },
+    "Q3": {
+      "result_sha256": "13f65ecd74abc349d0c9562b0a1eafca4a51579bbbb4c66d08581ef033f1a1d8",
+      "support": "partially supported",
+      "coverage": "partial; includes wrong-topic evidence",
+      "notes": [
+        "Excerpts 1-3 correctly quote the norovirus chapter: physical page 169 has estimated dose as low as 1-10 particles and usual onset 24-48 hours (reported within 12 hours); page 168 has characteristic explosive vomiting, watery nonbloody diarrhea, cramps and other symptoms; page 170 identifies ill-worker handling of ready-to-eat foods.",
+        "Excerpt 4 is from physical page 185, Other Viral Agents, not the norovirus chapter. The full source page explicitly says norovirus is covered in a separate chapter. Its 10-70 hour onset and 2-9 day duration are not valid norovirus evidence, despite exact quotation.",
+        "Worker handling is covered, but the norovirus chapter fecal-oral/vomit route on physical page 170 was not selected. The mechanistic handwashing example instead comes from the wrong chapter."
+      ],
+      "subparts": {
+        "dose": "covered correctly by excerpt 1",
+        "onset": "covered correctly by excerpt 1, but excerpt 4 introduces an inapplicable range",
+        "symptoms": "covered by excerpt 2; excerpt 4 adds inapplicable context",
+        "worker_contamination": "partly covered by excerpt 3; detailed mechanism in excerpt 4 is wrong-context evidence"
+      },
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported_for_question": true,
+          "reason": "Direct norovirus chapter evidence"
+        },
+        {
+          "claim_index": 1,
+          "supported_for_question": true,
+          "reason": "Direct norovirus chapter evidence"
+        },
+        {
+          "claim_index": 2,
+          "supported_for_question": true,
+          "reason": "Direct norovirus chapter evidence"
+        },
+        {
+          "claim_index": 3,
+          "supported_for_question": false,
+          "reason": "Other Viral Agents chapter cannot establish norovirus-specific facts"
+        }
+      ]
+    },
+    "Q4": {
+      "result_sha256": "6a53b0cd2d50eb3c99f91cee8f52bc99497a07889f2c4cefcd32e8ab6d63e243",
+      "support": "supported",
+      "coverage": "complete",
+      "notes": [
+        "Visually checked Appendix 3 Table 3-A on physical page 3 against the selected table chunk.",
+        "Salmonella spp.: minimum aw 0.94; pH 3.7-9.5; 5.2-46.2 C (41.4-115.2 F); maximum water-phase salt 8%; facultative anaerobe.",
+        "Listeria monocytogenes: minimum aw 0.92; pH 4.4-9.4; -0.4-45 C (31.3-113 F); maximum water-phase salt 10%; facultative anaerobe.",
+        "Physical page 4 footnote 4 explains growth with or without oxygen. Draft nonbinding status is preserved in the quotations.",
+        "Physical page 1 adds general table context. The physical-page-13 bibliography is unnecessary and does not substantiate an additional comparison field. The final response is a table excerpt rather than a concise synthesized comparison."
+      ],
+      "subparts": {
+        "minimum_water_activity": "covered correctly in excerpt 1; oxygen explanation in excerpt 2",
+        "pH_range": "covered correctly in excerpt 1; oxygen explanation in excerpt 2",
+        "temperature_range": "covered correctly in excerpt 1; oxygen explanation in excerpt 2",
+        "maximum_water_phase_salt": "covered correctly in excerpt 1; oxygen explanation in excerpt 2",
+        "oxygen_requirement": "covered correctly in excerpt 1; oxygen explanation in excerpt 2"
+      }
+    },
+    "Q5": {
+      "result_sha256": "ddb7699081a5b7455a95354fc88d92889f46d75d288511721bc1345530e5de2c",
+      "support": "supported quotations; incomplete answer",
+      "coverage": "partial",
+      "notes": [
+        "Visually checked the summer table and item labels on study physical page 4. All four labels appear in excerpt 1: line 22 cold holding, 28 toxic substances, 33 cooling methods/equipment, 36 thermometers.",
+        "Selected excerpt 1 begins at line 28 of the numerical table: it includes 28=1.15, 33=1.50, 36=1.23, but omits 22=1.37. The missing ratio is visible in the preceding source-page table; it is NOT present in any final selected excerpt.",
+        "Voluntary participation (7 of 13 departments), paper/manual-input barriers and a fragment about risk categorization appear in excerpt 1. Full inconsistent classification/form conversion and single-year/frequency-only limitations on physical pages 4-5 were not selected.",
+        "Excerpts 2 and 3 are identical and largely discuss handwashing rather than the requested summer results. Excerpt 4 gives the report discussion and acknowledges uncertain rationale for lines 28/36, but cannot replace the missing study limitations.",
+        "Execution error from attempt 3 is resolved, but an answer terminal reason does not establish full query success."
+      ],
+      "subparts": {
+        "four_item_names": "covered correctly",
+        "four_rate_ratios": "incomplete: line 22 ratio 1.37 missing; other three correct",
+        "limitations": "partial: participation/data collection and uncertainty present; single-year, heterogeneous classification/form mappings, and frequency-only measurement omitted"
+      }
+    },
+    "Q6": {
+      "result_sha256": "cc3f1918b46fd85ad63608fe5a9180acaad9b4410447e9cf4397fdfb4a6191b1",
+      "support": "no accepted answer; validation error",
+      "coverage": "incomplete",
+      "notes": [
+        "Both requested sources were retrieved. The final model action selected Food Code passages only, omitting all Bad Bug Book citations.",
+        "The controller correctly rejected the candidate with: ValueError: Answer omitted requested source evidence: fda-bad-bug-book-second-edition.pdf.",
+        "The terminal result has no accepted claims. Rejected candidate remains in the full trace and must not be described as a passing answer.",
+        "Physical Food Code pages 59 and 61 and Bad Bug Book pages 168-170 provide relevant symptom-only disposition/return and norovirus-risk evidence; retrieval availability alone does not establish successful use."
+      ],
+      "subparts": {
+        "employee_disposition": "no accepted answer",
+        "earliest_return_conditions": "no accepted answer",
+        "norovirus_transmission_concern": "not cited in rejected candidate; no accepted answer",
+        "diagnosis_handling": "no accepted synthesis; cannot count as passed"
+      }
+    },
+    "Q7": {
+      "result_sha256": "5d339fc36564e8de745c0f2465b61f36f6ce13bbc104e8f4b38e436b4b143472",
+      "support": "no accepted answer; validation error",
+      "coverage": "incomplete",
+      "notes": [
+        "The run retrieved both Food Code and handbook passages, including handbook physical page 3 stating its 2017 basis and training/reference role.",
+        "The final model action selected only Food Code excerpts. The controller rejected it for omitted requested handbook source evidence.",
+        "Rejected candidate does not explain the source-version relationship or how the handbook can be used for guidance/training without replacing the 2026 model-code rule.",
+        "No accepted final claims exist. Food Code operative provisions alone do not complete this comparison question."
+      ],
+      "subparts": {
+        "current_model_code_source": "no accepted answer",
+        "handbook_2017_basis": "retrieved but not selected",
+        "appropriate_handbook_use": "not explained in rejected candidate"
+      }
+    },
+    "Q8": {
+      "result_sha256": "c76a7089cdf363aab58953e1dec54b99fdc987593afb5287254a7748daabbd61",
+      "support": "unsupported as an answer to the jurisdictional question",
+      "coverage": "incorrect terminal",
+      "notes": [
+        "Expected insufficient_evidence; actual terminal is answer.",
+        "Selected physical Food Code pages 72, 725, 684 and 210 concern generic model-code illness policies, changes, inspection marking and index entries. None identifies a current Utah adoption regulation or Utah penalties.",
+        "The quotations are exact, but cannot establish jurisdictional adoption or penalties. An index reference to enforcement is not a penalty rule.",
+        "The result does not invent a specific Utah regulation or fine, but still wrongly presents unrelated evidence as a substantive answer rather than acknowledging absent evidence.",
+        "The corpus contains no current Utah adoption/penalty instrument; historical Utah inspection observations cannot supply it either. No external legal sources were substituted into this corpus-bound assessment."
+      ],
+      "subparts": {
+        "current_utah_adoption_rule": "not established",
+        "utah_penalties": "not established",
+        "appropriate_insufficient_evidence_terminal": "failed"
+      }
+    },
+    "Q9": {
+      "result_sha256": "79ef8d63309b9cf68b122d9fcb2d306fb04bd7e8beee8f1650e334bc18c2345b",
+      "support": "appropriate insufficient evidence",
+      "coverage": "complete",
+      "notes": [
+        "Returns insufficient_evidence with no answer claims or invented ranking.",
+        "All six observed passages are food-safety material and do not establish an Avenger ranking.",
+        "Only the Food Code was searched; wording about related documents should not be read as a claim that all corpus sources were exhaustively searched.",
+        "The message loosely describes source material as regulations/guidelines and adds incidental Marvel context. This is not a verified jurisdictional-law claim or a sourced superhero fact; the relevant accepted outcome is that the retrieved evidence does not establish the ranking."
+      ],
+      "subparts": {
+        "ranking_boundary": "correctly declines to establish ranking from food-safety passages"
+      }
+    }
+  },
+  "reviewed_at": "2026-11-02",
+  "overall": {
+    "review_complete": true,
+    "satisfactory_queries": [
+      "Q1",
+      "Q2",
+      "Q4",
+      "Q9"
+    ],
+    "partial_queries": [
+      "Q3",
+      "Q5"
+    ],
+    "error_queries": [
+      "Q6",
+      "Q7"
+    ],
+    "wrong_terminal_queries": [
+      "Q8"
+    ],
+    "expected_terminal_matches": 6,
+    "total_queries": 9,
+    "all_queries_pass": false,
+    "key_limitation": "Verbatim quotation prevents text alteration but does not guarantee relevant selection, completeness, cross-source use, or correct abstention."
+  }
+}

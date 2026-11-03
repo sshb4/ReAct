@@ -1,0 +1,70 @@
+{
+  "method": "Assistant passage-by-passage review of actual cited observations; not a formal entailment guarantee",
+  "queries": {
+    "Q1": {
+      "result_sha256": "77a747c8e5eee749fd47b7158a22d8522a54caa7d68d42541332a32ee3bc8287",
+      "support": "supported",
+      "coverage": "complete",
+      "claims": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "basis": "Physical page 59, chunk f04162d9369fc9b7ec7ba21d, explicitly requires exclusion for vomiting/diarrhea except a noninfectious condition."
+        },
+        {
+          "claim_index": 1,
+          "supported": true,
+          "basis": "Physical page 61, chunk 34d7d609c8ed642bc104e5cc, states at least 24 hours asymptomatic OR written health-practitioner documentation of a noninfectious condition."
+        }
+      ]
+    },
+    "Q2": {
+      "result_sha256": "673faff322b301a93b665dbf0282d3472c06e5abb34f14a4c6c52ee87dd915d6",
+      "support": "partially supported",
+      "coverage": "partial",
+      "notes": "Omits explicitly sending the employee home/leaving the establishment; employee reporting is clearer in handbook physical page 6 than its selected page 7 citation."
+    },
+    "Q3": {
+      "result_sha256": "391b0ed09979df2032c3833c3fa904b332ba47f1d304a29a53cfb6a2d6a09952",
+      "support": "partially supported",
+      "coverage": "partial",
+      "notes": "Dose/onset/symptoms match cited book passages. Worker-contamination explanation is vague and adds symptomatic/asymptomatic detail absent from that claim's own cited page 170; this detail is in other retrieved page 169 evidence."
+    },
+    "Q4": {
+      "result_sha256": "a34c7db074789b9327985fea9932fab7b5f276e63286e6b7250e9524bddb5615",
+      "support": "supported",
+      "coverage": "complete",
+      "notes": "Both rows match visual inspection of Appendix 3 Table 3-A, physical page 3: Salmonella aw .94, pH 3.7-9.5, salt 8%, 5.2-46.2 C; Listeria aw .92, pH 4.4-9.4, salt 10%, -0.4-45 C. Both facultative anaerobes; stated Fahrenheit values also match."
+    },
+    "Q5": {
+      "result_sha256": "e3fd42fae6356580d96ef8d940dd9efebca42d01919b74a8b5e4da6ac615f670",
+      "support": "supported",
+      "coverage": "partial",
+      "notes": "Line identifiers and four ratios are correct, as are the cited single-year/recorded-frequency limitations. Answer omits full item names and other material study limitations such as voluntary participation and heterogeneous forms/risk categories."
+    },
+    "Q6": {
+      "result_sha256": "c47e260f1bf75fac3e9514706464f09c74380efef9f2a2cd3b597ce66278ba77",
+      "support": "unsupported",
+      "coverage": "incomplete",
+      "notes": "Confuses noninfectious-condition medical documentation with confirmed-diagnosis exceptions; surface survival claim lacks cited support; no Bad Bug Book retrieval. Some citations are only general reporting/cleanup text."
+    },
+    "Q7": {
+      "result_sha256": "be524d0423d73346e3a194ad0cd4a35108129f773011d7a41bf476406765c7ea",
+      "support": "unsupported",
+      "coverage": "incomplete",
+      "notes": "Never retrieved handbook and asserts blanket alignment with 2026 using a Food Code changes passage that does not establish that claim."
+    },
+    "Q8": {
+      "result_sha256": "9930fcd830867bff015187b64e271f704a8d1f6bb7483bcd6d817030ec20330c",
+      "support": "unsupported",
+      "coverage": "incorrect terminal",
+      "notes": "Historical Utah study cannot establish that Utah currently does NOT adopt the 2026 code or identify current penalties; expected insufficient evidence."
+    },
+    "Q9": {
+      "result_sha256": "ae0af4b7307e3b2172d60019d91f8dbed6bc1cd5a453d24e2a1729c5534a4e97",
+      "support": "appropriate insufficient evidence",
+      "coverage": "complete",
+      "notes": "Returns insufficient_evidence for a ranking not established by food-safety passages, without answer claims."
+    }
+  }
+}

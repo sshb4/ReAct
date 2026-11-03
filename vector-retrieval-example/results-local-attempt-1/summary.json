@@ -1,0 +1,65 @@
+[
+  {
+    "query_id": "Q1",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q2",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q3",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q4",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q5",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q6",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q7",
+    "expected": "answer",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q8",
+    "expected": "insufficient_evidence",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  },
+  {
+    "query_id": "Q9",
+    "expected": "insufficient_evidence",
+    "actual": "error",
+    "matches_expected": false,
+    "claim_support_review": "pending manual review of every claim against cited passage"
+  }
+]
